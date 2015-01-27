@@ -71,4 +71,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:login, :info, :data)
     end
+
+    def check_ctr_auth()
+      return true if @current_user_object.is_admin?
+      return false
+    end
 end

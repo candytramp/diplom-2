@@ -46,5 +46,6 @@ group :development, :test do
   gem 'bootstrap-sass'
   gem 'autoprefixer-rails'
   gem "font-awesome-rails"
+  gem "haml-rails"
 end
 

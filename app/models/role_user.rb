@@ -8,4 +8,8 @@ class RoleUser < ActiveRecord::Base
   
   validates :user, presence: true
   validates :role, presence: true
+
+  def is_admin?()
+    self.role.name == 'admin' 
+  end
 end

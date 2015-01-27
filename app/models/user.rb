@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   validates :login, uniqueness: true, presence: true, length: {maximum: 32}
   
   serialize :data
+  
+  def is_admin?()
+    self.role_users.any?{ |x| x.role.name == 'admin' }
+  end
 end

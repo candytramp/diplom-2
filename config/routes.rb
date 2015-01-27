@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'nobody/access_denied'
+
+  get 'nobody/logout'
+
   resources :role_users
 
   resources :users
