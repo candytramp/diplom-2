@@ -1,14 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang = "ru">
 <head>
   <title>Hours</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <nav class = "navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Нагрузка</a>
+      </div>
 
-<%= yield %>
-
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a class = "side-bar-switcher"><i class = "fa fa-caret-square-o-left"></i></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Администрирование<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Управление пользователями</a></li>
+              <li><a href="#">Управление ролями</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">администратор системы<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">сотрудник кафедры</a></li>
+              <li><a href="#">ректор</a></li>
+            </ul>
+          </li>
+          <li><a>radigin</a></li>
+          <li><a href = "#"><i class = "fa fa-sign-out"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id = "middle">    
+    <nav class = "navbar-default navbar-side side-bar-open">
+      <div class = "navbar-side-collapse">
+        <ul class="nav">
+          <li>
+            <a href = "">
+              <i class = "fa fa-wrench"></i>
+              Администрирование</a>
+          </li>
+        </ul>
+      </div>  
+    </nav>
+    <div class = "container-fluid main-with-side-bar" id = "main">     
+      <%= yield %>
+    </div>
+  </div>
+    
 </body>
 </html>

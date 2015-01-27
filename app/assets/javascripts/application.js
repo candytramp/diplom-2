@@ -16,3 +16,13 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+
+$(function() {
+  $('.side-bar-switcher').click(function() {
+    $(this).find( "i" ).toggleClass("fa-caret-square-o-left");
+    $(this).find( "i" ).toggleClass("fa-caret-square-o-right");
+    $('.navbar-side').toggleClass("navbar-side-off");
+    $('#main').toggleClass("main-with-side-bar");
+    $('#main').toggleClass("main-without-side-bar");
+  });
+});

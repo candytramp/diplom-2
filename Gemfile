@@ -45,5 +45,6 @@ group :development, :test do
   gem 'paper_trail'
   gem 'bootstrap-sass'
   gem 'autoprefixer-rails'
+  gem "font-awesome-rails"
 end
 
