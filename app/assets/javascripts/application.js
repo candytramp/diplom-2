@@ -17,12 +17,16 @@
 //= require jquery
 //= require bootstrap-sprockets
 
-$(function() {
+$(document).on("page:change", function() {
   $('.side-bar-switcher').click(function() {
     $(this).find( "i" ).toggleClass("fa-caret-square-o-left");
     $(this).find( "i" ).toggleClass("fa-caret-square-o-right");
     $('.navbar-side').toggleClass("navbar-side-off");
     $('#main').toggleClass("main-with-side-bar");
     $('#main').toggleClass("main-without-side-bar");
+  });
+  $('.side-bar-dropdown a').has('.side-bar-opener').click(function() {
+    $(this).parent().find('.nav-side-bar-dropdown').toggleClass("navbar-side-off");
+    $(this).find('.side-bar-opener').toggleClass("fa-angle-left").toggleClass("fa-angle-down");
   });
 });

@@ -49,11 +49,57 @@
     <nav class = "navbar-default navbar-side side-bar-open">
       <div class = "navbar-side-collapse">
         <ul class="nav">
-          <li>
-            <a href = "">
-              <i class = "fa fa-wrench"></i>
-              Администрирование</a>
-          </li>
+          <%  generate_side_bar_items.each do |item| %>
+            <% if item.has_key?(:children) %>
+              <% if item[:class].blank? %>
+                <li class="side-bar-dropdown">
+                  <a>
+                    <i class = "fa <%= item[:icon] %>"></i>
+                    <%= item[:name] %>
+                    <i class = "fa fa-angle-left side-bar-opener"></i>
+                  </a>
+                  <ul class="nav nav-side-bar-dropdown navbar-side-off">
+                    <% item[:children].each do |child| %>
+                      <li <%== child[:class].blank? ? '' : "class = \"#{child[:class]}\"" %>>
+                        <%= link_to(:controller => child[:controller],
+                            :action => child[:action]) do %>
+                          <i class = "fa <%= child[:icon] %>"></i>
+                          <%= child[:name] %>
+                        <% end %>
+                      </li>    
+                    <% end %>
+                  </ul>
+                </li>
+              <% else %>
+                <li class="side-bar-dropdown <%= item[:class] %>">
+                  <a>
+                    <i class = "fa <%= item[:icon] %>"></i>
+                    <%= item[:name] %>
+                    <i class = "fa fa-angle-down side-bar-opener"></i>
+                  </a>
+                  <ul class="nav nav-side-bar-dropdown">
+                    <% item[:children].each do |child| %>
+                      <li <%== child[:class].blank? ? '' : "class = \"#{child[:class]}\"" %>>
+                        <%= link_to(:controller => child[:controller],
+                            :action => child[:action]) do %>
+                          <i class = "fa <%= child[:icon] %>"></i>
+                          <%= child[:name] %>
+                        <% end %>
+                      </li>    
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>  
+            <% else %>
+              <li <%== item[:class].blank? ? '' : "class = \"#{item[:class]}\"" %>>
+                <%= link_to(:controller => item[:controller],
+                    :action => item[:action]) do %>
+                  <i class = "fa <%= item[:icon] %>"></i>
+                  <%= item[:name] %>
+                <% end %>  
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>  
     </nav>

@@ -40,3 +40,11 @@
   margin-left: 0px;
   z-index: 100;
 }
+
+.nav-side-bar-dropdown li a{
+  padding: 7px 10px 7px 42px;
+}
+
+.side-bar-active a{
+  background-color: darken($body-bg, 10%);
+}
