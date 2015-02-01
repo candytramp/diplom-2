@@ -10,41 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *
  *= require_self
  */
+$body-bg: darken(#fff, 5%);
+//$navbar-side-hover-bg-color: #A1201A;
+$navbar-side-hover-bg-color: #3096C7;
+$navbar-side-hover-color: #fff;
+$navbar-inverse-bg: darken($navbar-side-hover-bg-color, 10%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "pace";
+$navbar-side-bg: darken($body-bg, 5%);/* #969593;*/
+$navbar-side-color: $navbar-default-color;/* #fff;*/
+@import "main";
 
-.navbar-side {
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  position: absolute;
-  width: 200px;
-  z-index: 101;
-}
-
-.navbar-side-off {
-  display: none;
-}
-
-.main-with-side-bar{
-  margin-left: 200px;
-  z-index: 100;
-}
-
-.main-without-side-bar{
-  margin-left: 0px;
-  z-index: 100;
-}
-
-.nav-side-bar-dropdown li a{
-  padding: 7px 10px 7px 42px;
-}
-
-.side-bar-active a{
-  background-color: darken($body-bg, 10%);
-}

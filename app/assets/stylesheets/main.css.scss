@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *
+ *= require_self
+ */
+
+html, body {
+    height: 100%;
+}
+
+.navbar-side {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  position: absolute;
+  width: 200px;
+  z-index: 101;
+  height: 100%;
+//  bottom: 0;
+//  top: $navbar-height + 2;
+  background-color: $navbar-side-bg;
+}
+
+.navbar-side-collapse{
+  background-color: $navbar-side-bg;
+}
+
+.switcher{
+  padding: 7px 10px 7px 10px;  
+}
+
+.switcher-on{
+  background-color: $navbar-side-bg;
+}
+
+.switcher-off{
+  background: transparent;
+//  top: $navbar-height + 2;
+  position: absolute;
+}
+
+.navbar-side-off {
+  display: none;
+}
+
+.main-with-side-bar{
+  margin-left: 200px;
+  z-index: 100;
+  position: absolute;
+}
+
+.main-without-side-bar{
+  margin-left: 0px;
+  z-index: 100;
+  position: absolute;
+}
+
+.nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
+  color: $navbar-side-color;  
+}
+
+.nav-side-bar-dropdown li a{
+  padding: 7px 10px 7px 42px;  
+}
+
+.side-bar-active a{
+  background-color: darken($navbar-side-bg, 10%);
+}
+
+.nav-side-bar-dropdown li a:hover, .navbar-side li a:hover{
+  background-color: $navbar-side-hover-bg-color;
+  color: $navbar-side-hover-color;
+}
+
