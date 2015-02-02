@@ -21,8 +21,8 @@
 
 $(document).on("ready page:load", function() {
   $('.side-bar-switcher').click(function() {
+    $('.navbar-side').toggleClass('animated fadeOutLeft');
     $('.switcher-off').toggleClass("navbar-side-off");
-    $('.navbar-side').toggleClass("navbar-side-off");
     $('#main').toggleClass("main-with-side-bar");
     $('#main').toggleClass("main-without-side-bar");
   });

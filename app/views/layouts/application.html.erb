@@ -22,13 +22,30 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Администрирование<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Управление пользователями</a></li>
-              <li><a href="#">Управление ролями</a></li>
-            </ul>
-          </li>
+          <%  generate_top_bar_items.each do |item| %>
+            <% if item.has_key?(:children) %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Администрирование<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <% item[:children].each do |child| %>
+                    <li>
+                      <%= link_to(:controller => child[:controller],
+                          :action => child[:action]) do %>
+                        <%= child[:name] %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to(:controller => item[:controller],
+                    :action => item[:action]) do %>
+                  <%= item[:name] %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

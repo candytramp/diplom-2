@@ -14,12 +14,6 @@ module ApplicationHelper
          :icon => 'fa-cubes'}
       ]} 
     end
-    result << {:name => 'Роли',
-         :controller => :roles, :action => :index,
-         :icon => 'fa-cubes'}
-    result << {:name => 'Роли',
-         :controller => :roles, :action => :index,
-         :icon => 'fa-cubes'}
     result.each do |item|
       if item.has_key?(:children)
         item[:children].each do |x| 
@@ -36,5 +30,20 @@ module ApplicationHelper
         end
       end
     end
+  end
+
+  def generate_top_bar_items()
+    result = []
+    if @current_role_user.is_admin?
+      result << {
+        :name => 'Администрирование',
+        :children => [
+        {:name => 'Пользователи',
+         :controller => :users, :action => :index},
+        {:name => 'Роли',
+         :controller => :roles, :action => :index}
+      ]} 
+    end
+    result   
   end
 end

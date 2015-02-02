@@ -18,6 +18,7 @@ $body-bg: darken(#fff, 5%);
 $navbar-side-hover-bg-color: #3096C7;
 $navbar-side-hover-color: #fff;
 $navbar-inverse-bg: darken($navbar-side-hover-bg-color, 10%);
+$navbar-inverse-toggle-hover-bg: darken($navbar-inverse-bg, 10%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
@@ -25,4 +26,5 @@ $navbar-inverse-bg: darken($navbar-side-hover-bg-color, 10%);
 $navbar-side-bg: darken($body-bg, 5%);/* #969593;*/
 $navbar-side-color: $navbar-default-color;/* #fff;*/
 @import "main";
-
+@import "animate.min";
+@import "elements";
