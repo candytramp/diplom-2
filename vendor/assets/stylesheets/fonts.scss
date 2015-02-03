@@ -1,0 +1,59 @@
+/*Open Sans*/
+@font-face {
+  font-family: "Open Sans";
+  src: asset-url("OpenSansRegular.eot");
+  src: asset-url("OpenSansRegular.eot?#iefix") format("embedded-opentype"),
+  asset-url("OpenSansRegular.woff") format("woff"),
+  asset-url("OpenSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: asset-url("OpenSansLight.eot");
+  src: asset-url("OpenSansLight.eot?#iefix") format("embedded-opentype"),
+  asset-url("OpenSansLight.woff") format("woff"),
+  asset-url("OpenSansLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: asset-url("OpenSansItalic.eot");
+  src: asset-url("OpenSansItalic.eot?#iefix") format("embedded-opentype"),
+  asset-url("OpenSansItalic.woff") format("woff"),
+  asset-url("OpenSansItalic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: asset-url("OpenSansBold.eot");
+  src: asset-url("OpenSansBold.eot?#iefix") format("embedded-opentype"),
+  asset-url("OpenSansBold.woff") format("woff"),
+  asset-url("OpenSansBold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+/*Intro*/
+
+@font-face {
+  font-family: "Intro";
+  src: asset-url("IntroRegular.eot");
+  src: asset-url("IntroRegular.eot?#iefix") format("embedded-opentype"),
+  asset-url("IntroRegular.woff") format("woff"),
+  asset-url("IntroRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/*Proxima Nova*/
+@font-face {
+  font-family: "Proxima Nova";
+  src: asset-url("ProximaNovaRegular.eot");
+  src: asset-url("ProximaNovaRegular.eot?#iefix") format("embedded-opentype"),
+  asset-url("ProximaNovaRegular.woff") format("woff"),
+  asset-url("ProximaNovaRegular.ttf") format("truetype");
+}

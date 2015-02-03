@@ -25,6 +25,7 @@ $navbar-inverse-toggle-hover-bg: darken($navbar-inverse-bg, 10%);
 @import "pace";
 $navbar-side-bg: darken($body-bg, 5%);/* #969593;*/
 $navbar-side-color: $navbar-default-color;/* #fff;*/
+@import "animate";
+@import "fonts";
 @import "main";
-@import "animate.min";
 @import "elements";
