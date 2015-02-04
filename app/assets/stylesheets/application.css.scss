@@ -13,12 +13,16 @@
  *
  *= require_self
  */
-$body-bg: darken(#fff, 5%);
+$body-bg: darken(#fff, 2.5%);
 //$navbar-side-hover-bg-color: #A1201A;
-$navbar-side-hover-bg-color: #3096C7;
+//$navbar-side-hover-bg-color: #A67A5C;
+//$navbar-side-hover-bg-color: #3096C7;
+$navbar-side-hover-bg-color: #24448C;
 $navbar-side-hover-color: #fff;
 $navbar-inverse-bg: darken($navbar-side-hover-bg-color, 10%);
 $navbar-inverse-toggle-hover-bg: darken($navbar-inverse-bg, 10%);
+$navbar-inverse-color: darken($body-bg, 10%);
+$navbar-inverse-link-color: darken($body-bg, 10%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
@@ -28,4 +32,5 @@ $navbar-side-color: $navbar-default-color;/* #fff;*/
 @import "animate";
 @import "fonts";
 @import "main";
+@import "side-bar";
 @import "elements";

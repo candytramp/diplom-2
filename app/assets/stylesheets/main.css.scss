@@ -18,78 +18,17 @@ html, body {
     height: 100%;
 }
 
-.navbar {
-  margin-bottom: 0px;
+body {
+  font-family: 'Open Sans';
 }
 
-.navbar-side {
-  overflow-y: auto;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  position: absolute;
-  width: 200px;
-  z-index: 101;
-  height: 100%;
-//  bottom: 0;
-//  top: $navbar-height + 2;
-  background-color: $navbar-side-bg;
-  border-radius: 4px;
+.open-sans-light {
+  font-family: 'Open Sans';
+  font-weight: 100;
 }
 
-.navbar-side-collapse{
-  background-color: $navbar-side-bg;
-  border-radius: 4px;
-}
-
-.switcher{
-  padding: 7px 10px 7px 10px;  
-  border-radius: 4px;
-}
-
-.switcher-on{
-  background-color: $navbar-side-bg;
-}
-
-.switcher-off{
-  background: transparent;
-//  top: $navbar-height + 2;
-  position: absolute;
-}
-
-.navbar-side-off {
-  display: none;
-}
-
-.navbar-side-close {
-  margin-left: -200px;
-}
-
-.main-with-side-bar{
-  margin-left: 200px;
-  z-index: 100;
-  position: absolute;
-  margin-top: 20px;
-}
-
-.main-without-side-bar{
-  margin-left: 0px;
-  z-index: 100;
-  position: absolute;
-  margin-top: 20px;
-}
-
-.nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
-  color: $navbar-side-color;  
-}
-
-.nav-side-bar-dropdown li a{
-  padding: 7px 10px 7px 42px;  
-}
-
-.side-bar-active a{
-  background-color: darken($navbar-side-bg, 10%);
+.nova {
+  font-family: 'Proxima Nova';
 }
 
 .intro {
@@ -106,9 +45,89 @@ html, body {
   top: 10px;
 }
 
-.nav-side-bar-dropdown li a:hover, .navbar-side li a:hover{
-  background-color: $navbar-side-hover-bg-color;
-  color: $navbar-side-hover-color;
+.has-error .form-control:focus, .form-control:focus {
+  box-shadow: none;
 }
 
+.page-header {
+  h1, h2, h3 {
+    @extend .open-sans-light;
+  }
+}
 
+.field_with_errors {
+  @extend .has-error
+}
+
+.box {
+  background: #fff;
+  border-color: #e7eaec;
+  border-width: 5px 0 0;
+  border-style: solid none none;
+  padding: 15px 20px 20px;
+  margin: 20px 0;
+  .page-header {
+    margin-top: 0;
+  }
+}
+
+a {
+  transition: all .5s;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+.half-transparent {
+  opacity: 0.5;
+}
+
+.label {
+  font-weight: normal;
+  border-radius: 0;
+}
+
+.alert-block {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  z-index: 5;
+  margin-right: 30px;
+  opacity: .8;
+}
+
+.growl-msg {
+  display: none;
+}
+
+.dl {
+  .dt {
+    float: left;
+  }
+  .dd {
+    float: right;
+  }
+  padding: 0 0 5px;
+  border-bottom: 1px solid $gray-lighter;
+  clear: both;
+}
+
+.line-through, .line-through * {
+  text-decoration: line-through;
+}
+
+.underline {
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.no-float {
+  float: none !important;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.btn-toolbar {
+  margin: 20px 0;
+}

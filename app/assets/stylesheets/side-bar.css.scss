@@ -1,0 +1,105 @@
+/*
+    Document   : side-bar.css
+    Created on : 04.02.2015, 16:00:32
+    Author     : radigin
+    Description:
+    Purpose of the stylesheet follows.
+*/
+
+/*
+    TODO customize this sample style
+    Syntax recommendation http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
+*/
+
+$sidebar-lenght: 250px;
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-side {
+  overflow-y: auto;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  position: absolute;
+  width: $sidebar-lenght;
+  z-index: 101;
+  height: 100%;
+//  bottom: 0;
+//  top: $navbar-height + 2;
+  background-color: $navbar-side-bg;
+  border-radius: 4px;
+}
+
+.navbar-side-collapse{
+  background-color: $navbar-side-bg;
+  border-radius: 4px;
+}
+
+.switcher{
+  padding: 7px 10px 7px 10px;  
+  border-radius: 4px;
+}
+
+.switcher-on{
+  background-color: $navbar-side-bg;
+}
+
+.switcher-off{
+  background: transparent;
+//  top: $navbar-height + 2;
+  position: absolute;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.navbar-side-off {
+  display: none;
+}
+
+.navbar-side-close {
+  margin-left: -$sidebar-lenght;
+}
+
+.main-with-side-bar{
+  margin-left: $sidebar-lenght;
+  z-index: 100;
+  position: absolute;
+  margin-top: 20px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.main-without-side-bar{
+  margin-left: 0px;
+  z-index: 100;
+  position: absolute;
+  margin-top: 20px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
+  color: $navbar-side-color;  
+}
+
+.nav-side-bar-dropdown li a{
+  padding: 7px 10px 7px 42px;  
+}
+
+.side-bar-active a{
+  background-color: darken($navbar-side-bg, 10%);
+}
+
+.nav-side-bar-dropdown li a:hover, .navbar-side li a:hover{
+  background-color: $navbar-side-hover-bg-color;
+  color: $navbar-side-hover-color;
+}
