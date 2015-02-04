@@ -23,6 +23,25 @@ $navbar-inverse-bg: darken($navbar-side-hover-bg-color, 10%);
 $navbar-inverse-toggle-hover-bg: darken($navbar-inverse-bg, 10%);
 $navbar-inverse-color: darken($body-bg, 10%);
 $navbar-inverse-link-color: darken($body-bg, 10%);
+
+$font-size-base: 16px;
+$border-radius-base: 0;
+$border-radius-small: 0;
+$border-radius-large: 0;
+$breadcrumb-padding-horizontal: 0;
+
+$btn-default-bg: #c2c2c2;
+$brand-primary: #1ab394;
+$brand-success: #1c84c6;
+$brand-info: #23c6c8;
+$brand-warning: #f8ac59;
+$brand-danger: #ed5565;
+
+$brand-purple: #727cb6;
+
+$input-border-focus: $brand-primary;
+$text-muted: #999;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
@@ -34,3 +53,4 @@ $navbar-side-color: $navbar-default-color;/* #fff;*/
 @import "main";
 @import "side-bar";
 @import "elements";
+@import "buttons";

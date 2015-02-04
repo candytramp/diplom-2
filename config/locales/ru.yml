@@ -254,4 +254,19 @@ ru:
       long: ! '%d %B %Y, %H:%M'
       short: ! '%d %b, %H:%M'
     pm: вечера
-
+  app:
+    name: Нагрузка
+    company: 
+      short_name: НИЯУ «МИФИ»
+  activerecord:
+    models:
+      user: Пользователи
+      role: Роли
+    attributes:
+      user:
+        login: Пользовательское имя
+        info: Информация
+        data: Спец. данные 
+      role:  
+        name: Название
+        info: Дополнительная информация

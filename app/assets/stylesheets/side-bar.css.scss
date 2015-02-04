@@ -87,6 +87,13 @@ $sidebar-lenght: 250px;
   transition: all 0.5s;
 }
 
+#main{
+    width: 100%;
+    .list-group {
+      margin-right: $sidebar-lenght;
+    }
+}
+
 .nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
   color: $navbar-side-color;  
 }

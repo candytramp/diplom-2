@@ -1,6 +1,8 @@
 .page-header
-  %h1 Пользователи
-
+  %h1 
+    Пользователи
+    =link_to(new_user_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 %table
   %thead
     %tr
