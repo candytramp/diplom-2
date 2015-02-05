@@ -3,26 +3,15 @@
     Пользователи
     =link_to(new_user_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-plus
-%table
-  %thead
-    %tr
-      %th Login
-      %th Info
-      %th Data
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.login
-        %td= user.info
-        %td= user.data
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New User', new_user_path
+.list-group
+  - @users.each do |user|
+    .list-group-item
+      =link_to(user) do
+        %span.text-danger= user.login
+        = user.info
+      .pull-right
+        = link_to(edit_user_path(user), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(user, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
