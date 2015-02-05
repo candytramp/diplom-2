@@ -5,8 +5,8 @@ ru:
       short_name: НИЯУ «МИФИ»
   activerecord:
     models:
-      user: Пользователи
-      role: Роли
+      user: Пользователь
+      role: Роль
     attributes:
       user:
         login: Пользовательское имя
