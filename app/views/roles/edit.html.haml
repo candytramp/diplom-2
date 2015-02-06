@@ -1,9 +1,7 @@
 .page-header
   %h1 
-    Редактирование роли
+    Редактирование роли 
+    =link_to(@role, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
 = render 'form'
-
-= link_to 'Show', @role
-\|
-= link_to 'Back', roles_path

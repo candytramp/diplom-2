@@ -11,7 +11,14 @@ ru:
       user:
         login: Пользовательское имя
         info: Информация
-        data: Спец. данные 
+        data: Спец. данные
+        role_users: Роли
       role:  
         name: Название
         info: Дополнительная информация
+      role_user:
+        user: Пользователь        
+        user_id: Пользователь
+        role: Роль
+        role_id: Роль
+        value: Параметр связи

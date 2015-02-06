@@ -1,7 +1,7 @@
-%h1 Editing user
+.page-header
+  %h1 
+    Редактирование пользователя 
+    =link_to(@user, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
 = render 'form'
-
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path

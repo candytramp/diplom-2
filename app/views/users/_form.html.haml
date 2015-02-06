@@ -1,19 +1,35 @@
 = form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :login
-    = f.text_field :login
-  .field
-    = f.label :info
-    = f.text_area :info
-  .field
+  .row
+    .col-md-4
+      .form-group
+        = f.label :login
+        = f.text_field :login, class: 'form-control'
+        = f.error_messages_for(:login)
+    .col-md-8
+      .form-group
+        = f.label :info
+        = f.text_field :info, class: 'form-control'
+        = f.error_messages_for(:info)
+  .form-group
     = f.label :data
-    = f.text_area :data
-  .actions
-    = f.submit 'Save'
+    = f.text_field :data, class: 'form-control'
+    = f.error_messages_for(:data)
+  %h4= User.human_attribute_name(:role_users)
+  = f.fields_for :role_users do |ff|
+    .row
+      .col-md-4
+        .form-group
+          = ff.label :role_id
+          = ff.text_field :role_id, class: 'form-control'
+          = ff.error_messages_for(:role)
+      .col-md-4
+        .form-group
+          = ff.label :value
+          = ff.text_field :value, class: 'form-control'
+          = ff.error_messages_for(:value)
+      .col-md-4
+        .form-actions
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for @user
