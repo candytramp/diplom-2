@@ -6,7 +6,7 @@ class RoleUser < ActiveRecord::Base
   
   serialize :value
   
-  validates :user_id, presence: true
+  validates :user, presence: true
   validates :role_id, presence: true
 
   def is_admin?()
