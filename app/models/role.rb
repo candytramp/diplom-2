@@ -1,7 +1,7 @@
 class Role < ActiveRecord::Base
   has_paper_trail
   
-  has_many :role_users
+  has_many :role_users, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true, length: {maximum: 32}
 end
