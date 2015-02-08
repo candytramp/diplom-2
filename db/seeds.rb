@@ -10,6 +10,7 @@ RoleUser.delete_all
 User.delete_all
 Role.delete_all
 
-r = Role.create({name: :admin, info: 'Администратор системы'})
+rs = Role.create([{name: :admin, info: 'Администратор системы'},
+  {name: :rector, info: 'Ректор университета'}])
 u = User.create({login: :radigin, info: 'Радыгин В.Ю.'})
-ru = RoleUser.create(role: r, user: u)
+rus = RoleUser.create([{role: rs[0], user: u}, {role: rs[1], user: u}])
