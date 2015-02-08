@@ -1,4 +1,7 @@
 class NobodyController < ApplicationController
+  before_filter :check_auth, except: [:access_denied, :logout]
+  before_filter :check_app_auth, except: [:access_denied, :logout]
+    
   def access_denied
   end
 
@@ -6,13 +9,6 @@ class NobodyController < ApplicationController
 #    CASClient::Frameworks::Rails::Filter.logout(self)
   end
   
-  def start_page
-    
-  end
-  
-  private
-  def check_ctr_auth()
-    return false if action_name == 'start_page' and @current_user_object.nil?
-    return true
+  def start_page    
   end  
 end

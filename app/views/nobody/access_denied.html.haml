@@ -1,2 +1,14 @@
-%h1 Nobody#access_denied
-%p Find me in app/views/nobody/access_denied.html.haml
+.page-header
+  %h1 
+    Доступ запрещён!
+.box
+  - if params[:bad_user_name].nil?
+    Пользователям, не прошедшим аутентификацию, доступ запрещён!
+  - else
+    Пользователю
+    %span.red= params[:bad_user_name]
+    к методу
+    %span.red= params[:bad_action_name]
+    контроллера
+    %span.red= params[:bad_controller_name]
+    доступ запрещён!

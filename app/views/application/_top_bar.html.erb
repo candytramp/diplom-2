@@ -1,0 +1,44 @@
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href = "<%= root_path %>">
+          <span class = "intro"><%= t('app.company.short_name') %></span>          
+          <span class = "intro-small"><%= t('app.name') %></span>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <%  generate_top_bar_items.each do |item| %>
+            <% if item.has_key?(:children) %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Администрирование<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <% item[:children].each do |child| %>
+                    <li>
+                      <%= link_to(:controller => child[:controller],
+                          :action => child[:action]) do %>
+                        <%= child[:name] %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to(:controller => item[:controller],
+                    :action => item[:action]) do %>
+                  <%= item[:name] %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <%= render('top_bar_right_menu') %>
+      </div>
+    </div>

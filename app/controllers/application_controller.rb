@@ -15,33 +15,40 @@ class ApplicationController < ActionController::Base
   def check_app_auth()
     session[:cas_user] = 'radigin' # Заглушка на время отсутствия CAS
     if session[:cas_user].nil?
-#      redirect_to(:controller => :nobody, :action => :access_denied,
-#        :bad_action_name => action_name,
-#        :bad_controller_name => controller_name)
+      redirect_to(:controller => :nobody, :action => :access_denied,
+        :bad_action_name => action_name,
+        :bad_controller_name => controller_name)
     else
       @current_user = session[:cas_user]
       @current_user_object = User.where(
         :login => @current_user).includes(:role_users => :role).first
       
-      @current_role_user = params[:current_role_id]
-      @current_role_user = session[:current_role_id] if @current_role_user.nil?
-      if @current_role_user.nil?
-        @current_role_user = @current_user_object.role_users.first
-      else
-        @current_role_user = RoleUser.find(@current_role_user)
-        unless @current_user_object.role_users.include?(@current_role_user)
+      unless @current_user_object.nil?
+        @current_role_user = params[:current_role_id]
+        @current_role_user = session[:current_role_id] if @current_role_user.nil?
+        if @current_role_user.nil?
           @current_role_user = @current_user_object.role_users.first
+        else
+          @current_role_user = RoleUser.find(@current_role_user)
+          unless @current_user_object.role_users.include?(@current_role_user)
+            @current_role_user = @current_user_object.role_users.first
+          end
         end
-      end
-      unless @current_role_user.nil?
-        session[:current_role_id] = @current_role_user.id
-      end  
-      
-      unless check_ctr_auth()
+        unless @current_role_user.nil?
+          session[:current_role_id] = @current_role_user.id
+        end  
+        unless check_ctr_auth()
+          redirect_to(:controller => :nobody, :action => :access_denied,
+            :bad_action_name => action_name,
+            :bad_controller_name => controller_name,
+            :bad_user_name => @current_user)
+        end
+      else
         redirect_to(:controller => :nobody, :action => :access_denied,
           :bad_action_name => action_name,
-          :bad_controller_name => controller_name)
-      end
+          :bad_controller_name => controller_name,
+          :bad_user_name => @current_user)
+      end  
     end
   end
 

@@ -1,6 +1,7 @@
 module ApplicationHelper
   def generate_side_bar_items()
     result = []
+    return result if @current_role_user.nil?
     if @current_role_user.is_admin?
       result << {
         :name => 'Администрирование',
@@ -43,6 +44,7 @@ module ApplicationHelper
   
   def generate_top_bar_items()
     result = []
+    return result if @current_role_user.nil?
     if @current_role_user.is_admin?
       result << {
         :name => 'Администрирование',

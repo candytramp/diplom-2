@@ -28,4 +28,13 @@ class RoleUser < ActiveRecord::Base
     end
     hash
   end
+  
+  def humanize()
+    case self.role.name
+    when 'admin'
+      self.role.info
+    else  
+      self.role.info
+    end
+  end
 end
