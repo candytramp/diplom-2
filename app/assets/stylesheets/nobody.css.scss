@@ -1,0 +1,18 @@
+$btn-colors: (#d35400, #2ecc71, #e67e22, #34495e, #f1c40f, #1abc9c, #872642,
+  #00a0b1, #e74c3c);
+@for $i from 1 through length($btn-colors) {
+    .board-button-#{$i} {
+      font-size: 28px;
+      background-color: nth($btn-colors, $i);
+      border-color: nth($btn-colors, $i);
+      color: white;
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      padding: 20px 10px 20px 10px;
+      margin: 10px 0px 10px 0px;
+          .fa{
+            display: block;
+          }
+    }
+} 
