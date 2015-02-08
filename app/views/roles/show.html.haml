@@ -1,4 +1,18 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Роль: 
+    = @role.name
+    = link_to(edit_role_path(@role), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@role, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
+
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Role.models_human_name, roles_path)
+    %li.active
+      = @role.human
 
 %p
   %b Name:
@@ -7,6 +21,3 @@
   %b Info:
   = @role.info
 
-= link_to 'Edit', edit_role_path(@role)
-\|
-= link_to 'Back', roles_path

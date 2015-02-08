@@ -2,6 +2,13 @@
   %h1 
     Добавление роли
 
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Role.models_human_name, roles_path)
+    %li.active
+      Добавление роли
+
 .box
   = render 'form'
 

@@ -1,7 +1,15 @@
 .page-header
   %h1 
     Редактирование роли 
-    =link_to(@role, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+    = link_to(@role, {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-eye
+
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Role.models_human_name, roles_path)
+    %li= link_to(@role.human, @role)
+    %li.active
+      Редактирование роли
 
 = render 'form'

@@ -20,4 +20,12 @@ class User < ActiveRecord::Base
     hash['data'] = data
     hash
   end
+
+  def human()
+    "Пользователь: #{self.login}"
+  end
+
+  def User.models_human_name()
+    "Пользователи"
+  end
 end

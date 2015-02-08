@@ -1,4 +1,18 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Пользователь: 
+    = @user.login
+    = link_to(edit_user_path(@user), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@user, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
+
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(User.models_human_name, users_path)
+    %li.active
+      = @user.human
 
 %p
   %b Login:
@@ -9,7 +23,3 @@
 %p
   %b Data:
   = @user.data
-
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path

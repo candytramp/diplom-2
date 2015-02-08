@@ -2,4 +2,11 @@
   %h1 
     Добавление пользователя 
 
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(User.models_human_name, users_path)
+    %li.active
+      Добавление пользователя
+
 = render 'form'

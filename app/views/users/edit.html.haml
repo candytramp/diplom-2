@@ -4,4 +4,12 @@
     =link_to(@user, {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-eye
 
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(User.models_human_name, users_path)
+    %li= link_to(@user.human, @user)
+    %li.active
+      Редактирование пользователя 
+
 = render 'form'
