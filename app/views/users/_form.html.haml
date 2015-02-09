@@ -39,24 +39,30 @@
           = f.error_messages_for(:data)
     - i+= 1
   %h4= User.human_attribute_name(:role_users)
-  - i = 0
   = f.fields_for :role_users do |ff|
     .row
-      .col-md-4
+      .col-md-5
         .form-group
           = ff.label :role_id
           = ff.select(:role_id, Role.pluck(:info, :id), {:include_blank => true}, class: 'form-control')
           = ff.error_messages_for(:role_id)
-      .col-md-4
+      .col-md-3
         .form-group
-          = label_tag("user[role_users_attributes][#{i}][value][key]", "#{RoleUser.human_attribute_name(:value)}: ключ") 
-          = text_field_tag("user[role_users_attributes][#{i}][value][key]", @user.role_users[i].value['key'], class: 'form-control')
+          = label_tag("user[role_users_attributes][#{ff.index}][value][key]", "#{RoleUser.human_attribute_name(:value)}: ключ") 
+          = text_field_tag("user[role_users_attributes][#{ff.index}][value][key]", @user.role_users[ff.index].value['key'], class: 'form-control')
           = ff.error_messages_for(:value)
-      .col-md-4
+      .col-md-3
         .form-group
-          = label_tag("user[role_users_attributes][#{i}][value][value]", "#{RoleUser.human_attribute_name(:value)}: значение") 
-          = text_field_tag("user[role_users_attributes][#{i}][value][value]", @user.role_users[i].value['value'], class: 'form-control')
+          = label_tag("user[role_users_attributes][#{ff.index}][value][value]", "#{RoleUser.human_attribute_name(:value)}: значение") 
+          = text_field_tag("user[role_users_attributes][#{ff.index}][value][value]", @user.role_users[ff.index].value['value'], class: 'form-control')
           = ff.error_messages_for(:value)
+      .col-md-1
+        .form-group
+          %a.role_user.btn.btn-success.btn-outline.btn-circle.btn-xs
+            %i.fa.fa-times
+        .form-group
+          %a.role_user.btn.btn-success.btn-outline.btn-circle.btn-xs
+            %i.fa.fa-user-plus
   .form-actions
     = f.submit nil, class: 'btn btn-primary'
   - content_for :error_messages do
