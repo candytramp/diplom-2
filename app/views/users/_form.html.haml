@@ -56,12 +56,11 @@
           = label_tag("user[role_users_attributes][#{ff.index}][value][value]", "#{RoleUser.human_attribute_name(:value)}: значение") 
           = text_field_tag("user[role_users_attributes][#{ff.index}][value][value]", @user.role_users[ff.index].value['value'], class: 'form-control')
           = ff.error_messages_for(:value)
-      .col-md-1
+      .col-md-1.role_user
         .form-group
-          %a.role_user.btn.btn-success.btn-outline.btn-circle.btn-xs
+          %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_close
             %i.fa.fa-times
-        .form-group
-          %a.role_user.btn.btn-success.btn-outline.btn-circle.btn-xs
+          %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_add
             %i.fa.fa-user-plus
   .form-actions
     = f.submit nil, class: 'btn btn-primary'

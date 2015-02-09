@@ -133,9 +133,10 @@ a {
 }
 
 .role_user{
-  display: inline-block;
-    .fa{
-      font-size: 16px;
-    }
+  position: relative;
+  padding-top: 20px;
 }
 
+vamiddle{
+  vertical-align: middle;
+}
