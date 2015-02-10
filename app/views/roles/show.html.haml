@@ -14,10 +14,14 @@
     %li.active
       = @role.human
 
-%p
-  %b Name:
-  = @role.name
-%p
-  %b Info:
-  = @role.info
-
+.box
+  .row
+    .col-md-2
+      = Role.human_attribute_name(:name)
+    .col-md-2
+      = @role.name
+  .row
+    .col-md-2
+      = Role.human_attribute_name(:info)
+    .col-md-2
+      = @role.info
