@@ -13,9 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap-growl.min
+//= require_tree .
 
 /* page:change */
 
