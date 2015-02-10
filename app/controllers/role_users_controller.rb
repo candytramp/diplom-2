@@ -37,6 +37,14 @@ class RoleUsersController < ApplicationController
     end
   end
 
+  def add_role_line
+    @object_id = "role_line_#{params[:after].to_i}"
+    
+    respond_to do |format|
+      format.js { render(:layout => false) }
+    end
+  end
+  
   # PATCH/PUT /role_users/1
   # PATCH/PUT /role_users/1.json
   def update

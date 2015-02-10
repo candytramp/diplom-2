@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     def user_params
       up = params.require(:user).permit(:login, :info, data: [:key, :value], 
         role_users_attributes: [:user_id, :role_id, {value: [:value, :key]}, 
-          :id])
+          :id, :_destroy])
       tmp = User.construct_data(up)
     end
 

@@ -1,0 +1,23 @@
+.row.role_user_line{:id => "role_line_#{ff.index}"}
+  = ff.hidden_field(:_destroy, :class => 'role_user_destroy')
+  .col-md-5
+    .form-group
+      = ff.label :role_id
+      = ff.select(:role_id, Role.pluck(:info, :id), {:include_blank => true}, class: 'form-control')
+      = ff.error_messages_for(:role_id)
+  .col-md-3
+    .form-group
+      = label_tag("user[role_users_attributes][#{ff.index}][value][key]", "#{RoleUser.human_attribute_name(:value)}: ключ") 
+      = text_field_tag("user[role_users_attributes][#{ff.index}][value][key]", user.role_users[ff.index.to_i].value['key'], class: 'form-control')
+      = ff.error_messages_for(:value)
+  .col-md-3
+    .form-group
+      = label_tag("user[role_users_attributes][#{ff.index}][value][value]", "#{RoleUser.human_attribute_name(:value)}: значение") 
+      = text_field_tag("user[role_users_attributes][#{ff.index}][value][value]", user.role_users[ff.index.to_i].value['value'], class: 'form-control')
+      = ff.error_messages_for(:value)
+  .col-md-1.role_user
+    .form-group
+      %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_close
+        %i.fa.fa-times
+      %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_add
+        %i.fa.fa-user-plus

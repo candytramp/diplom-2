@@ -38,30 +38,11 @@
           = text_field_tag("user[data][][value]", '', class: 'form-control')
           = f.error_messages_for(:data)
     - i+= 1
-  %h4= User.human_attribute_name(:role_users)
+  = f.fields_for(:role_users, RoleUser.new, :child_index => 'new_role_users') do |ff|
+    %h4{data: {new_link: render('role_users', :ff => ff, :user => @user)}}
+      =User.human_attribute_name(:role_users)
   = f.fields_for :role_users do |ff|
-    .row
-      .col-md-5
-        .form-group
-          = ff.label :role_id
-          = ff.select(:role_id, Role.pluck(:info, :id), {:include_blank => true}, class: 'form-control')
-          = ff.error_messages_for(:role_id)
-      .col-md-3
-        .form-group
-          = label_tag("user[role_users_attributes][#{ff.index}][value][key]", "#{RoleUser.human_attribute_name(:value)}: ключ") 
-          = text_field_tag("user[role_users_attributes][#{ff.index}][value][key]", @user.role_users[ff.index].value['key'], class: 'form-control')
-          = ff.error_messages_for(:value)
-      .col-md-3
-        .form-group
-          = label_tag("user[role_users_attributes][#{ff.index}][value][value]", "#{RoleUser.human_attribute_name(:value)}: значение") 
-          = text_field_tag("user[role_users_attributes][#{ff.index}][value][value]", @user.role_users[ff.index].value['value'], class: 'form-control')
-          = ff.error_messages_for(:value)
-      .col-md-1.role_user
-        .form-group
-          %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_close
-            %i.fa.fa-times
-          %a.btn.btn-success.btn-outline.btn-circle.btn-xs.role_user_add
-            %i.fa.fa-user-plus
+    = render('role_users', :ff => ff, :user => @user)
   .form-actions
     = f.submit nil, class: 'btn btn-primary'
   - content_for :error_messages do

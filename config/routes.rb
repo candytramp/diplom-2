@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'nobody/start_page'
   get 'nobody/logout'
 
-  resources :role_users
+  resources :role_users do
+    collection do
+      post :add_role_line 
+    end
+  end
 
   resources :users
 
