@@ -29,7 +29,6 @@ $sidebar-lenght: 250px;
   transition: all 0.5s;
   position: absolute;
   width: $sidebar-lenght;
-  z-index: 101;
 //  bottom: 0;
 //  top: $navbar-height + 2;
   background-color: $navbar-side-bg;
@@ -45,6 +44,7 @@ $sidebar-lenght: 250px;
 .switcher{
   padding: 7px 10px 7px 10px;  
   border-radius: 4px;
+  z-index: 101;
 }
 
 .switcher-on{
@@ -96,6 +96,7 @@ $sidebar-lenght: 250px;
 
 .nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
   color: $navbar-side-color;  
+  z-index: 101;
 }
 
 .nav-side-bar-dropdown li a{
