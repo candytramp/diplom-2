@@ -12,6 +12,12 @@
     <%= render 'top_bar' %>
   </nav>
   <div id = "middle">    
+    <div class = "switcher switcher-on">
+      <a class = "side-bar-switcher" href = "#"><i class = "fa fa-caret-square-o-left"></i></a>
+    </div>
+    <div class = "switcher switcher-off navbar-side-off">
+      <a class = "side-bar-switcher" href = "#"><i class = "fa fa-caret-square-o-right"></i></a>
+    </div>
     <%= render 'side_bar' %>
     <div class = "container-fluid main-with-side-bar" id = "main">    
       <%=  render 'flash_messages' %>

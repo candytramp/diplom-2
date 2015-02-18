@@ -22,6 +22,7 @@
 $(document).on("ready page:load", function() {
   $('.side-bar-switcher').click(function() {
     $('.switcher-off').toggleClass("navbar-side-off");
+    $('.switcher-on').toggleClass("navbar-side-off");
     $('.navbar-side').toggleClass('navbar-side-close');
 //    $('.navbar-side').toggleClass('animated fadeOutLeft');
     $('#main').toggleClass("main-with-side-bar");
@@ -31,4 +32,7 @@ $(document).on("ready page:load", function() {
     $(this).parent().find('.nav-side-bar-dropdown').toggleClass("navbar-side-off");
     $(this).find('.side-bar-opener').toggleClass("fa-angle-left").toggleClass("fa-angle-down");
   });
+  $('.datetimepicker').datetimepicker({locale: 'ru', viewMode: 'years'});
+  $('.datepicker').datetimepicker({locale: 'ru', format: 'DD.MM.YYYY', viewMode: 'years'});
+  $('.yearpicker').datetimepicker({locale: 'ru', format: 'YYYY', viewMode: 'years'});
 });
