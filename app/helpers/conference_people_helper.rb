@@ -1,0 +1,2 @@
+module ConferencePeopleHelper
+end

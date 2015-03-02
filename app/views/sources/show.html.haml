@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Funding source:
+  = @source.funding_source
+
+= link_to 'Edit', edit_source_path(@source)
+\|
+= link_to 'Back', sources_path

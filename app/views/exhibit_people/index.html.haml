@@ -1,0 +1,33 @@
+%h1 Listing exhibit_people
+
+%table
+  %tr
+    %th Exhibit
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @exhibit_people.each do |exhibit_person|
+    %tr
+      %td= exhibit_person.exhibit
+      %td= exhibit_person.person
+      %td= exhibit_person.old_lastname
+      %td= exhibit_person.is_teacher
+      %td= exhibit_person.is_staffteacher
+      %td= exhibit_person.is_student
+      %td= exhibit_person.is_postgrad
+      %td= exhibit_person.details
+      %td= link_to 'Show', exhibit_person
+      %td= link_to 'Edit', edit_exhibit_person_path(exhibit_person)
+      %td= link_to 'Destroy', exhibit_person, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exhibit person', new_exhibit_person_path

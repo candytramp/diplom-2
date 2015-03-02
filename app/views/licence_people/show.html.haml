@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Licence:
+  = @licence_person.licence
+%p
+  %b Person:
+  = @licence_person.person
+%p
+  %b Old lastname:
+  = @licence_person.old_lastname
+%p
+  %b Is teacher:
+  = @licence_person.is_teacher
+%p
+  %b Is staffteacher:
+  = @licence_person.is_staffteacher
+%p
+  %b Is student:
+  = @licence_person.is_student
+%p
+  %b Is postgrad:
+  = @licence_person.is_postgrad
+%p
+  %b Details:
+  = @licence_person.details
+
+= link_to 'Edit', edit_licence_person_path(@licence_person)
+\|
+= link_to 'Back', licence_people_path

@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Isbn:
+  = @textbook.isbn
+%p
+  %b Title:
+  = @textbook.title
+%p
+  %b Publisher:
+  = @textbook.publisher
+%p
+  %b Grif:
+  = @textbook.grif
+%p
+  %b Publish year:
+  = @textbook.publish_year
+%p
+  %b Pages:
+  = @textbook.pages
+%p
+  %b Textbook type:
+  = @textbook.textbook_type
+
+= link_to 'Edit', edit_textbook_path(@textbook)
+\|
+= link_to 'Back', textbooks_path

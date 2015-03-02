@@ -1,0 +1,33 @@
+%h1 Listing people_textbooks
+
+%table
+  %tr
+    %th Textbook
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @people_textbooks.each do |people_textbook|
+    %tr
+      %td= people_textbook.textbook
+      %td= people_textbook.person
+      %td= people_textbook.old_lastname
+      %td= people_textbook.is_teacher
+      %td= people_textbook.is_staffteacher
+      %td= people_textbook.is_student
+      %td= people_textbook.is_postgrad
+      %td= people_textbook.details
+      %td= link_to 'Show', people_textbook
+      %td= link_to 'Edit', edit_people_textbook_path(people_textbook)
+      %td= link_to 'Destroy', people_textbook, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New People textbook', new_people_textbook_path

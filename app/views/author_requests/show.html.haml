@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Ois request:
+  = @author_request.ois_request
+%p
+  %b Person:
+  = @author_request.person
+%p
+  %b Old lastname:
+  = @author_request.old_lastname
+%p
+  %b Is teacher:
+  = @author_request.is_teacher
+%p
+  %b Is staffteacher:
+  = @author_request.is_staffteacher
+%p
+  %b Is student:
+  = @author_request.is_student
+%p
+  %b Is postgrad:
+  = @author_request.is_postgrad
+%p
+  %b Details:
+  = @author_request.details
+
+= link_to 'Edit', edit_author_request_path(@author_request)
+\|
+= link_to 'Back', author_requests_path

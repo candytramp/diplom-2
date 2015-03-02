@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @grnti.name
+%p
+  %b Grnti:
+  = @grnti.grnti
+
+= link_to 'Edit', edit_grnti_path(@grnti)
+\|
+= link_to 'Back', grntis_path

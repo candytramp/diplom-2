@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   before_filter :check_app_auth
 
   def check_auth()
-#    unless request.format.js?
-#      CASClient::Frameworks::Rails::Filter.filter(self)
-#    end
+    unless request.format.js?
+      CASClient::Frameworks::Rails::Filter.filter(self)
+    end
   end
 
   def check_app_auth()
-    session[:cas_user] = 'radigin' # Заглушка на время отсутствия CAS
+   # session[:cas_user] = 'radigin'  Заглушка на время отсутствия CAS
     if session[:cas_user].nil?
       redirect_to(:controller => :nobody, :action => :access_denied,
         :bad_action_name => action_name,

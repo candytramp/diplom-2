@@ -1,0 +1,1 @@
+json.extract! @people_research_effort, :id, :research_effort_id, :person_id, :old_lastname, :is_teacher, :is_staffteacher, :is_student, :is_postgrad, :details, :person_value, :role, :created_at, :updated_at

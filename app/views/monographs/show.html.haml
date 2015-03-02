@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Isbn:
+  = @monograph.isbn
+%p
+  %b Name:
+  = @monograph.name
+%p
+  %b Publisher:
+  = @monograph.publisher
+%p
+  %b Publisher name:
+  = @monograph.publisher_name
+%p
+  %b Publish year:
+  = @monograph.publish_year
+%p
+  %b Pages:
+  = @monograph.pages
+
+= link_to 'Edit', edit_monograph_path(@monograph)
+\|
+= link_to 'Back', monographs_path

@@ -1,0 +1,51 @@
+%h1 Listing research_efforts
+
+%table
+  %tr
+    %th Name
+    %th State program
+    %th Start date
+    %th Finish date
+    %th Grnti
+    %th Field
+    %th Full value
+    %th Year value
+    %th State reg number
+    %th Nir number
+    %th Inventory number
+    %th Nir type
+    %th Source
+    %th Scientific school
+    %th Is nir
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @research_efforts.each do |research_effort|
+    %tr
+      %td= research_effort.name
+      %td= research_effort.state_program
+      %td= research_effort.start_date
+      %td= research_effort.finish_date
+      %td= research_effort.grnti
+      %td= research_effort.field
+      %td= research_effort.full_value
+      %td= research_effort.year_value
+      %td= research_effort.state_reg_number
+      %td= research_effort.nir_number
+      %td= research_effort.inventory_number
+      %td= research_effort.nir_type
+      %td= research_effort.source
+      %td= research_effort.scientific_school
+      %td= research_effort.is_nir
+      %td= research_effort.creator_login
+      %td= research_effort.creator_data
+      %td= link_to 'Show', research_effort
+      %td= link_to 'Edit', edit_research_effort_path(research_effort)
+      %td= link_to 'Destroy', research_effort, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Research effort', new_research_effort_path

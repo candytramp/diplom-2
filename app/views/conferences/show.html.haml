@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @conference.name
+%p
+  %b Country:
+  = @conference.country
+%p
+  %b City:
+  = @conference.city
+%p
+  %b Start:
+  = @conference.start
+%p
+  %b Finish:
+  = @conference.finish
+%p
+  %b Year:
+  = @conference.year
+%p
+  %b Ctype:
+  = @conference.ctype
+%p
+  %b Creator login:
+  = @conference.creator_login
+%p
+  %b Creator data:
+  = @conference.creator_data
+
+= link_to 'Edit', edit_conference_path(@conference)
+\|
+= link_to 'Back', conferences_path

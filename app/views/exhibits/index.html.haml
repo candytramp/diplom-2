@@ -1,0 +1,23 @@
+%h1 Listing exhibits
+
+%table
+  %tr
+    %th Name
+    %th Year
+    %th Exhibition
+    %th
+    %th
+    %th
+
+  - @exhibits.each do |exhibit|
+    %tr
+      %td= exhibit.name
+      %td= exhibit.year
+      %td= exhibit.exhibition
+      %td= link_to 'Show', exhibit
+      %td= link_to 'Edit', edit_exhibit_path(exhibit)
+      %td= link_to 'Destroy', exhibit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exhibit', new_exhibit_path

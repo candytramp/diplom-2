@@ -1,0 +1,28 @@
+= form_for @monograph do |f|
+  - if @monograph.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@monograph.errors.count, "error")} prohibited this monograph from being saved:"
+      %ul
+        - @monograph.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :isbn
+    = f.text_field :isbn
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :publisher
+    = f.text_area :publisher
+  .field
+    = f.label :publisher_name
+    = f.text_area :publisher_name
+  .field
+    = f.label :publish_year
+    = f.number_field :publish_year
+  .field
+    = f.label :pages
+    = f.text_field :pages
+  .actions
+    = f.submit 'Save'

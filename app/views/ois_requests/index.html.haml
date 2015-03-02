@@ -1,0 +1,37 @@
+%h1 Listing ois_requests
+
+%table
+  %tr
+    %th Number
+    %th Priority
+    %th Author
+    %th Name
+    %th Object
+    %th Reg agency
+    %th Research effort
+    %th Status
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @ois_requests.each do |ois_request|
+    %tr
+      %td= ois_request.number
+      %td= ois_request.priority
+      %td= ois_request.author
+      %td= ois_request.name
+      %td= ois_request.object
+      %td= ois_request.reg_agency
+      %td= ois_request.research_effort
+      %td= ois_request.status
+      %td= ois_request.creator_login
+      %td= ois_request.creator_data
+      %td= link_to 'Show', ois_request
+      %td= link_to 'Edit', edit_ois_request_path(ois_request)
+      %td= link_to 'Destroy', ois_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ois request', new_ois_request_path

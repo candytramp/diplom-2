@@ -1,0 +1,31 @@
+= form_for @diploma do |f|
+  - if @diploma.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@diploma.errors.count, "error")} prohibited this diploma from being saved:"
+      %ul
+        - @diploma.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :issue_date
+    = f.date_select :issue_date
+  .field
+    = f.label :issue_organization
+    = f.text_area :issue_organization
+  .field
+    = f.label :year
+    = f.number_field :year
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
+  .field
+    = f.label :reward
+    = f.text_field :reward
+  .actions
+    = f.submit 'Save'

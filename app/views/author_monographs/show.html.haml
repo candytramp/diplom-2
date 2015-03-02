@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Monograph:
+  = @author_monograph.monograph
+%p
+  %b Person:
+  = @author_monograph.person
+%p
+  %b Old lastname:
+  = @author_monograph.old_lastname
+%p
+  %b Is teacher:
+  = @author_monograph.is_teacher
+%p
+  %b Is staffteacher:
+  = @author_monograph.is_staffteacher
+%p
+  %b Is student:
+  = @author_monograph.is_student
+%p
+  %b Is postgrad:
+  = @author_monograph.is_postgrad
+%p
+  %b Details:
+  = @author_monograph.details
+%p
+  %b Pages:
+  = @author_monograph.pages
+
+= link_to 'Edit', edit_author_monograph_path(@author_monograph)
+\|
+= link_to 'Back', author_monographs_path

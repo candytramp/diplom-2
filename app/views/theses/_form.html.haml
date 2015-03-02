@@ -1,0 +1,37 @@
+= form_for @thesis do |f|
+  - if @thesis.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@thesis.errors.count, "error")} prohibited this thesis from being saved:"
+      %ul
+        - @thesis.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :person
+    = f.text_field :person
+  .field
+    = f.label :speciality
+    = f.text_area :speciality
+  .field
+    = f.label :council
+    = f.text_area :council
+  .field
+    = f.label :theme
+    = f.text_area :theme
+  .field
+    = f.label :ttype
+    = f.text_field :ttype
+  .field
+    = f.label :year
+    = f.number_field :year
+  .field
+    = f.label :in_time
+    = f.text_area :in_time
+  .field
+    = f.label :defence_date
+    = f.date_select :defence_date
+  .field
+    = f.label :council_code
+    = f.text_field :council_code
+  .actions
+    = f.submit 'Save'

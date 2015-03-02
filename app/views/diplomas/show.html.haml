@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @diploma.name
+%p
+  %b Issue date:
+  = @diploma.issue_date
+%p
+  %b Issue organization:
+  = @diploma.issue_organization
+%p
+  %b Year:
+  = @diploma.year
+%p
+  %b Creator login:
+  = @diploma.creator_login
+%p
+  %b Creator data:
+  = @diploma.creator_data
+%p
+  %b Reward:
+  = @diploma.reward
+
+= link_to 'Edit', edit_diploma_path(@diploma)
+\|
+= link_to 'Back', diplomas_path

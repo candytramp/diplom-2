@@ -1,0 +1,40 @@
+= form_for @people_research_effort do |f|
+  - if @people_research_effort.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@people_research_effort.errors.count, "error")} prohibited this people_research_effort from being saved:"
+      %ul
+        - @people_research_effort.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :research_effort
+    = f.text_field :research_effort
+  .field
+    = f.label :person
+    = f.text_field :person
+  .field
+    = f.label :old_lastname
+    = f.text_field :old_lastname
+  .field
+    = f.label :is_teacher
+    = f.check_box :is_teacher
+  .field
+    = f.label :is_staffteacher
+    = f.check_box :is_staffteacher
+  .field
+    = f.label :is_student
+    = f.check_box :is_student
+  .field
+    = f.label :is_postgrad
+    = f.check_box :is_postgrad
+  .field
+    = f.label :details
+    = f.text_area :details
+  .field
+    = f.label :person_value
+    = f.text_field :person_value
+  .field
+    = f.label :role
+    = f.text_area :role
+  .actions
+    = f.submit 'Save'

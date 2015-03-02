@@ -1,0 +1,25 @@
+=link_to_back
+= link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-default'
+%p#notice= notice
+
+
+%p
+  %b Фамилия:
+  = @person.last_name
+%p
+  %b Имя:
+  = @person.first_name
+%p
+  %b Отчество:
+  = @person.second_name
+%p
+  %b Внешние идентификаторы:
+  = @person.external_ids
+%p
+  %b День рождения:
+  = l(@person.birthday)
+
+
+
+-#\|
+-#= link_to 'Вернуться', people_path, class: 'btn btn-default'

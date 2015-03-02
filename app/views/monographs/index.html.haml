@@ -1,0 +1,29 @@
+%h1 Listing monographs
+
+%table
+  %tr
+    %th Isbn
+    %th Name
+    %th Publisher
+    %th Publisher name
+    %th Publish year
+    %th Pages
+    %th
+    %th
+    %th
+
+  - @monographs.each do |monograph|
+    %tr
+      %td= monograph.isbn
+      %td= monograph.name
+      %td= monograph.publisher
+      %td= monograph.publisher_name
+      %td= monograph.publish_year
+      %td= monograph.pages
+      %td= link_to 'Show', monograph
+      %td= link_to 'Edit', edit_monograph_path(monograph)
+      %td= link_to 'Destroy', monograph, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Monograph', new_monograph_path

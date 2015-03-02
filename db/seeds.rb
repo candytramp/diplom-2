@@ -13,4 +13,6 @@ Role.delete_all
 rs = Role.create([{name: :admin, info: 'Администратор системы'},
   {name: :rector, info: 'Ректор университета'}])
 u = User.create({login: :radigin, info: 'Радыгин В.Ю.'})
+u1 = User.create({login: :soa40, info: 'Сундукова О.А.'})
+rus1 = RoleUser.create([{role: rs[0], user: u1}, {role: rs[1], user: u1}])
 rus = RoleUser.create([{role: rs[0], user: u}, {role: rs[1], user: u}])

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Report:
+  = @people_report.report
+%p
+  %b Person:
+  = @people_report.person
+%p
+  %b Old lastname:
+  = @people_report.old_lastname
+%p
+  %b Is teacher:
+  = @people_report.is_teacher
+%p
+  %b Is staffteacher:
+  = @people_report.is_staffteacher
+%p
+  %b Is student:
+  = @people_report.is_student
+%p
+  %b Is postgrad:
+  = @people_report.is_postgrad
+%p
+  %b Details:
+  = @people_report.details
+
+= link_to 'Edit', edit_people_report_path(@people_report)
+\|
+= link_to 'Back', people_reports_path

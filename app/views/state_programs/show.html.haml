@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @state_program.name
+
+= link_to 'Edit', edit_state_program_path(@state_program)
+\|
+= link_to 'Back', state_programs_path

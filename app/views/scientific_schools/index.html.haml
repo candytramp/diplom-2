@@ -1,0 +1,21 @@
+%h1 Listing scientific_schools
+
+%table
+  %tr
+    %th Name
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @scientific_schools.each do |scientific_school|
+    %tr
+      %td= scientific_school.name
+      %td= link_to 'Show', scientific_school
+      %td= link_to 'Edit', edit_scientific_school_path(scientific_school)
+      %td= link_to 'Destroy', scientific_school, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Scientific school', new_scientific_school_path

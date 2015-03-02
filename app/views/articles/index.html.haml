@@ -1,0 +1,33 @@
+%h1 Listing articles
+
+%table
+  %tr
+    %th Name
+    %th Source
+    %th Start page
+    %th Finish page
+    %th Link
+    %th Year
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @articles.each do |article|
+    %tr
+      %td= article.name
+      %td= article.source
+      %td= article.start_page
+      %td= article.finish_page
+      %td= article.link
+      %td= article.year
+      %td= article.creator_login
+      %td= article.creator_data
+      %td= link_to 'Show', article
+      %td= link_to 'Edit', edit_article_path(article)
+      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Article', new_article_path

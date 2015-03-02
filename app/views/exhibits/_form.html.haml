@@ -1,0 +1,19 @@
+= form_for @exhibit do |f|
+  - if @exhibit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@exhibit.errors.count, "error")} prohibited this exhibit from being saved:"
+      %ul
+        - @exhibit.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :year
+    = f.number_field :year
+  .field
+    = f.label :exhibition
+    = f.text_field :exhibition
+  .actions
+    = f.submit 'Save'

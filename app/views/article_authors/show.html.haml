@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Article:
+  = @article_author.article
+%p
+  %b Person:
+  = @article_author.person
+%p
+  %b Old lastname:
+  = @article_author.old_lastname
+%p
+  %b Is teacher:
+  = @article_author.is_teacher
+%p
+  %b Is staffteacher:
+  = @article_author.is_staffteacher
+%p
+  %b Is student:
+  = @article_author.is_student
+%p
+  %b Is postgrad:
+  = @article_author.is_postgrad
+%p
+  %b Details:
+  = @article_author.details
+
+= link_to 'Edit', edit_article_author_path(@article_author)
+\|
+= link_to 'Back', article_authors_path

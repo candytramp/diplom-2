@@ -1,0 +1,33 @@
+%h1 Listing author_requests
+
+%table
+  %tr
+    %th Ois request
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @author_requests.each do |author_request|
+    %tr
+      %td= author_request.ois_request
+      %td= author_request.person
+      %td= author_request.old_lastname
+      %td= author_request.is_teacher
+      %td= author_request.is_staffteacher
+      %td= author_request.is_student
+      %td= author_request.is_postgrad
+      %td= author_request.details
+      %td= link_to 'Show', author_request
+      %td= link_to 'Edit', edit_author_request_path(author_request)
+      %td= link_to 'Destroy', author_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Author request', new_author_request_path

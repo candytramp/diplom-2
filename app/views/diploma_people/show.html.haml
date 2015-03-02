@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Diploma:
+  = @diploma_person.diploma
+%p
+  %b Person:
+  = @diploma_person.person
+%p
+  %b Old lastname:
+  = @diploma_person.old_lastname
+%p
+  %b Is teacher:
+  = @diploma_person.is_teacher
+%p
+  %b Is staffteacher:
+  = @diploma_person.is_staffteacher
+%p
+  %b Is student:
+  = @diploma_person.is_student
+%p
+  %b Is postgrad:
+  = @diploma_person.is_postgrad
+%p
+  %b Details:
+  = @diploma_person.details
+
+= link_to 'Edit', edit_diploma_person_path(@diploma_person)
+\|
+= link_to 'Back', diploma_people_path

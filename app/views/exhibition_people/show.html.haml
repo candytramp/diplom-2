@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Exhibition:
+  = @exhibition_person.exhibition
+%p
+  %b Person:
+  = @exhibition_person.person
+%p
+  %b Old lastname:
+  = @exhibition_person.old_lastname
+%p
+  %b Is teacher:
+  = @exhibition_person.is_teacher
+%p
+  %b Is staffteacher:
+  = @exhibition_person.is_staffteacher
+%p
+  %b Is student:
+  = @exhibition_person.is_student
+%p
+  %b Is postgrad:
+  = @exhibition_person.is_postgrad
+%p
+  %b Details:
+  = @exhibition_person.details
+
+= link_to 'Edit', edit_exhibition_person_path(@exhibition_person)
+\|
+= link_to 'Back', exhibition_people_path

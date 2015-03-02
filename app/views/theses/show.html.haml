@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Person:
+  = @thesis.person
+%p
+  %b Speciality:
+  = @thesis.speciality
+%p
+  %b Council:
+  = @thesis.council
+%p
+  %b Theme:
+  = @thesis.theme
+%p
+  %b Ttype:
+  = @thesis.ttype
+%p
+  %b Year:
+  = @thesis.year
+%p
+  %b In time:
+  = @thesis.in_time
+%p
+  %b Defence date:
+  = @thesis.defence_date
+%p
+  %b Council code:
+  = @thesis.council_code
+
+= link_to 'Edit', edit_thesis_path(@thesis)
+\|
+= link_to 'Back', theses_path

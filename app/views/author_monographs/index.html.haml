@@ -1,0 +1,35 @@
+%h1 Listing author_monographs
+
+%table
+  %tr
+    %th Monograph
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th Pages
+    %th
+    %th
+    %th
+
+  - @author_monographs.each do |author_monograph|
+    %tr
+      %td= author_monograph.monograph
+      %td= author_monograph.person
+      %td= author_monograph.old_lastname
+      %td= author_monograph.is_teacher
+      %td= author_monograph.is_staffteacher
+      %td= author_monograph.is_student
+      %td= author_monograph.is_postgrad
+      %td= author_monograph.details
+      %td= author_monograph.pages
+      %td= link_to 'Show', author_monograph
+      %td= link_to 'Edit', edit_author_monograph_path(author_monograph)
+      %td= link_to 'Destroy', author_monograph, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Author monograph', new_author_monograph_path

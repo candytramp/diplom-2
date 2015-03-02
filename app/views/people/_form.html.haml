@@ -1,0 +1,29 @@
+= form_for @person do |f|
+  - if @person.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
+      %ul
+        - @person.errors.full_messages.each do |msg|
+          %li= msg
+
+  
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: 'form-control'
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: 'form-control'
+  .form-group
+    = f.label :second_name
+    = f.text_field :second_name, class: 'form-control'
+  .form-group
+    = f.label :external_ids
+    = f.text_area :external_ids, class: 'form-control'
+  .form-group
+    = f.label :birthday
+    .input-group.date#datepicker2
+      = f.text_field :birthday, class: 'form-control',:value=>(l(@person.birthday,:format=>"%d.%m.%Y") if @person.birthday)
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-calendar
+  .actions
+    = f.submit 'Сохранить', class: 'btn btn-primary'

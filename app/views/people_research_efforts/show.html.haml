@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Research effort:
+  = @people_research_effort.research_effort
+%p
+  %b Person:
+  = @people_research_effort.person
+%p
+  %b Old lastname:
+  = @people_research_effort.old_lastname
+%p
+  %b Is teacher:
+  = @people_research_effort.is_teacher
+%p
+  %b Is staffteacher:
+  = @people_research_effort.is_staffteacher
+%p
+  %b Is student:
+  = @people_research_effort.is_student
+%p
+  %b Is postgrad:
+  = @people_research_effort.is_postgrad
+%p
+  %b Details:
+  = @people_research_effort.details
+%p
+  %b Person value:
+  = @people_research_effort.person_value
+%p
+  %b Role:
+  = @people_research_effort.role
+
+= link_to 'Edit', edit_people_research_effort_path(@people_research_effort)
+\|
+= link_to 'Back', people_research_efforts_path

@@ -1,0 +1,35 @@
+%h1 Listing exhibitions
+
+%table
+  %tr
+    %th Name
+    %th Etype
+    %th Country
+    %th City
+    %th Start
+    %th Finish
+    %th Year
+    %th Creator login
+    %th Creator data
+    %th
+    %th
+    %th
+
+  - @exhibitions.each do |exhibition|
+    %tr
+      %td= exhibition.name
+      %td= exhibition.etype
+      %td= exhibition.country
+      %td= exhibition.city
+      %td= exhibition.start
+      %td= exhibition.finish
+      %td= exhibition.year
+      %td= exhibition.creator_login
+      %td= exhibition.creator_data
+      %td= link_to 'Show', exhibition
+      %td= link_to 'Edit', edit_exhibition_path(exhibition)
+      %td= link_to 'Destroy', exhibition, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exhibition', new_exhibition_path

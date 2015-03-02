@@ -1,0 +1,31 @@
+%h1 Listing diplomas
+
+%table
+  %tr
+    %th Name
+    %th Issue date
+    %th Issue organization
+    %th Year
+    %th Creator login
+    %th Creator data
+    %th Reward
+    %th
+    %th
+    %th
+
+  - @diplomas.each do |diploma|
+    %tr
+      %td= diploma.name
+      %td= diploma.issue_date
+      %td= diploma.issue_organization
+      %td= diploma.year
+      %td= diploma.creator_login
+      %td= diploma.creator_data
+      %td= diploma.reward
+      %td= link_to 'Show', diploma
+      %td= link_to 'Edit', edit_diploma_path(diploma)
+      %td= link_to 'Destroy', diploma, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Diploma', new_diploma_path

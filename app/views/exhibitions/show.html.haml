@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @exhibition.name
+%p
+  %b Etype:
+  = @exhibition.etype
+%p
+  %b Country:
+  = @exhibition.country
+%p
+  %b City:
+  = @exhibition.city
+%p
+  %b Start:
+  = @exhibition.start
+%p
+  %b Finish:
+  = @exhibition.finish
+%p
+  %b Year:
+  = @exhibition.year
+%p
+  %b Creator login:
+  = @exhibition.creator_login
+%p
+  %b Creator data:
+  = @exhibition.creator_data
+
+= link_to 'Edit', edit_exhibition_path(@exhibition)
+\|
+= link_to 'Back', exhibitions_path

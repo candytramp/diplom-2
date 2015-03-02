@@ -1,0 +1,37 @@
+%h1 Listing people_research_efforts
+
+%table
+  %tr
+    %th Research effort
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th Person value
+    %th Role
+    %th
+    %th
+    %th
+
+  - @people_research_efforts.each do |people_research_effort|
+    %tr
+      %td= people_research_effort.research_effort
+      %td= people_research_effort.person
+      %td= people_research_effort.old_lastname
+      %td= people_research_effort.is_teacher
+      %td= people_research_effort.is_staffteacher
+      %td= people_research_effort.is_student
+      %td= people_research_effort.is_postgrad
+      %td= people_research_effort.details
+      %td= people_research_effort.person_value
+      %td= people_research_effort.role
+      %td= link_to 'Show', people_research_effort
+      %td= link_to 'Edit', edit_people_research_effort_path(people_research_effort)
+      %td= link_to 'Destroy', people_research_effort, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New People research effort', new_people_research_effort_path

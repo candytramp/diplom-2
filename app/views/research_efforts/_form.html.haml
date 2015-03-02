@@ -1,0 +1,61 @@
+= form_for @research_effort do |f|
+  - if @research_effort.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@research_effort.errors.count, "error")} prohibited this research_effort from being saved:"
+      %ul
+        - @research_effort.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :state_program
+    = f.text_field :state_program
+  .field
+    = f.label :start_date
+    = f.date_select :start_date
+  .field
+    = f.label :finish_date
+    = f.date_select :finish_date
+  .field
+    = f.label :grnti
+    = f.text_field :grnti
+  .field
+    = f.label :field
+    = f.text_field :field
+  .field
+    = f.label :full_value
+    = f.text_field :full_value
+  .field
+    = f.label :year_value
+    = f.text_area :year_value
+  .field
+    = f.label :state_reg_number
+    = f.text_field :state_reg_number
+  .field
+    = f.label :nir_number
+    = f.text_field :nir_number
+  .field
+    = f.label :inventory_number
+    = f.text_field :inventory_number
+  .field
+    = f.label :nir_type
+    = f.text_field :nir_type
+  .field
+    = f.label :source
+    = f.text_field :source
+  .field
+    = f.label :scientific_school
+    = f.text_field :scientific_school
+  .field
+    = f.label :is_nir
+    = f.text_field :is_nir
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
+  .actions
+    = f.submit 'Save'

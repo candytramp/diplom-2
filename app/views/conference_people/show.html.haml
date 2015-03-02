@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Conference:
+  = @conference_person.conference
+%p
+  %b Person:
+  = @conference_person.person
+%p
+  %b Old lastname:
+  = @conference_person.old_lastname
+%p
+  %b Is teacher:
+  = @conference_person.is_teacher
+%p
+  %b Is staffteacher:
+  = @conference_person.is_staffteacher
+%p
+  %b Is student:
+  = @conference_person.is_student
+%p
+  %b Is postgrad:
+  = @conference_person.is_postgrad
+%p
+  %b Details:
+  = @conference_person.details
+
+= link_to 'Edit', edit_conference_person_path(@conference_person)
+\|
+= link_to 'Back', conference_people_path

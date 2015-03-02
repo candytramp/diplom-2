@@ -1,0 +1,55 @@
+= form_for @licence do |f|
+  - if @licence.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@licence.errors.count, "error")} prohibited this licence from being saved:"
+      %ul
+        - @licence.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :reg_date
+    = f.date_select :reg_date
+  .field
+    = f.label :type
+    = f.text_field :type
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :expiration_date
+    = f.date_select :expiration_date
+  .field
+    = f.label :req_number
+    = f.text_field :req_number
+  .field
+    = f.label :req_author
+    = f.text_area :req_author
+  .field
+    = f.label :req_object
+    = f.text_area :req_object
+  .field
+    = f.label :req_status
+    = f.text_field :req_status
+  .field
+    = f.label :reg_agency
+    = f.text_field :reg_agency
+  .field
+    = f.label :req_priority
+    = f.date_select :req_priority
+  .field
+    = f.label :support
+    = f.text_field :support
+  .field
+    = f.label :research_effort
+    = f.text_field :research_effort
+  .field
+    = f.label :creator_login
+    = f.text_field :creator_login
+  .field
+    = f.label :creator_data
+    = f.text_area :creator_data
+  .actions
+    = f.submit 'Save'

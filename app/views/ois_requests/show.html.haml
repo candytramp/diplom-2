@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @ois_request.number
+%p
+  %b Priority:
+  = @ois_request.priority
+%p
+  %b Author:
+  = @ois_request.author
+%p
+  %b Name:
+  = @ois_request.name
+%p
+  %b Object:
+  = @ois_request.object
+%p
+  %b Reg agency:
+  = @ois_request.reg_agency
+%p
+  %b Research effort:
+  = @ois_request.research_effort
+%p
+  %b Status:
+  = @ois_request.status
+%p
+  %b Creator login:
+  = @ois_request.creator_login
+%p
+  %b Creator data:
+  = @ois_request.creator_data
+
+= link_to 'Edit', edit_ois_request_path(@ois_request)
+\|
+= link_to 'Back', ois_requests_path

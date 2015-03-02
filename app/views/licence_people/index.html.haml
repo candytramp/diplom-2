@@ -1,0 +1,33 @@
+%h1 Listing licence_people
+
+%table
+  %tr
+    %th Licence
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @licence_people.each do |licence_person|
+    %tr
+      %td= licence_person.licence
+      %td= licence_person.person
+      %td= licence_person.old_lastname
+      %td= licence_person.is_teacher
+      %td= licence_person.is_staffteacher
+      %td= licence_person.is_student
+      %td= licence_person.is_postgrad
+      %td= licence_person.details
+      %td= link_to 'Show', licence_person
+      %td= link_to 'Edit', edit_licence_person_path(licence_person)
+      %td= link_to 'Destroy', licence_person, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Licence person', new_licence_person_path

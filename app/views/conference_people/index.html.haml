@@ -1,0 +1,33 @@
+%h1 Listing conference_people
+
+%table
+  %tr
+    %th Conference
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @conference_people.each do |conference_person|
+    %tr
+      %td= conference_person.conference
+      %td= conference_person.person
+      %td= conference_person.old_lastname
+      %td= conference_person.is_teacher
+      %td= conference_person.is_staffteacher
+      %td= conference_person.is_student
+      %td= conference_person.is_postgrad
+      %td= conference_person.details
+      %td= link_to 'Show', conference_person
+      %td= link_to 'Edit', edit_conference_person_path(conference_person)
+      %td= link_to 'Destroy', conference_person, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Conference person', new_conference_person_path

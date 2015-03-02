@@ -1,0 +1,8 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @nir_type.name
+= link_to 'Edit', edit_nir_type_path(@nir_type)
+\|
+= link_to 'Back', nir_types_path

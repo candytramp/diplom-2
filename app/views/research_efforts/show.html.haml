@@ -1,0 +1,57 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @research_effort.name
+%p
+  %b State program:
+  = @research_effort.state_program
+%p
+  %b Start date:
+  = @research_effort.start_date
+%p
+  %b Finish date:
+  = @research_effort.finish_date
+%p
+  %b Grnti:
+  = @research_effort.grnti
+%p
+  %b Field:
+  = @research_effort.field
+%p
+  %b Full value:
+  = @research_effort.full_value
+%p
+  %b Year value:
+  = @research_effort.year_value
+%p
+  %b State reg number:
+  = @research_effort.state_reg_number
+%p
+  %b Nir number:
+  = @research_effort.nir_number
+%p
+  %b Inventory number:
+  = @research_effort.inventory_number
+%p
+  %b Nir type:
+  = @research_effort.nir_type
+%p
+  %b Source:
+  = @research_effort.source
+%p
+  %b Scientific school:
+  = @research_effort.scientific_school
+%p
+  %b Is nir:
+  = @research_effort.is_nir
+%p
+  %b Creator login:
+  = @research_effort.creator_login
+%p
+  %b Creator data:
+  = @research_effort.creator_data
+
+= link_to 'Edit', edit_research_effort_path(@research_effort)
+\|
+= link_to 'Back', research_efforts_path

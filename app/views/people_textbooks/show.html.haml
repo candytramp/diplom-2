@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Textbook:
+  = @people_textbook.textbook
+%p
+  %b Person:
+  = @people_textbook.person
+%p
+  %b Old lastname:
+  = @people_textbook.old_lastname
+%p
+  %b Is teacher:
+  = @people_textbook.is_teacher
+%p
+  %b Is staffteacher:
+  = @people_textbook.is_staffteacher
+%p
+  %b Is student:
+  = @people_textbook.is_student
+%p
+  %b Is postgrad:
+  = @people_textbook.is_postgrad
+%p
+  %b Details:
+  = @people_textbook.details
+
+= link_to 'Edit', edit_people_textbook_path(@people_textbook)
+\|
+= link_to 'Back', people_textbooks_path

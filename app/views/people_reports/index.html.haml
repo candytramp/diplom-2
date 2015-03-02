@@ -1,0 +1,33 @@
+%h1 Listing people_reports
+
+%table
+  %tr
+    %th Report
+    %th Person
+    %th Old lastname
+    %th Is teacher
+    %th Is staffteacher
+    %th Is student
+    %th Is postgrad
+    %th Details
+    %th
+    %th
+    %th
+
+  - @people_reports.each do |people_report|
+    %tr
+      %td= people_report.report
+      %td= people_report.person
+      %td= people_report.old_lastname
+      %td= people_report.is_teacher
+      %td= people_report.is_staffteacher
+      %td= people_report.is_student
+      %td= people_report.is_postgrad
+      %td= people_report.details
+      %td= link_to 'Show', people_report
+      %td= link_to 'Edit', edit_people_report_path(people_report)
+      %td= link_to 'Destroy', people_report, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New People report', new_people_report_path

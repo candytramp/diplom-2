@@ -1,0 +1,34 @@
+= form_for @exhibit_person do |f|
+  - if @exhibit_person.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@exhibit_person.errors.count, "error")} prohibited this exhibit_person from being saved:"
+      %ul
+        - @exhibit_person.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :exhibit
+    = f.text_field :exhibit
+  .field
+    = f.label :person
+    = f.text_field :person
+  .field
+    = f.label :old_lastname
+    = f.text_field :old_lastname
+  .field
+    = f.label :is_teacher
+    = f.check_box :is_teacher
+  .field
+    = f.label :is_staffteacher
+    = f.check_box :is_staffteacher
+  .field
+    = f.label :is_student
+    = f.check_box :is_student
+  .field
+    = f.label :is_postgrad
+    = f.check_box :is_postgrad
+  .field
+    = f.label :details
+    = f.text_area :details
+  .actions
+    = f.submit 'Save'
