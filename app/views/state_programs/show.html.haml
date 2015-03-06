@@ -1,9 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Федеральная программа: 
+    -#= @role.name
+    = link_to(edit_state_program_path(@state_program), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@state_program, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @state_program.name
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(StateProgram.models_human_name, state_programs_path)
+    %li.active
+      = @state_program.human
 
-= link_to 'Edit', edit_state_program_path(@state_program)
-\|
-= link_to 'Back', state_programs_path
+.box
+  .row
+    .col-md-2
+      = StateProgram.human_attribute_name(:name)
+    .col-md-2
+      = @state_program.name

@@ -1,7 +1,16 @@
-%h1 Editing scientific_school
+.page-header
+  %h1 
+    Редактирование начуной школы
+    = link_to(@scientific_school, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(ScientificSchool.models_human_name, scientific_schools_path)
+    %li= link_to(@scientific_school.human, @scientific_school)
+    %li.active
+      Редактирование начуной школы
 
-= link_to 'Show', @scientific_school
-\|
-= link_to 'Back', scientific_schools_path
+.box
+  = render 'form'

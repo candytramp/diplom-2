@@ -1,7 +1,16 @@
-%h1 Editing nir_type
+.page-header
+  %h1 
+    Редактирование типа нир
+    = link_to(@nir_type, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(NirType.models_human_name, nir_types_path)
+    %li= link_to(@nir_type.human, @nir_type)
+    %li.active
+      Редактированиет ипа нир
 
-= link_to 'Show', @nir_type
-\|
-= link_to 'Back', nir_types_path
+.box
+  = render 'form'

@@ -1,9 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Научная школа: 
+    = @scientific_school.name
+    = link_to(edit_scientific_school_path(@scientific_school), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@scientific_school, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @scientific_school.name
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(ScientificSchool.models_human_name, scientific_schools_path)
+    %li.active
+      = @scientific_school.human
 
-= link_to 'Edit', edit_scientific_school_path(@scientific_school)
-\|
-= link_to 'Back', scientific_schools_path
+.box
+  .row
+    .col-md-2
+      = ScientificSchool.human_attribute_name(:name)
+    .col-md-2
+      = @scientific_school.name

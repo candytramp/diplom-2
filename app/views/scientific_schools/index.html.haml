@@ -1,21 +1,17 @@
-%h1 Listing scientific_schools
+.page-header
+  %h1 
+    Научные школы
+    =link_to(new_scientific_school_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @scientific_schools.each do |scientific_school|
-    %tr
-      %td= scientific_school.name
-      %td= link_to 'Show', scientific_school
-      %td= link_to 'Edit', edit_scientific_school_path(scientific_school)
-      %td= link_to 'Destroy', scientific_school, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Scientific school', new_scientific_school_path
+    .list-group-item
+      =link_to(scientific_school) do
+        -#%span.text-danger= role.name
+        = scientific_school.name
+      .pull-right
+        = link_to(edit_scientific_school_path(scientific_school), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(scientific_school, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

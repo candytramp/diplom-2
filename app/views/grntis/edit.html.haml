@@ -1,7 +1,16 @@
-%h1 Editing grnti
+.page-header
+  %h1 
+    Редактирование грнти
+    = link_to(@grnti, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(Grnti.models_human_name, grntis_path)
+    %li= link_to(@grnti.human, @grnti)
+    %li.active
+      Редактирование грнти
 
-= link_to 'Show', @grnti
-\|
-= link_to 'Back', grntis_path
+.box
+  = render 'form'

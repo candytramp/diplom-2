@@ -1,21 +1,17 @@
-%h1 Listing sources
+.page-header
+  %h1 
+    Источники финансирования
+    =link_to(new_source_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Funding source
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @sources.each do |source|
-    %tr
-      %td= source.funding_source
-      %td= link_to 'Show', source
-      %td= link_to 'Edit', edit_source_path(source)
-      %td= link_to 'Destroy', source, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Source', new_source_path
+    .list-group-item
+      =link_to(source) do
+        -#%span.text-danger= role.name
+        = source.funding_source
+      .pull-right
+        = link_to(edit_source_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(source, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

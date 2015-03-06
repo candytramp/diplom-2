@@ -1,5 +1,13 @@
-%h1 New nir_type
+.page-header
+  %h1 
+    Добавление типа нир
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(NirType.models_human_name, nir_types_path)
+    %li.active
+      Добавление типа нир
 
-= link_to 'Back', nir_types_path
+.box
+  = render 'form'

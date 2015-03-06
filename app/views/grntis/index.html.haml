@@ -1,23 +1,17 @@
-%h1 Listing grntis
+.page-header
+  %h1 
+    ГРНТИ
+    =link_to(new_grnti_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Grnti
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @grntis.each do |grnti|
-    %tr
-      %td= grnti.name
-      %td= grnti.grnti
-      %td= link_to 'Show', grnti
-      %td= link_to 'Edit', edit_grnti_path(grnti)
-      %td= link_to 'Destroy', grnti, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Grnti', new_grnti_path
+    .list-group-item
+      =link_to(grnti) do
+        %span.text-danger= grnti.name
+        = grnti.grnti
+      .pull-right
+        = link_to(edit_grnti_path(grnti), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(grnti, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

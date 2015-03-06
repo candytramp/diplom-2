@@ -1,21 +1,17 @@
-%h1 Listing nir_types
+.page-header
+  %h1 
+    Типы НИР
+    =link_to(new_nir_type_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @nir_types.each do |nir_type|
-    %tr
-      %td= nir_type.name
-      %td= link_to 'Show', nir_type
-      %td= link_to 'Edit', edit_nir_type_path(nir_type)
-      %td= link_to 'Destroy', nir_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Nir type', new_nir_type_path
+    .list-group-item
+      =link_to(nir_type) do
+        -#%span.text-danger= role.name
+        = nir_type.name
+      .pull-right
+        = link_to(edit_nir_type_path(nir_type), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(nir_type, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

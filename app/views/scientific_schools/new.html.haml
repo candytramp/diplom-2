@@ -1,5 +1,13 @@
-%h1 New scientific_school
+.page-header
+  %h1 
+    Добавление научной школы
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(ScientificSchool.models_human_name, scientific_schools_path)
+    %li.active
+      Добавление научной школы
 
-= link_to 'Back', scientific_schools_path
+.box
+  = render 'form'

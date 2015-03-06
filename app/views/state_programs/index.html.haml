@@ -1,21 +1,17 @@
-%h1 Listing state_programs
+.page-header
+  %h1 
+    Федеральные программы
+    =link_to(new_state_program_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @state_programs.each do |state_program|
-    %tr
-      %td= state_program.name
-      %td= link_to 'Show', state_program
-      %td= link_to 'Edit', edit_state_program_path(state_program)
-      %td= link_to 'Destroy', state_program, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New State program', new_state_program_path
+    .list-group-item
+      =link_to(state_program) do
+        -#%span.text-danger= role.name
+        = state_program.name
+      .pull-right
+        = link_to(edit_state_program_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(state_program, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

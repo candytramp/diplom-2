@@ -1,7 +1,16 @@
-%h1 Editing state_program
+.page-header
+  %h1 
+    Редактирование федеральной программы
+    = link_to(@state_program, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(StateProgram.models_human_name, state_programs_path)
+    %li= link_to(@state_program.human, @state_program)
+    %li.active
+      Редактирование федеральной программы
 
-= link_to 'Show', @state_program
-\|
-= link_to 'Back', state_programs_path
+.box
+  = render 'form'

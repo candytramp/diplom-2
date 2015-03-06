@@ -1,9 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Источник финансирования: 
+    -#= @source.name
+    = link_to(edit_source_path(@source), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@source, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Funding source:
-  = @source.funding_source
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(Source.models_human_name, sources_path)
+    %li.active
+      = @source.human
 
-= link_to 'Edit', edit_source_path(@source)
-\|
-= link_to 'Back', sources_path
+.box
+  .row
+    .col-md-2
+      = Source.human_attribute_name(:funding_source)
+    .col-md-2
+      = @source.funding_source

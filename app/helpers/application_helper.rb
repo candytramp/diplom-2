@@ -22,8 +22,23 @@ module ApplicationHelper
       :name => 'Словари',
       :icon => 'fa-book',
       :children => [
-      {:name => 'Обл.науки',
+      {:name => 'Области науки',
        :controller => :fields, :action => :index,
+       :icon => 'fa-tag'},
+      {:name => 'ГРНТИ',
+       :controller => :grntis, :action => :index,
+       :icon => 'fa-tag'},
+      {:name => 'Типы НИР',
+       :controller => :nir_types, :action => :index,
+       :icon => 'fa-tag'},
+      {:name => 'Научные школы',
+       :controller => :scientific_schools, :action => :index,
+       :icon => 'fa-tag'},
+      {:name => 'Источники финансирования',
+       :controller => :sources, :action => :index,
+       :icon => 'fa-tag'},
+      {:name => 'Федеральные программы',
+       :controller => :state_programs, :action => :index,
        :icon => 'fa-tag'}
       ]}
 
@@ -60,8 +75,18 @@ module ApplicationHelper
     result << {
       :name => 'Словари',
       :children => [
-      {:name => 'Обл.науки',
-       :controller => :fields, :action => :index}
+      {:name => 'Области науки',
+       :controller => :fields, :action => :index},
+      {:name => 'ГРНТИ',
+       :controller => :grntis, :action => :index},
+      {:name => 'Типы НИР',
+       :controller => :nir_types, :action => :index},
+      {:name => 'Научные школы',
+       :controller => :scientific_schools, :action => :index},
+      {:name => 'Источники финансирования',
+       :controller => :sources, :action => :index},
+      {:name => 'Федеральные программы',
+       :controller => :state_programs, :action => :index}
       ]}
     if @current_role_user.is_admin?
       result << {

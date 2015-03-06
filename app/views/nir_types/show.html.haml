@@ -1,8 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Тип нир: 
+    = @nir_type.name
+    = link_to(edit_nir_type_path(@nir_type), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@nir_type, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @nir_type.name
-= link_to 'Edit', edit_nir_type_path(@nir_type)
-\|
-= link_to 'Back', nir_types_path
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(NirType.models_human_name, nir_types_path)
+    %li.active
+      = @nir_type.human
+
+.box
+  .row
+    .col-md-2
+      =NirType.human_attribute_name(:name)
+    .col-md-2
+      = @nir_type.name

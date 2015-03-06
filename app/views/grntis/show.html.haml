@@ -1,12 +1,27 @@
-%p#notice= notice
+.page-header
+  %h1 
+    ГРНТИ: 
+    = @grnti.name
+    = link_to(edit_grnti_path(@grnti), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@grnti, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @grnti.name
-%p
-  %b Grnti:
-  = @grnti.grnti
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(Grnti.models_human_name, grntis_path)
+    %li.active
+      = @grnti.human
 
-= link_to 'Edit', edit_grnti_path(@grnti)
-\|
-= link_to 'Back', grntis_path
+.box
+  .row
+    .col-md-2
+      = Grnti.human_attribute_name(:name)
+    .col-md-2
+      = @grnti.name
+  .row
+    .col-md-2
+      = Grnti.human_attribute_name(:grnti)
+    .col-md-2
+      = @grnti.grnti

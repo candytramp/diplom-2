@@ -1,16 +1,16 @@
 = form_for @grnti do |f|
-  - if @grnti.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@grnti.errors.count, "error")} prohibited this grnti from being saved:"
-      %ul
-        - @grnti.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_area :name
-  .field
-    = f.label :grnti
-    = f.text_field :grnti
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-4
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+        = f.error_messages_for(:name)
+    .col-md-8
+      .form-group
+        = f.label :grnti
+        = f.text_field :grnti, class: 'form-control'
+        = f.error_messages_for(:grnti)
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for @grnti
