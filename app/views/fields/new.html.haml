@@ -1,5 +1,13 @@
-%h1 New field
+.page-header
+  %h1 
+    Добавление области науки
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(Field.models_human_name, fields_path)
+    %li.active
+      Добавление области науки
 
-= link_to 'Back', fields_path
+.box
+  = render 'form'

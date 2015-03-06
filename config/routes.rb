@@ -19,6 +19,70 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'nobody#start_page'
 
+
+
+  resources :conference_people
+
+  resources :theses
+
+  resources :author_requests
+
+  resources :author_monographs
+
+  resources :people_reports
+
+  resources :people_textbooks
+
+  resources :people_research_efforts
+
+  resources :licence_people
+
+  resources :exhibit_people
+
+  resources :exhibition_people
+
+  resources :diploma_people
+
+  resources :textbooks
+
+  resources :monographs
+
+  resources :diplomas
+
+  resources :exhibits
+
+  resources :exhibitions
+
+  resources :article_authors
+
+  resources :reports
+
+  resources :conferences
+
+  resources :licences
+
+  resources :ois_requests
+
+  resources :documents
+
+  resources :research_efforts
+
+  resources :scientific_schools
+
+  resources :state_programs
+
+  resources :nir_types
+
+  resources :sources
+
+  resources :fields
+
+  resources :grntis
+
+  resources :articles
+
+  resources :people
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

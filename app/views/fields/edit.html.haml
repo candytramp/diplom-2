@@ -1,7 +1,16 @@
-%h1 Editing field
+.page-header
+  %h1 
+    Редактирование области науки 
+    = link_to(@field, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Словари
+    %li= link_to(Filed.models_human_name, fields_path)
+    %li= link_to(@field.human, @field)
+    %li.active
+      Редактирование области науки
 
-= link_to 'Show', @field
-\|
-= link_to 'Back', fields_path
+.box
+  = render 'form'

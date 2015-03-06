@@ -1,12 +1,27 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Одбласть: 
+    = @filed.name
+    = link_to(edit_filed_path(@filed), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@filed, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @field.name
-%p
-  %b Code:
-  = @field.code
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Filed.models_human_name, fileds_path)
+    %li.active
+      = @filed.human
 
-= link_to 'Edit', edit_field_path(@field)
-\|
-= link_to 'Back', fields_path
+.box
+  .row
+    .col-md-2
+      = Filed.human_attribute_name(:code)
+    .col-md-2
+      = @filed.code
+  .row
+    .col-md-2
+      = Filed.human_attribute_name(:name)
+    .col-md-2
+      = @filed.name

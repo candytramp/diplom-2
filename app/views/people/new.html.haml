@@ -1,6 +1,14 @@
-=link_to_back
-%h1 Новая персона
+.page-header
+  %h1 
+    Добавление персоны
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Person.models_human_name, people_path)
+    %li.active
+      Добавление персоны
 
--#= link_to 'Вернуться', people_path, class: 'btn btn-default'
+.box
+  = render 'form'
+

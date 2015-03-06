@@ -1,23 +1,17 @@
-%h1 Listing fields
+.page-header
+  %h1 
+    Области науки
+    =link_to(new_field_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Code
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @fields.each do |field|
-    %tr
-      %td= field.name
-      %td= field.code
-      %td= link_to 'Show', field
-      %td= link_to 'Edit', edit_field_path(field)
-      %td= link_to 'Destroy', field, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Field', new_field_path
+    .list-group-item
+      =link_to(field) do
+        %span.text-danger= field.code
+        = field.name
+      .pull-right
+        = link_to(edit_field_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(field, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times

@@ -1,25 +1,44 @@
-=link_to_back
-= link_to 'Редактировать', edit_person_path(@person), class: 'btn btn-default'
-%p#notice= notice
+.page-header
+  %h1 
+    Персона: 
+    = @person.full_name
+    = link_to(edit_person_path(@person), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@person, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
+
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Person.models_human_name, people_path)
+    %li.active
+      = @person.full_name
+
+.box
+  .row
+    .col-md-2
+      = Person.human_attribute_name(:last_name)
+    .col-md-2
+      = @person.last_name
+  .row
+    .col-md-2
+      = Person.human_attribute_name(:first_name)
+    .col-md-2
+      = @person.first_name
+  .row
+    .col-md-2
+      = Person.human_attribute_name(:second_name)
+    .col-md-2
+      = @person.second_name
+  .row
+    .col-md-2
+      = Person.human_attribute_name(:birthday)
+    .col-md-2
+      = l(@person.birthday)
+  .row
+    .col-md-2
+      = Person.human_attribute_name(:external_ids)
+    .col-md-2
+      = @person.external_ids
 
 
-%p
-  %b Фамилия:
-  = @person.last_name
-%p
-  %b Имя:
-  = @person.first_name
-%p
-  %b Отчество:
-  = @person.second_name
-%p
-  %b Внешние идентификаторы:
-  = @person.external_ids
-%p
-  %b День рождения:
-  = l(@person.birthday)
-
-
-
--#\|
--#= link_to 'Вернуться', people_path, class: 'btn btn-default'

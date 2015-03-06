@@ -1,9 +1,16 @@
-=link_to_back
-= link_to 'Показать', @person, class: 'btn btn-default'
-%h1 Редактирование данных о человеке
+.page-header
+  %h1 
+    Редактирование персоны 
+    = link_to(@person, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Администрирование
+    %li= link_to(Person.models_human_name, people_path)
+    %li= link_to(@person.full_name, @person)
+    %li.active
+      Редактирование персоны
 
-
--#\|
--#= link_to 'Вернуться', people_path, class: 'btn btn-default'
+.box
+  = render 'form'

@@ -12,6 +12,7 @@
  *
  *
  *= require_self
+ *= require bootstrap-datepicker3
  */
 $body-bg: darken(#fff, 2.5%);
 //$navbar-side-hover-bg-color: #A1201A;
@@ -41,7 +42,7 @@ $brand-purple: #727cb6;
 
 $input-border-focus: $brand-primary;
 $text-muted: #999;
-
+//@import "bootstrap-datepicker3";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";

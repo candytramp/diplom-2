@@ -7,6 +7,38 @@ ru:
     models:
       user: Пользователь
       role: Роль
+
+      article_author: Автор статьи#
+      article: Статья
+      author_monograph: Автор монографии#
+      author_request: Автор заявки на лицензию#
+      conference_person: Участник конференции#
+      conference: Конференция
+      diploma_person: Номинант на диплом#
+      diploma: Диплом
+      document: Файл
+      exhibit_person: Автор экспоната#
+      exhibition_person: Участник выставки#
+      exhibition: Выставка
+      exhibit: Экспонат
+      field: Область науки
+      grnti: ГРНТИ
+      licence_person: Автор лицензии#
+      licence: Лицензия
+      monograph: Монография
+      nir_type: Тип НИР
+      ois_request: Заявка на лицензию
+      person: Человек
+      people_report: Автор доклада#
+      people_research_effort: Автор НИР#
+      people_textbook: Автор учебника#
+      report: Доклад
+      research_effort: НИР
+      scientific_school: Научная школа
+      source: Источник финансирования
+      state_program: Государственная программа
+      textbook: Учебник
+      thesis: Диссертация
     attributes:
       user:
         login: Пользовательское имя
@@ -22,3 +54,253 @@ ru:
         role: Роль
         role_id: Роль
         value: Параметр связи
+      article_author:
+        article: Статья
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      article:
+        name: Название
+        source: Источник
+        start_page: Страница начала 
+        finish_page: Страница окончания 
+        link: Ссылка
+        year: Год
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      author_monograph:
+        monograph: Монография
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+        pages: Страницы
+      author_request:
+        ois_request: Заявка
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      conference_person:
+        conference: Конференция
+        person: Участник
+        old_lastname: Предыдущая фамилия участника
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      conference:
+        name: Название
+        country: Страна проведения
+        city: Город проведения
+        start: Дата начала 
+        finish: Дата окончания
+        year: Год проведения
+        ctype: Тип конференции
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      diploma_person:
+        diploma: Диплом
+        person: Получатель
+        old_lastname: Предыдущая фамилия получателя
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      diploma:
+        name: Название
+        issue_date: Дата получения
+        issue_organization: Выдавшая организация
+        year: Год
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе"
+        reward: Название и тип награды
+      document:
+        description: Описание
+        owner: Владелец
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+        paper: Документ
+      exhibit_person:
+        exhibit: Экспонат
+        person: Владелец
+        old_lastname: Предыдущая фамилия владельца
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      exhibition_person:
+        exhibition: Выставка
+        person: Участник
+        old_lastname: Предыдущая фамилия участника
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      exhibition:
+        name: Название
+        etype: Тип выставки
+        country: Страна проведения
+        city: Город проведения
+        start: Дата начала
+        finish: дата окончания
+        year: Год
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      exhibit:
+        name: Название
+        year: Год
+        exhibition: Выставка
+      field:
+        name: Название области
+        code: Код области
+      grnti:
+        grnti: ГРНТИ
+        name: Название
+      licence_person:
+        licence: Лицензия
+        person: Владелец
+        old_lastname: Предыдущая фамилия владельца
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      licence:
+        number: Номер
+        reg_date: Дата регистрации
+        type: Тип
+        name: Название
+        expiration_date: Дата окончания действия
+        req_number: Номер заявки
+        req_author: Автор заявки
+        req_object: Объект заявки
+        req_status: Статус заявки
+        reg_agency: Регистрирующий орган
+        req_priority: Приоритет заявки
+        support: Поддержка патента
+        research_effort: НИР
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      monograph:
+        isbn: ИСБН
+        name: Название
+        publisher: Издательство
+        publisher_name: Название издательства
+        publish_year: Дата издания
+        pages: Страницы    
+      nir_type:
+        name: Название
+      ois_request:
+        number: Номер
+        priority: Приоритет
+        author: Автор
+        name: Название
+        object: Предмет(объект)
+        reg_agency: Регистрирующий орган
+        research_effort: НИР
+        status: Статус
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      person:
+        last_name: Фамилия
+        first_name: Имя
+        second_name: Отчество
+        external_ids: Внешние идентификаторы
+        birthday: День рождения
+      people_report:
+        report: Доклад
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      people_research_effort:
+        research_effort: НИР
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+        person_value: person value
+        role: Роль 
+      people_textbook:
+        textbook: Учебник
+        person: Автор
+        old_lastname: Предыдущая фамилия автора
+        is_teacher: Преподаватель
+        is_staffteacher: Штатный преподаватель
+        is_student: Студент
+        is_postgrad: Аспирант
+        details: Детали
+      report:
+        title: Заглавие
+        conference: Конференция
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      research_effort:
+        name: Название
+        state_program: Гос программа
+        start_date: Дата начала
+        finish_date: Дата окончания
+        grnti: ГРНТИ
+        field: Область науки
+        full_value: Полная сумма финансирования
+        year_value: Финансирование по годам
+        state_reg_number: Государственный регистрационный номер
+        nir_number: Номер НИР
+        inventory_number: Инвентарный номер
+        nir_type: Тип НИР
+        source: Источник финансирования
+        scientific_school: Научная школа
+        is_nir: Является ли нир (is_nir)
+        creator_login: Логин создателя записи
+        creator_data: Доп. данные о создателе
+      scientific_school:
+        name: Название
+      source:
+        funding_source: Источник финансирования
+      state_program:
+        name: Название гос программы
+      textbook:
+        isbn: ИСБН
+        title: Название
+        publisher: Издательство
+        grif: Гриф
+        publish_year: Год издания
+        pages: Страницы
+        textbook_type: Тип учебника
+      thesis:
+        person: Автор
+        speciality: Специальность
+        council: Совет
+        theme: Тема
+        ttype: Тип
+        year: Год
+        in_time: Во время...
+        defence_date: Дата защиты
+        council_code: Код совета
+      version:
+        item_type: item_type
+        item_id: item_id
+        event: event
+        whodunnit: whodunnit
+        object: object

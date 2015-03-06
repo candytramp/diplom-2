@@ -25,4 +25,8 @@ class Person < ActiveRecord::Base
       self.last_name + ' ' + self.first_name
     end
   end
+
+  def Person.models_human_name()
+    "Персоналии"
+  end
 end

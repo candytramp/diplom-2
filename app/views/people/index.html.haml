@@ -1,32 +1,23 @@
-%h1 Список персоналий
-
-%table.table-condensed
-  %tr
-    %th Фамилия
-    %th Имя
-    %th Отчество
-    %th Внешниее идентификаторы
-    %th День рождения
-    %th
-    %th
-    %th
-
+.page-header
+  %h1 
+    Персоналии
+    =link_to(new_person_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
+.list-group
   - @people.each do |person|
-    %tr
-      %td= person.last_name
-      %td= person.first_name
-      %td= person.second_name
-      %td= person.external_ids
-      %td= l(person.birthday)
-      %td
-        = link_to person, class: 'btn btn-info' do
-          %i.fa.fa-eye.fa-lg
-      %td
-        = link_to edit_person_path(person), class: 'btn btn-warning' do
-          %i.fa.fa-pencil.fa-lg
-      %td
-        = link_to  person, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger' do
-          %i.fa.fa-close.fa-lg
-%br
+    .list-group-item
+      =link_to(person) do
+        = person.full_name
+        -#%span.text-danger= person.full_name
+        -#= role.info
+      .pull-right
+        = link_to(edit_person_path(person), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(person, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
 
-= link_to 'Новая персона', new_person_path, class: 'btn btn-default'
+
+
+
+
+

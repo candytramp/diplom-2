@@ -12,9 +12,21 @@ module ApplicationHelper
          :icon => 'fa-users'},
         {:name => 'Роли',
          :controller => :roles, :action => :index,
-         :icon => 'fa-cubes'}
+         :icon => 'fa-cubes'},
+       {:name => 'Персоналии',
+         :controller => :people, :action => :index,
+         :icon => 'fa-male'}
       ]} 
     end
+    result << {
+      :name => 'Словари',
+      :icon => 'fa-book',
+      :children => [
+      {:name => 'Обл.науки',
+       :controller => :fields, :action => :index,
+       :icon => 'fa-tag'}
+      ]}
+
     result.each do |item|
       if item.has_key?(:children)
         item[:children].each do |x| 
@@ -45,6 +57,12 @@ module ApplicationHelper
   def generate_top_bar_items()
     result = []
     return result if @current_role_user.nil?
+    result << {
+      :name => 'Словари',
+      :children => [
+      {:name => 'Обл.науки',
+       :controller => :fields, :action => :index}
+      ]}
     if @current_role_user.is_admin?
       result << {
         :name => 'Администрирование',
@@ -52,9 +70,12 @@ module ApplicationHelper
         {:name => 'Пользователи',
          :controller => :users, :action => :index},
         {:name => 'Роли',
-         :controller => :roles, :action => :index}
+         :controller => :roles, :action => :index},
+        {:name => 'Персоналии',
+         :controller => :people, :action => :index}
       ]} 
     end
+
     result   
   end
 
