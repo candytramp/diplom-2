@@ -23,3 +23,7 @@ $btn-styles: (default: $btn-default-bg, primary: $btn-primary-bg, success: $btn-
     }
   }
 }
+
+h1 .btn-circle, .pull-right .btn-circle{
+  margin-left: 5px;
+}

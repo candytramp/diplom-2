@@ -11,7 +11,20 @@
     Syntax recommendation http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
 */
 
-$sidebar-lenght: 250px;
+/*
+    Document   : side-bar.css
+    Created on : 04.02.2015, 16:00:32
+    Author     : radigin
+    Description:
+    Purpose of the stylesheet follows.
+*/
+
+/*
+    TODO customize this sample style
+    Syntax recommendation http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
+*/
+
+$sidebar-length: 250px;
 
 #middle{
   height: 100%;  
@@ -19,27 +32,13 @@ $sidebar-lenght: 250px;
 
 .navbar {
   margin-bottom: 0px;
-}
-
-.navbar-side {
-  margin-left: 30px;
-  overflow-y: auto;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  position: fixed;
-  width: $sidebar-lenght;
-//  bottom: 0;
-//  top: $navbar-height + 2;
-  background-color: $navbar-side-bg;
-  border-radius: 4px;
-  height: 100%;    
+  @include transition(all 0.5s ease);
 }
 
 .navbar-side-collapse{
   background-color: $navbar-side-bg;
   border-radius: 4px;
+  @include transition(all 0.5s ease);
 }
 
 .switcher{
@@ -50,62 +49,113 @@ $sidebar-lenght: 250px;
   background-color: $navbar-side-bg;
 }
 
-.switcher-on{
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.switcher-off{
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.navbar-side-off {
-  display: none;
-}
-
-.navbar-side-close {
-  margin-left: -$sidebar-lenght;
-}
-
-.main-with-side-bar{
-  padding-left: $sidebar-lenght + 60px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.main-without-side-bar{
-  padding-left: 60px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
 
 #main{
-    width: 100%;
+  width: 100%;
+  @include transition(all 0.5s ease);
 }
 
 .nav-side-bar-dropdown li a, .navbar-side li a, .switcher-on a{
   color: $navbar-side-color;  
+  @include transition(all 0.5s ease);
 }
 
 .nav-side-bar-dropdown li a{
   padding: 7px 10px 7px 42px;  
+  @include transition(all 0.5s ease);
 }
 
 .side-bar-active a{
   background-color: darken($navbar-side-bg, 10%);
+  @include transition(all 0.5s ease);
 }
 
 .nav-side-bar-dropdown li a:hover, .navbar-side li a:hover{
   background-color: $navbar-side-hover-bg-color;
   color: $navbar-side-hover-color;
+  @include transition(all 0.5s ease);
+}
+
+@media (max-width: $screen-md) {
+  .main-with-side-bar{
+    padding-left: 60px;
+    @include transition(all 0.5s ease);
+  }
+
+  .main-without-side-bar{
+    padding-left: $sidebar-length + 60px;
+    @include transition(all 0.5s ease);
+  }
+
+  .switcher-on{
+    @include transition(all 0.5s ease);
+  }
+
+  .switcher-off{
+    @include transition(all 0.5s ease);
+  }
+
+  .navbar-side-off {
+    display: block;
+    @include transition(all 0.5s ease);
+  }
+
+  .navbar-side {
+    overflow-y: auto;
+    @include transition(all 0.5s ease);
+    position: fixed;
+    width: $sidebar-length;
+    background-color: $navbar-side-bg;
+    border-radius: 4px;
+    height: 100%;    
+    margin-left: -$sidebar-length;
+  }
+
+  .navbar-side-close {
+    margin-left: 30px;
+    display: block;
+    @include transition(all 0.5s ease);
+  }
+}
+@media (min-width: $screen-md) {
+  .main-with-side-bar{
+    padding-left: $sidebar-length + 60px;
+    @include transition(all 0.5s ease);
+  }
+
+  .main-without-side-bar{
+    padding-left: 60px;
+    @include transition(all 0.5s ease);
+  }
+
+  .switcher-on{
+    @include transition(all 0.5s ease);
+  }
+
+  .switcher-off{
+    @include transition(all 0.5s ease);
+  }
+
+  .navbar-side-off {
+    display: none;
+    @include transition(all 0.5s ease);
+  }
+
+  .navbar-side {
+    margin-left: 30px;
+    overflow-y: auto;
+    @include transition(all 0.5s ease);
+    position: fixed;
+    width: $sidebar-length;
+    background-color: $navbar-side-bg;
+    border-radius: 4px;
+    height: 100%;    
+    display: block;
+  }
+
+  .navbar-side-close {
+    margin-left: -$sidebar-length;
+    @include transition(all 0.5s ease);
+  }
 }
 

@@ -1,7 +1,7 @@
-.container
+.container-fluid
   .row
     - start_links.each_with_index do |link, i|
-      .col-sm-4
-        = link_to({:controller => link[:controller], :action => link[:action]}, :class => "btn board-button-#{i % 9 + 1} animated zoomIn") do
+      .col-lg-4.animated.zoomIn
+        = link_to({:controller => link[:controller], :action => link[:action]}, :class => "btn board-button-#{i % 9 + 1}") do
           %i{:class => "fa #{link[:icon]}"}
           = link[:name] 

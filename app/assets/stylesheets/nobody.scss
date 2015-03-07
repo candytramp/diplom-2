@@ -7,9 +7,10 @@ $btn-colors: (#d35400, #2ecc71, #e67e22, #34495e, #f1c40f, #1abc9c, #872642,
       border-color: nth($btn-colors, $i);
       color: white;
       display: block;
-      width: 100%;
+      min-width: 200px;
       border-radius: 10px;
       padding: 20px 10px 20px 10px;
+      white-space: normal;
       margin: 10px 0px 10px 0px;
           .fa{
             display: block;
