@@ -116,7 +116,14 @@ class Article < ActiveRecord::Base
 	validates :start_page, :finish_page, :year,
 	      numericality: { only_integer: true, greater_than: 0, allow_nil: false }
 	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
-	   
+	
+	def human()
+    "Статья: #{self.name}"
+  end
+
+  def Article.models_human_name()
+    "Пользователи"
+  end
 	private 
 	
 	def copy_year

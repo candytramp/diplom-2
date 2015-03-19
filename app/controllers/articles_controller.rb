@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
+    raise article_params.inspect
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -69,6 +69,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :source, :start_page, :finish_page, :link, :year, :creator_login, :creator_data)
+      params.require(:article).permit(:name, :source, :start_page, :finish_page, :link, :year, :creator_login, :creator_data, :source => [:name, :year, :type, :output, :is_russian, :in_rinc])
     end
 end

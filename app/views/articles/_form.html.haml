@@ -1,34 +1,68 @@
 = form_for @article do |f|
-  - if @article.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
-      %ul
-        - @article.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_area :name
-  .field
-    = f.label :source
-    = f.text_area :source
-  .field
-    = f.label :start_page
-    = f.number_field :start_page
-  .field
-    = f.label :finish_page
-    = f.number_field :finish_page
-  .field
-    = f.label :link
-    = f.text_area :link
-  .field
-    = f.label :year
-    = f.number_field :year
-  .field
-    = f.label :creator_login
-    = f.text_field :creator_login
-  .field
-    = f.label :creator_data
-    = f.text_area :creator_data
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-10
+      .form-group
+        = f.label :name
+        = f.text_area :name, class: 'form-control'
+        = f.error_messages_for(:name)
+  .row
+    .col-md-5
+      .form-group
+        = f.label :start_page
+        = f.number_field :start_page, class: 'form-control'
+        = f.error_messages_for(:start_page)
+    .col-md-5
+      .form-group
+        = f.label :finish_page
+        = f.number_field :finish_page, class: 'form-control'
+        = f.error_messages_for(:finish_page)
+  .row
+    .col-md-8
+      .form-group
+        = f.label :link
+        = f.text_area :link, class: 'form-control'
+        = f.error_messages_for(:link)
+    .col-md-4
+      .form-group
+        = f.label :year
+        = f.number_field :year, class: 'form-control'
+        = f.error_messages_for(:year)
+        
+  -#.row
+    .col-lg-2
+      %a.btn.btn-default.show_mag_fields
+        %b Журнал
+    .col-lg-2
+      %a.btn.btn-default.show_coll_fields
+        %b Сборник трудов
+        
+  .btn-group{"data-toggle" => "buttons"}
+    %label.btn.btn-primary#show_mag_fields
+      %input{:autocomplete => "off", :name => "source_type", :type => "radio"}/
+      %b Журнал
+    %label.btn.btn-primary#show_coll_fields
+      %input{:autocomplete => "off", :name => "source_type", :type => "radio"}/
+      %b Сборник трудов
+  %br
+  .row.hidden_magazine{style: "display: none"}
+    .col-lg-5
+      %fieldset
+        = f.label 'О журнале'
+        .fields
+          = f.fields_for :source do |s_field|
+            = label_tag("article[source][name]", "Название") 
+            = s_field.text_area :name, class: 'form-control'
+            = s_field.number_field :year, class: 'form-control'
+            = s_field.number_field :output, class: 'form-control'
+            = s_field.check_box :is_russian, id: 'check_russian'
+            = s_field.check_box :in_rinc, id: 'check_rinc'
+            
+  .row.hidden_collection{style: "display: none"}  
+    .col-lg-5
+      %p Babababab
+  %br
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for @article
+   

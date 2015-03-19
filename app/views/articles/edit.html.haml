@@ -1,7 +1,16 @@
-%h1 Editing article
+.page-header
+  %h1 
+    Редактирование статьи
+    =link_to(@article, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Asrticle.models_human_name, articles_path)
+    %li= link_to(@article.human, @article)
+    %li.active
+      Редактирование статьи 
 
-= link_to 'Show', @article
-\|
-= link_to 'Back', articles_path
+.box
+  = render 'form'

@@ -1,33 +1,21 @@
-%h1 Listing articles
+.page-header
+  %h1 
+    Статьи
+    =link_to(new_article_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Source
-    %th Start page
-    %th Finish page
-    %th Link
-    %th Year
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @articles.each do |article|
-    %tr
-      %td= article.name
-      %td= article.source
-      %td= article.start_page
-      %td= article.finish_page
-      %td= article.link
-      %td= article.year
-      %td= article.creator_login
-      %td= article.creator_data
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    .list-group-item
+      =link_to(article) do
+        -#%span.text-danger= user.login
+        = article.name
+      .pull-right
+        = link_to(edit_article_path(article), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(article, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
 
-%br
 
-= link_to 'New Article', new_article_path
+
+

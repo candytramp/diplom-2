@@ -1,5 +1,14 @@
-%h1 New article
+.page-header
+  %h1 
+    Добавление статьи 
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Article.models_human_name, articles_path)
+    %li.active
+      Добавление статьи
 
-= link_to 'Back', articles_path
+.box
+  = render 'form'
+
