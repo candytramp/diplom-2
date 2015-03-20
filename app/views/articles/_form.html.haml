@@ -22,44 +22,46 @@
         = f.label :link
         = f.text_area :link, class: 'form-control'
         = f.error_messages_for(:link)
-    .col-md-4
-      .form-group
-        = f.label :year
-        = f.number_field :year, class: 'form-control'
-        = f.error_messages_for(:year)
-        
-  -#.row
-    .col-lg-2
-      %a.btn.btn-default.show_mag_fields
-        %b Журнал
-    .col-lg-2
-      %a.btn.btn-default.show_coll_fields
-        %b Сборник трудов
-        
+
+  .row
+    .col-lg-8
+      %label Источник 
   .btn-group{"data-toggle" => "buttons"}
     %label.btn.btn-primary#show_mag_fields
-      %input{:autocomplete => "off", :name => "source_type", :type => "radio"}/
+      %input{:autocomplete => "off", :name => "source_type_mag", :type => "radio"}/
       %b Журнал
     %label.btn.btn-primary#show_coll_fields
-      %input{:autocomplete => "off", :name => "source_type", :type => "radio"}/
+      %input{:autocomplete => "off", :name => "source_type_col", :type => "radio"}/
       %b Сборник трудов
   %br
   .row.hidden_magazine{style: "display: none"}
-    .col-lg-5
+    .col-lg-8
       %fieldset
         = f.label 'О журнале'
         .fields
           = f.fields_for :source do |s_field|
-            = label_tag("article[source][name]", "Название") 
-            = s_field.text_area :name, class: 'form-control'
-            = s_field.number_field :year, class: 'form-control'
-            = s_field.number_field :output, class: 'form-control'
+            = f.label :name 
+            = s_field.text_area :mag_name, class: 'form-control'
+            = f.label :year
+            = s_field.number_field :mag_year, class: 'form-control'
+            = f.label 'Выпуск'
+            = s_field.text_field :output, class: 'form-control'
+            = f.label 'Российский'
             = s_field.check_box :is_russian, id: 'check_russian'
+            = f.label 'В РИНЦ'
             = s_field.check_box :in_rinc, id: 'check_rinc'
-            
+          = f.error_messages_for(:source)
   .row.hidden_collection{style: "display: none"}  
-    .col-lg-5
-      %p Babababab
+    .col-lg-8
+      %fieldset
+        = f.label 'О сбонике трудов'
+        .fields
+          = f.fields_for :source do |s_field|
+            = f.label :name 
+            = s_field.text_area :col_name, class: 'form-control'
+            = f.label :year
+            = s_field.number_field :col_year, class: 'form-control'
+          = f.error_messages_for(:source)
   %br
   .form-actions
     = f.submit nil, class: 'btn btn-primary'

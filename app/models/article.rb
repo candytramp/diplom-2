@@ -34,24 +34,30 @@ class SourceValidator < ActiveModel::Validator
 	if record.source.present?
 	   	if !record.source.has_key?(:type) 
 			record.errors[:source] << "Тип докумнта не определен"
+      puts 'underfiend'
 		else
 			case record.source[:type]
 			when 'журнал'
 				  result = validates_magazine(record.source) 
 				if !result.blank?
 					record.errors[:source] << "Неверное значение аттрибута #{result}"	
-				end	  		  
+				end	 
+        puts 'mag' 		  
 			when 'сборник трудов'
 				result = validates_papers(record.source) 
 				if !result.blank?
 					record.errors[:source] << "Неверное значение аттрибута #{result}"
-		    end 	
+		    end
+        puts 'col' 	
 			else
 			  record.errors[:source] << 'Неверное значение типа документа'	
+        puts 'wrong'
 			end	
+    puts "opiuy"
 		end
 	else
 		record.errors[:source] << 'Отсутствует источник'			 
+    puts "uguygy"
 	end 
   end
   
@@ -83,6 +89,7 @@ class SourceValidator < ActiveModel::Validator
     required_keys.each do |key|
     	if !hash.has_key?(key)
     		return "#{key} (пропущенный атрибут)"
+        puts 'gbhnvfm'
       end			
     end
   	hash.each do |key, value|
@@ -92,8 +99,10 @@ class SourceValidator < ActiveModel::Validator
   	  end  
 	    @checks[key].each do |check| 
   		  return key unless check.check(value)
+        puts 'azxwscedv'
   	  end
   	end
+   puts "collection"
   	return ''
   end
    
@@ -128,28 +137,45 @@ class Article < ActiveRecord::Base
 	
 	def copy_year
 		if self.source.present?
-			self.year=self.source[:year]
+			self.year=self.source[:year].to_i
 		else
-			self.errors[:source] << 'Missed source value!'		
+			self.errors[:source] << 'Missed source value!'
 		end
 	end
 
     def convert_value_in_rinc_is_russian
 		if self.source.present?
-            
-			if self.source[:in_rinc]!=false && !self.source[:in_rinc].nil?
+			if self.source[:in_rinc]!="0" && !self.source[:in_rinc].nil?
 				self.source[:in_rinc] = true 
-            else
+        puts '1qw2'
+      else
 				self.source[:in_rinc] = false
+        puts '2wed4'
 			end
-			if self.source[:is_russian]!=false && !self.source[:is_russian].nil?
-            	self.source[:is_russian] = true 
+			if self.source[:is_russian]!="0" && !self.source[:is_russian].nil?
+        self.source[:is_russian] = true 
+        puts '5frf4'
 			else
 				self.source[:is_russian] = false
+        puts '7vf4'
 			end
 		else
 			self.errors[:source] << 'Missed source value!'		
+      puts '9ferf3'
 		end
     end
+  def Article.set_source(params, article_params)
+    source = Hash.new
+    if params['source_type_col'] == 'on'
+      source.merge!({:name => article_params['source']['col_name']})
+      source.merge!({:year => article_params['source']['col_year']})
+      source[:type] = 'сборник трудов'
+    elsif params['source_type_mag'] == 'on'
+      h = {:name => article_params['source']['mag_name'], :year => article_params['source']['mag_year'], :output => article_params['source']['output'], :is_russian => article_params['source']['is_russian'], :in_rinc => article_params['source']['in_rinc'] }
+      source = source.merge!(h)
+      source[:type] = 'журнал'
+    end
+    return source
+  end
 end
  

@@ -24,4 +24,3 @@ $ ->
   $(document).on 'click', '.role_user_add', ruclick2
 
 
-    
