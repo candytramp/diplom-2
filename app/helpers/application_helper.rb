@@ -47,6 +47,12 @@ module ApplicationHelper
        :children => [
        {:name => 'Статьи',
         :controller => :articles, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Конференции',
+        :controller => :conferences, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Дипломы',
+        :controller => :diplomas, :action => :index,
         :icon => 'fa-file'}
        ]}
     result.each do |item|

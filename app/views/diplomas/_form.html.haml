@@ -1,31 +1,44 @@
 = form_for @diploma do |f|
-  - if @diploma.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@diploma.errors.count, "error")} prohibited this diploma from being saved:"
-      %ul
-        - @diploma.errors.full_messages.each do |msg|
-          %li= msg
+  
+  .row
+    .col-md-12
+      .form-group
+        = f.label :name
+        = f.text_area :name, class: 'form-control'
+  .row
+    .col-md-12
+      .form-group
+        = f.label :issue_organization
+        = f.text_area :issue_organization, class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :issue_date
+        .input-group.date.datepicker
+          = f.text_field :issue_date, class: 'form-control'
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:issue_date)
 
-  .field
-    = f.label :name
-    = f.text_area :name
-  .field
-    = f.label :issue_date
-    = f.date_select :issue_date
-  .field
-    = f.label :issue_organization
-    = f.text_area :issue_organization
-  .field
-    = f.label :year
-    = f.number_field :year
-  .field
+    .col-md-6
+      .form-group
+        = f.label :year
+        .input-group.date.yearpicker
+          = f.text_field :year, class: 'form-control'
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:year)
+
+
+  -#.field
     = f.label :creator_login
     = f.text_field :creator_login
-  .field
-    = f.label :creator_data
-    = f.text_area :creator_data
+    .field
+      = f.label :creator_data
+      = f.text_area :creator_data
   .field
     = f.label :reward
     = f.text_field :reward
-  .actions
-    = f.submit 'Save'
+  %br
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for @diploma

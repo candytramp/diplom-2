@@ -6,4 +6,12 @@ class Diploma < ActiveRecord::Base
 	has_many :diploma_people
 	validates :name, :year, presence: true
 	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
+
+  def human()
+    "Диплом: #{self.name}"
+  end
+
+  def Diploma.models_human_name()
+    "Дипломы"
+  end
 end

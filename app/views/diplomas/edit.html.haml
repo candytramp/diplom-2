@@ -1,7 +1,16 @@
-%h1 Editing diploma
+.page-header
+  %h1 
+    Редактирование диплома 
+    =link_to(@diploma, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Diploma.models_human_name, diplomas_path)
+    %li= link_to(@diploma.human, @diploma)
+    %li.active
+      Редактирование диплома 
 
-= link_to 'Show', @diploma
-\|
-= link_to 'Back', diplomas_path
+.box
+  = render 'form'

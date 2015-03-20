@@ -1,7 +1,16 @@
-%h1 Editing conference
+.page-header
+  %h1 
+    Редактирование конференции 
+    =link_to(@conference, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Conference.models_human_name, conferences_path)
+    %li= link_to(@conference.human, @conference)
+    %li.active
+      Редактирование пконференции
 
-= link_to 'Show', @conference
-\|
-= link_to 'Back', conferences_path
+.box
+  = render 'form'

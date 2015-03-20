@@ -1,25 +1,39 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Конференция: 
+    = @conference.name
+    = link_to(edit_conference_path(@conference), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@conference, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
+
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Conference.models_human_name, conferences_path)
+    %li.active
+      = @conference.human
 
 %p
-  %b Name:
+  %b Название:
   = @conference.name
 %p
-  %b Country:
+  %b Страна:
   = @conference.country
 %p
-  %b City:
+  %b Город:
   = @conference.city
 %p
-  %b Start:
-  = @conference.start
+  %b Дата начала:
+  = l(@conference.start)
 %p
-  %b Finish:
-  = @conference.finish
+  %b Дата окончания:
+  = l(@conference.finish)
 %p
-  %b Year:
+  %b Год:
   = @conference.year
 %p
-  %b Ctype:
+  %b Тип:
   = @conference.ctype
 %p
   %b Creator login:
@@ -28,6 +42,5 @@
   %b Creator data:
   = @conference.creator_data
 
-= link_to 'Edit', edit_conference_path(@conference)
-\|
-= link_to 'Back', conferences_path
+
+

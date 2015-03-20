@@ -1,31 +1,21 @@
-%h1 Listing diplomas
+.page-header
+  %h1 
+    Дипломы
+    =link_to(new_diploma_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Name
-    %th Issue date
-    %th Issue organization
-    %th Year
-    %th Creator login
-    %th Creator data
-    %th Reward
-    %th
-    %th
-    %th
-
+.list-group
   - @diplomas.each do |diploma|
-    %tr
-      %td= diploma.name
-      %td= diploma.issue_date
-      %td= diploma.issue_organization
-      %td= diploma.year
-      %td= diploma.creator_login
-      %td= diploma.creator_data
-      %td= diploma.reward
-      %td= link_to 'Show', diploma
-      %td= link_to 'Edit', edit_diploma_path(diploma)
-      %td= link_to 'Destroy', diploma, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    .list-group-item
+      =link_to(diploma) do
+        %span.text-danger= diploma.issue_date
+        = diploma.name
+      .pull-right
+        = link_to(edit_diploma_path(diploma), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(diploma, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
 
-%br
 
-= link_to 'New Diploma', new_diploma_path
+
+
