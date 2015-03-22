@@ -1,30 +1,62 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Статья: 
+    = @article.name
+    = link_to(edit_article_path(@article), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@article, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @article.name
-%p
-  %b Source:
-  = @article.source
-%p
-  %b Start page:
-  = @article.start_page
-%p
-  %b Finish page:
-  = @article.finish_page
-%p
-  %b Link:
-  = @article.link
-%p
-  %b Year:
-  = @article.year
-%p
-  %b Creator login:
-  = @article.creator_login
-%p
-  %b Creator data:
-  = @article.creator_data
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Article.models_human_name, articles_path)
+    %li.active
+      = @article.human
+.box
+  %p
+    %b Название:
+    = @article.name
+  %p
+    %b Год:
+    = @article.year
+  - if @article.source[:type] == 'журнал'
+    %p
+      %b Журнал:
+      = @article.source[:name]
+    %p
+      %b Выпуск:
+      = @article.source[:output]
+    %p
+      %b В РИНЦ:
+      -if @article.source[:in_rinc]
+        Да
+      -else
+        Нет
+    %p
+      %b Российский:
+      -if @article.source[:is_russian]
+        Да
+      -else
+        Нет
+  - else
+    %p
+      %b Сборник трудов:
+      = @article.source[:name]
+  %p
+    %b Начальная страница:
+    = @article.start_page
+  %p
+    %b Завершающая страница:
+    = @article.finish_page
+  %p
+    %b Ссылка:
+    = @article.link
 
-= link_to 'Edit', edit_article_path(@article)
-\|
-= link_to 'Back', articles_path
+  %p
+    %b Creator login:
+    = @article.creator_login
+  %p
+    %b Creator data:
+    = @article.creator_data
+

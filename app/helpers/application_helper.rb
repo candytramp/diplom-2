@@ -41,7 +41,14 @@ module ApplicationHelper
        :controller => :state_programs, :action => :index,
        :icon => 'fa-tag'}
       ]}
-
+     result << {
+       :name => 'Редактирование',
+       :icon => 'fa-pencil',
+       :children => [
+       {:name => 'Статьи',
+        :controller => :articles, :action => :index,
+        :icon => 'fa-file'}
+       ]}
     result.each do |item|
       if item.has_key?(:children)
         item[:children].each do |x| 
@@ -88,6 +95,8 @@ module ApplicationHelper
       {:name => 'Федеральные программы',
        :controller => :state_programs, :action => :index}
       ]}
+
+
     if @current_role_user.is_admin?
       result << {
         :name => 'Администрирование',

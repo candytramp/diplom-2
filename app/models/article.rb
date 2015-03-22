@@ -131,7 +131,7 @@ class Article < ActiveRecord::Base
   end
 
   def Article.models_human_name()
-    "Пользователи"
+    "Статьи"
   end
 	private 
 	
