@@ -15,6 +15,7 @@ class DiplomasController < ApplicationController
   # GET /diplomas/new
   def new
     @diploma = Diploma.new
+
   end
 
   # GET /diplomas/1/edit

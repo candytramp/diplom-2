@@ -1,16 +1,31 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Диплом: 
+    = @diploma.name
+    = link_to(edit_diploma_path(@diploma), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@diploma, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
+
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Diploma.models_human_name, diplomas_path)
+    %li.active
+      = @diploma.human
+
 
 %p
-  %b Name:
+  %b Название:
   = @diploma.name
 %p
-  %b Issue date:
+  %b Дата получения:
   = @diploma.issue_date
 %p
-  %b Issue organization:
+  %b Выдавшая организация:
   = @diploma.issue_organization
 %p
-  %b Year:
+  %b Год:
   = @diploma.year
 %p
   %b Creator login:
@@ -22,6 +37,4 @@
   %b Reward:
   = @diploma.reward
 
-= link_to 'Edit', edit_diploma_path(@diploma)
-\|
-= link_to 'Back', diplomas_path
+

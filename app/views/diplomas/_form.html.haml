@@ -34,9 +34,17 @@
     .field
       = f.label :creator_data
       = f.text_area :creator_data
-  .field
+
+  .row
+    .col-md-12
+      = f.label :reward_type
+      = f.select("reward_type", options_for_chosen, {include_blank: '---', default: '---'}, class: 'chosen-select form-control')
+
+  -#.field
     = f.label :reward
     = f.text_field :reward
+
+
   %br
   .form-actions
     = f.submit nil, class: 'btn btn-primary'

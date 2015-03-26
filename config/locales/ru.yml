@@ -126,6 +126,7 @@ ru:
         year: Год
         creator_login: Логин создателя записи
         creator_data: Доп. данные о создателе"
+        reward_type: Объект награждения
         reward: Название и тип награды
       document:
         description: Описание
