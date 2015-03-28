@@ -15,7 +15,7 @@
       .form-group
         = f.label :issue_date
         .input-group.date.datepicker
-          = f.text_field :issue_date, class: 'form-control'
+          = f.text_field :issue_date, class: 'form-control',:value=>(l(@diploma.issue_date,:format=>"%d.%m.%Y") if @diploma.issue_date)
           %span.input-group-addon.glyphicon.glyphicon-calendar
         = f.error_messages_for(:issue_date)
 
@@ -37,12 +37,8 @@
 
   .row
     .col-md-12
-      = f.label :reward_type
-      = f.select("reward_type", options_for_chosen, {include_blank: '---', default: '---'}, class: 'chosen-select form-control')
-
-  -#.field
-    = f.label :reward
-    = f.text_field :reward
+      = f.label :reward_typed_id
+      = f.select("reward_typed_id", options_for_chosen, {include_blank: '---'}, class: 'chosen-select form-control')
 
 
   %br

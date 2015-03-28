@@ -26,7 +26,6 @@ class DiplomasController < ApplicationController
   # POST /diplomas.json
   def create
     @diploma = Diploma.new(diploma_params)
-
     respond_to do |format|
       if @diploma.save
         format.html { redirect_to @diploma, notice: 'Diploma was successfully created.' }
@@ -70,6 +69,6 @@ class DiplomasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diploma_params
-      params.require(:diploma).permit(:name, :issue_date, :issue_organization, :year, :creator_login, :creator_data, :reward_id, :reward_type)
+      params.require(:diploma).permit(:name, :issue_date, :issue_organization, :year, :creator_login, :creator_data, :reward_id, :reward_type, :reward_typed_id)
     end
 end

@@ -10,7 +10,7 @@ select.form-control + .chosen-container.chosen-container-single .chosen-single {
     background-color: #fff;
     border: 1px solid #ccc;
     text-wrap: normal;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -27,7 +27,7 @@ select.form-control + .chosen-container .chosen-drop {
     background-color: #FFF;
     border: 1px solid #CCC;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
@@ -47,7 +47,7 @@ select.form-control + .chosen-container .chosen-search input[type=text] {
     vertical-align: middle;
     background-color: #FFF;
     border: 1px solid #CCC;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -72,7 +72,6 @@ select.form-control + .chosen-container .chosen-results li.active-result {
     font-weight: normal;
     line-height: 1.428571429;
     color: #333;
-    white-space: nowrap;
     background-image:none;
 }
 select.form-control + .chosen-container .chosen-results li:hover, 
@@ -81,7 +80,7 @@ select.form-control + .chosen-container .chosen-results li.highlighted
 {
     color: #FFF;
     text-decoration: none;
-    background-color: #428BCA;
+    background-color: #1ab394;
     background-image:none;
 }
  
@@ -96,7 +95,7 @@ select.form-control + .chosen-container-multi .chosen-choices {
     vertical-align: middle;
     background-color: #FFF;
     border: 1px solid #CCC;
-    border-radius: 4px;
+    border-radius: 0px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -118,11 +117,10 @@ select.form-control + .chosen-container-multi .chosen-choices li.search-choice {
     font-weight: normal;
     line-height: 1.428571429;
     text-align: center;
-    white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 0px;
     color: #333;
     background-color: #FFF;
     border-color: #CCC;
@@ -136,10 +134,10 @@ select.form-control + .chosen-container-multi .chosen-choices li.search-choice .
 select.form-control + .chosen-container-multi.chosen-container-active .chosen-choices,
 select.form-control + .chosen-container.chosen-container-single.chosen-container-active .chosen-single,
 select.form-control + .chosen-container .chosen-search input[type=text]:focus{
-    border-color: #66AFE9;
+    border-color: #1ab394;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(102, 175, 233, 0.6);
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
  
 select.form-control + .chosen-container-multi .chosen-results li.result-selected{

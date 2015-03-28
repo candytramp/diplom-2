@@ -20,7 +20,7 @@
   = @diploma.name
 %p
   %b Дата получения:
-  = @diploma.issue_date
+  = l(@diploma.issue_date)
 %p
   %b Выдавшая организация:
   = @diploma.issue_organization
@@ -35,6 +35,6 @@
   = @diploma.creator_data
 %p
   %b Reward:
-  = @diploma.reward
+  =link_to @diploma.reward_name, @diploma.reward
 
 
