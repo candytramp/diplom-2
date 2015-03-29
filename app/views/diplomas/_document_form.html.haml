@@ -1,0 +1,11 @@
+.row.document_item
+  = form.hidden_field(:_destroy, :class => 'document_destroy')
+  .col-md-12
+    .form-group
+      %a.btn.btn-danger.btn-outline.btn-circle.btn-xs.document_remove
+        %i.fa.fa-times
+      = form.label :description
+      = form.text_area :description, class: 'form-control'
+      = form.error_messages_for(:description)
+    .form-group
+      = form.file_field :paper

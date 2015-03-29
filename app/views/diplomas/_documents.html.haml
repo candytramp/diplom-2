@@ -1,0 +1,10 @@
+#document_items
+  = form.fields_for :documents do |document_form|
+    = render('document_form', :form => document_form)
+
+.row
+  .col-md-12
+    = form.fields_for(:documents, Document.new, :child_index => 'new_documents') do |document_form|
+      %a.btn.btn-success.btn-outline.btn-xs.documents_add{ data: {new_link: render('document_form', :form => document_form)} }
+        %i.fa.fa-plus
+        Добавить документик

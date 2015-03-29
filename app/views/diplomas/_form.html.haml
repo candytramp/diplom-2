@@ -42,9 +42,8 @@
       .form-group
         = f.label :reward_typed_id
         = f.select("reward_typed_id", options_for_chosen, {include_blank: '---'}, class: 'chosen-select form-control')
-  
-  = f.fields_for :documents do |ff|
-    = render('load_file', :ff => ff, :diploma => @diploma)
+
+  = render('documents', :form => f)
 
   %br
   .form-actions
