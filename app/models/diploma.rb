@@ -8,6 +8,7 @@ class Diploma < ActiveRecord::Base
 	has_many :diploma_people
 	validates :name, :year, presence: true
 	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
+  accepts_nested_attributes_for :documents, allow_destroy: true 
 
   def reward_typed_id
     return nil if reward.nil?
@@ -16,18 +17,27 @@ class Diploma < ActiveRecord::Base
 
   def reward_typed_id=(value)
     match_data = value.match(/^(?<type>\w+)\/(?<id>\d+)$/)
-    reward_prototype = REWARD_TYPES_NAMES[match_data['type']]
-    if reward_prototype
-      self.reward = reward_prototype.find(match_data['id'].to_i)
+    if match_data
+      reward_prototype = REWARD_TYPES_NAMES[match_data['type']]
+      if reward_prototype
+        self.reward = reward_prototype.find(match_data['id'].to_i)
+      end
     end
   end
 
   def reward_name
-    if reward_type == "Report" || reward_type == "Textbook"
-      return "#{reward.class.models_human_name}: #{reward.title}"
-    else
-      return "#{reward.class.models_human_name}: #{reward.name}"
+    Diploma.reward_name(reward)
+  end
+
+  def Diploma.reward_name(reward)
+    if reward
+      if reward.class == Report || reward.class == Textbook
+        return "#{reward.class.models_human_name}: #{reward.title}"
+      else
+        return "#{reward.class.models_human_name}: #{reward.name}"
+      end
     end
+    return ""
   end
 
   def human()

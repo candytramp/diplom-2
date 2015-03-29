@@ -15,7 +15,7 @@ class DiplomasController < ApplicationController
   # GET /diplomas/new
   def new
     @diploma = Diploma.new
-
+    @diploma.documents.build
   end
 
   # GET /diplomas/1/edit
@@ -69,6 +69,6 @@ class DiplomasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diploma_params
-      params.require(:diploma).permit(:name, :issue_date, :issue_organization, :year, :creator_login, :creator_data, :reward_id, :reward_type, :reward_typed_id)
+      params.require(:diploma).permit(:name, :issue_date, :issue_organization, :year, :creator_login, :creator_data, :reward_id, :reward_type, :reward_typed_id, documents_attributes: [:description, :paper])
     end
 end

@@ -1,0 +1,9 @@
+
+.row
+  .col-md-12
+    .form-group
+      = ff.label :description
+      = ff.text_area :description, class: 'form-control'
+      = ff.error_messages_for(:description)
+    .form-group
+      = ff.file_field :paper

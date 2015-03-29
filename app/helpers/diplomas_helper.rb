@@ -5,7 +5,7 @@ module DiplomasHelper
     Diploma::REWARD_TYPES.each do |table|
       if table.all.any?
         puts table.inspect
-        result += (table.all.collect{|a| [a.name,"#{table}/#{a.id}"]})
+        result += (table.all.collect{|a| [Diploma.reward_name(a),"#{table}/#{a.id}"]})
       end
     end
     puts result.inspect

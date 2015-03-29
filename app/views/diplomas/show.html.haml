@@ -27,14 +27,16 @@
 %p
   %b Год:
   = @diploma.year
-%p
+-#%p
   %b Creator login:
   = @diploma.creator_login
-%p
-  %b Creator data:
-  = @diploma.creator_data
+  %p
+    %b Creator data:
+    = @diploma.creator_data
 %p
   %b Reward:
   =link_to @diploma.reward_name, @diploma.reward
 
-
+%p
+  %b Документ
+  = image_tag @diploma.documents.first.paper.url(:thumbnail), alt: 'Paper is empty)'

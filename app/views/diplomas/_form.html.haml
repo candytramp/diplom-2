@@ -5,11 +5,13 @@
       .form-group
         = f.label :name
         = f.text_area :name, class: 'form-control'
+        = f.error_messages_for(:name)
   .row
     .col-md-12
       .form-group
         = f.label :issue_organization
         = f.text_area :issue_organization, class: 'form-control'
+        = f.error_messages_for(:issue_organization)
   .row
     .col-md-6
       .form-group
@@ -37,9 +39,12 @@
 
   .row
     .col-md-12
-      = f.label :reward_typed_id
-      = f.select("reward_typed_id", options_for_chosen, {include_blank: '---'}, class: 'chosen-select form-control')
-
+      .form-group
+        = f.label :reward_typed_id
+        = f.select("reward_typed_id", options_for_chosen, {include_blank: '---'}, class: 'chosen-select form-control')
+  
+  = f.fields_for :documents do |ff|
+    = render('load_file', :ff => ff, :diploma => @diploma)
 
   %br
   .form-actions
