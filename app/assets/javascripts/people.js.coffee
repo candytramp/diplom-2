@@ -2,12 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready=->
+#ready=->
 
-  $('#datepicker2 input').datepicker(language: 'ru')
+ # $('#datepicker2 input').datepicker(language: 'ru')
 
 
-$(document).ready ready
-$(document).on('page:load', ready)
+#$(document).ready ready
+#$(document).on('page:load', ready)
 
 
