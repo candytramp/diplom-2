@@ -11,7 +11,7 @@
         -#%span.text-danger= role.name
         = source.funding_source
       .pull-right
-        = link_to(edit_source_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+        = link_to(edit_source_path(source), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-pencil-square-o
         = link_to(source, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-times

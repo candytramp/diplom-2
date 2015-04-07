@@ -42,7 +42,18 @@ class ResearchEffort < ActiveRecord::Base
   #validates :is_nir, :inclusion => {:in => [true, false]}
 
  	validates :full_value,  numericality: { greater_than: 0, allow_nil: false }
+	def human()
+    "НИР: #{self.name}"
+  end
 
+  def ResearchEffort.models_human_name()
+    "НИР"
+  end
+
+  def year
+  end
+  def value
+  end
 	private
 #переделать
 	def convert_nir_value

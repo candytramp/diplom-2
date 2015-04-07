@@ -69,6 +69,6 @@ class ResearchEffortsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_effort_params
-      params.require(:research_effort).permit(:name, :state_program_id, :start_date, :finish_date, :grnti_id, :field_id, :full_value, :year_value, :state_reg_number, :nir_number, :inventory_number, :nir_type_id, :source_id, :scientific_school_id, :is_nir, :creator_login, :creator_data)
+      params.require(:research_effort).permit(:name, :state_program_id, :start_date, :finish_date, :grnti_id, :field_id, :full_value, :year_value, :state_reg_number, :nir_number, :inventory_number, :nir_type_id, :source_id, :scientific_school_id, :is_nir, :year, :value, :creator_login, :creator_data)
     end
 end

@@ -1,27 +1,27 @@
 .page-header
   %h1 
     Одбласть: 
-    = @filed.name
-    = link_to(edit_filed_path(@filed), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+    = @field.name
+    = link_to(edit_field_path(@field), {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-pencil-square-o
-    = link_to(@filed, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+    = link_to(@field, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
       %i.fa.fa-times
 
   %ol.breadcrumb
     %li
       Администрирование
-    %li= link_to(Filed.models_human_name, fileds_path)
+    %li= link_to(Field.models_human_name, fields_path)
     %li.active
-      = @filed.human
+      = @field.human
 
 .box
   .row
     .col-md-2
-      = Filed.human_attribute_name(:code)
+      = Field.human_attribute_name(:code)
     .col-md-2
-      = @filed.code
+      = @field.code
   .row
     .col-md-2
-      = Filed.human_attribute_name(:name)
-    .col-md-2
-      = @filed.name
+      = Field.human_attribute_name(:name)
+    .col-md-10
+      = @field.name

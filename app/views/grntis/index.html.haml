@@ -8,8 +8,8 @@
   - @grntis.each do |grnti|
     .list-group-item
       =link_to(grnti) do
-        %span.text-danger= grnti.name
-        = grnti.grnti
+        %span.text-danger= grnti.grnti
+        = grnti.name
       .pull-right
         = link_to(edit_grnti_path(grnti), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-pencil-square-o

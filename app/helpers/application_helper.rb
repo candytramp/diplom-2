@@ -53,7 +53,10 @@ module ApplicationHelper
         :icon => 'fa-file'},
        {:name => 'Дипломы',
         :controller => :diplomas, :action => :index,
-        :icon => 'fa-file'}
+        :icon => 'fa-file'},
+       {:name => 'НИР',
+        :controller => :research_efforts, :action => :index,
+        :icon => 'fa-file'},
        ]}
     result.each do |item|
       if item.has_key?(:children)

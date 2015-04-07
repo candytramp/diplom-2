@@ -1,0 +1,13 @@
+.row.period_item
+  = form.hidden_field(:_destroy, :class => 'period_destroy')
+  .col-md-6
+    .form-group
+      = form.label :year
+      = form.text_field :year, class: 'form-control'
+
+  .col-md-6
+    .form-group
+      = form.label :value
+      = form.text_field :value, class: 'form-control'
+      %a.btn.btn-danger.btn-outline.btn-circle.btn-xs.period_remove
+        %i.fa.fa-times

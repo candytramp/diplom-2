@@ -15,11 +15,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-growl.min
-//= require bootstrap-datepicker
 //= require moment
 //= require moment/ru
 //= require bootstrap-datetimepicker
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
 //= require bootstrap-switch
 //= require chosen-jquery
 //= require_tree .

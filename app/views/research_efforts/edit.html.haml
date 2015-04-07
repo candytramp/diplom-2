@@ -1,7 +1,16 @@
-%h1 Editing research_effort
+.page-header
+  %h1 
+    Редактирование НИР
+    =link_to(@research_effort, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(ResearchEffort.models_human_name, research_efforts_path)
+    %li= link_to(@research_effort.human, @research_effort)
+    %li.active
+      Редактирование НИР
 
-= link_to 'Show', @research_effort
-\|
-= link_to 'Back', research_efforts_path
+.box
+  = render 'form'

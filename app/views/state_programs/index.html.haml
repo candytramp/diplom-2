@@ -11,7 +11,7 @@
         -#%span.text-danger= role.name
         = state_program.name
       .pull-right
-        = link_to(edit_state_program_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+        = link_to(edit_state_program_path(state_program), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-pencil-square-o
         = link_to(state_program, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-times

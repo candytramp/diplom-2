@@ -1,57 +1,69 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Статья: 
+    = @research_effort.name
+    = link_to(edit_research_effort_path(@research_effort), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@research_effort, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Name:
-  = @research_effort.name
-%p
-  %b State program:
-  = @research_effort.state_program
-%p
-  %b Start date:
-  = @research_effort.start_date
-%p
-  %b Finish date:
-  = @research_effort.finish_date
-%p
-  %b Grnti:
-  = @research_effort.grnti
-%p
-  %b Field:
-  = @research_effort.field
-%p
-  %b Full value:
-  = @research_effort.full_value
-%p
-  %b Year value:
-  = @research_effort.year_value
-%p
-  %b State reg number:
-  = @research_effort.state_reg_number
-%p
-  %b Nir number:
-  = @research_effort.nir_number
-%p
-  %b Inventory number:
-  = @research_effort.inventory_number
-%p
-  %b Nir type:
-  = @research_effort.nir_type
-%p
-  %b Source:
-  = @research_effort.source
-%p
-  %b Scientific school:
-  = @research_effort.scientific_school
-%p
-  %b Is nir:
-  = @research_effort.is_nir
-%p
-  %b Creator login:
-  = @research_effort.creator_login
-%p
-  %b Creator data:
-  = @research_effort.creator_data
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(ResearchEffort.models_human_name, research_efforts_path)
+    %li.active
+      = @research_effort.human
+.box
+  %p
+    %b Название:
+    = @research_effort.name
+  %p
+    %b Гос. программа:
+    = @research_effort.state_program.name
+  %p
+    %b Дата начала:
+    = @research_effort.start_date
+  %p
+    %b Дата окончания:
+    = @research_effort.finish_date
+  %p
+    %b ГРНТИ:
+    = @research_effort.grnti.name
+  %p
+    %b Область науки:
+    = @research_effort.field.name
+  %p
+    %b Полная сумма финансирования:
+    = @research_effort.full_value
+  %p
+    %b Year value:
+    = @research_effort.year_value
+  %p
+    %b Государственный регистрационный номер:
+    = @research_effort.state_reg_number
+  %p
+    %b Номер НИР:
+    = @research_effort.nir_number
+  %p
+    %b Инвентарный номер:
+    = @research_effort.inventory_number
+  %p
+    %b Тип НИР:
+    = @research_effort.nir_type.name
+  %p
+    %b Источник финансирования:
+    = @research_effort.source.funding_source
+  %p
+    %b Научная школа:
+    = @research_effort.scientific_school.name
+  %p
+    %b Является ли НИР?:
+    = @research_effort.is_nir
+-#
+  %p
+    %b Creator login:
+    = @research_effort.creator_login
+  %p
+    %b Creator data:
+    = @research_effort.creator_data
 
-= link_to 'Edit', edit_research_effort_path(@research_effort)
-\|
-= link_to 'Back', research_efforts_path

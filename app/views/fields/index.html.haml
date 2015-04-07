@@ -11,7 +11,7 @@
         %span.text-danger= field.code
         = field.name
       .pull-right
-        = link_to(edit_field_path(role), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+        = link_to(edit_field_path(field), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-pencil-square-o
         = link_to(field, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-times

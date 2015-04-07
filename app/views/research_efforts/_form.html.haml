@@ -1,61 +1,89 @@
 = form_for @research_effort do |f|
-  - if @research_effort.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@research_effort.errors.count, "error")} prohibited this research_effort from being saved:"
-      %ul
-        - @research_effort.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
+  .form-group
     = f.label :name
-    = f.text_area :name
-  .field
-    = f.label :state_program
-    = f.text_field :state_program
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :finish_date
-    = f.date_select :finish_date
-  .field
-    = f.label :grnti
-    = f.text_field :grnti
-  .field
-    = f.label :field
-    = f.text_field :field
-  .field
-    = f.label :full_value
-    = f.text_field :full_value
+    = f.text_area :name, class: 'form-control'
+    = f.error_messages_for(:name)
+  .row.underline_re
+    .col-md-4
+      .form-group
+        = f.label :start_date
+        .input-group.date.datepicker
+          = f.text_field :start_date, class: 'form-control'
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:start_date)
+    .col-md-4
+      .form-group
+        = f.label :finish_date
+        .input-group.date.datepicker
+          = f.text_field :finish_date, class: 'form-control'
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:finish_date)  
+    .col-md-4
+      .form-group
+        = f.label :is_nir
+        %br
+        = f.check_box :is_nir, id: 'check_isnir'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :inventory_number
+        = f.text_field :inventory_number, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :state_reg_number
+        = f.text_field :state_reg_number, class: 'form-control'
+  .row.underline_re
+    .col-md-6
+      .form-group
+        = f.label :nir_number
+        = f.text_field :nir_number, class: 'form-control'
+    .col-md-6
+      .form-group
+        = f.label :full_value
+        = f.text_field :full_value, class: 'form-control'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :grnti
+        = f.select("grnti", chosen_options(Grnti), {include_blank: ''}, class: 'chosen-select form-control')
+    .col-md-6
+      .form-group
+        = f.label :nir_type
+        = f.select("nir_type", chosen_options(NirType), {include_blank: ''}, class: 'chosen-select form-control')
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :state_program
+        = f.select("state_program", chosen_options(StateProgram), {include_blank: ''}, class: 'chosen-select form-control')
+    .col-md-6
+      .form-group
+        = f.label :source
+        = f.select("source", chosen_options(Source), {include_blank: ''}, class: 'chosen-select form-control')
+  .row.underline_re
+    .col-md-6
+      .form-group
+        = f.label :field
+        = f.select("field", chosen_options(Field), {include_blank: ''}, class: 'chosen-select form-control')
+    .col-md-6
+      .form-group
+        = f.label :scientific_school
+        = f.select("scientific_school", chosen_options(ScientificSchool), {include_blank: ''}, class: 'chosen-select form-control')
+
+
+
   .field
     = f.label :year_value
     = f.text_area :year_value
-  .field
-    = f.label :state_reg_number
-    = f.text_field :state_reg_number
-  .field
-    = f.label :nir_number
-    = f.text_field :nir_number
-  .field
-    = f.label :inventory_number
-    = f.text_field :inventory_number
-  .field
-    = f.label :nir_type
-    = f.text_field :nir_type
-  .field
-    = f.label :source
-    = f.text_field :source
-  .field
-    = f.label :scientific_school
-    = f.text_field :scientific_school
-  .field
-    = f.label :is_nir
-    = f.text_field :is_nir
-  .field
-    = f.label :creator_login
-    = f.text_field :creator_login
-  .field
-    = f.label :creator_data
-    = f.text_area :creator_data
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-12
+      = f.fields_for(:year_value, @research_effort, :child_index => 'new_period') do |period_form|
+        %a.btn.btn-success.btn-outline.btn-xs.periods_add{ data: {new_link: render('periods', :form => period_form)} }
+          %i.fa.fa-plus
+          Добавить период
+
+  %br
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for @research_effort

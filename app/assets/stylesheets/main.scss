@@ -121,9 +121,15 @@ a {
 }
 
 .underline {
-  border-bottom: 1px solid $gray-lighter;
+  border-bottom: 2px solid $gray-lighter;
 }
 
+
+.underline_re {
+  border-bottom: 2px solid $gray-lighter;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
 .no-float {
   float: none !important;
 }
