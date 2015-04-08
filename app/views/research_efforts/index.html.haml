@@ -11,7 +11,7 @@
         -#%span.text-danger= research_effort.state_reg_number
         = research_effort.name
       .pull-right
-        = link_to(edit_research_effort_path(article), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+        = link_to(edit_research_effort_path(research_effort), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-pencil-square-o
         = link_to(research_effort, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
           %i.fa.fa-times

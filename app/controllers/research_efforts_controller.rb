@@ -25,7 +25,6 @@ class ResearchEffortsController < ApplicationController
   # POST /research_efforts.json
   def create
     @research_effort = ResearchEffort.new(research_effort_params)
-
     respond_to do |format|
       if @research_effort.save
         format.html { redirect_to @research_effort, notice: 'Research effort was successfully created.' }
@@ -69,6 +68,8 @@ class ResearchEffortsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def research_effort_params
-      params.require(:research_effort).permit(:name, :state_program_id, :start_date, :finish_date, :grnti_id, :field_id, :full_value, :year_value, :state_reg_number, :nir_number, :inventory_number, :nir_type_id, :source_id, :scientific_school_id, :is_nir, :year, :value, :creator_login, :creator_data)
+      ResearchEffort.construct_data(params.require(:research_effort).permit(:name, :state_program_id, :start_date, :finish_date, :grnti_id, :field_id, 
+               :full_value, {:year_value => [:year, :value]}, :state_reg_number, :nir_number, :inventory_number, :nir_type_id, :source_id, 
+               :scientific_school_id, :is_nir, :creator_login, :creator_data))
     end
 end

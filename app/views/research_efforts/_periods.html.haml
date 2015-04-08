@@ -1,13 +1,11 @@
-.row.period_item
-  = form.hidden_field(:_destroy, :class => 'period_destroy')
-  .col-md-6
-    .form-group
-      = form.label :year
-      = form.text_field :year, class: 'form-control'
-
-  .col-md-6
-    .form-group
-      = form.label :value
-      = form.text_field :value, class: 'form-control'
-      %a.btn.btn-danger.btn-outline.btn-circle.btn-xs.period_remove
-        %i.fa.fa-times
+#period_items
+  .row.period_item
+    = hidden_field_tag("research_effort[year_value][][year]", year)
+    .col-md-5
+      .form-group
+        = label_tag("research_effort[year_value][][value]", "Сумма #{year}")
+        = text_field_tag("research_effort[year_value][][value]", value, class: 'form-control', data: {year: year})
+    .col-md-2
+      %br
+        %a.btn.btn-danger.btn-circle.period_remove{style: 'margin-top: 3px;'}
+          %i.fa.fa-times
