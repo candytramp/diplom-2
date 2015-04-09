@@ -1,6 +1,6 @@
 .page-header
   %h1 
-    Статья: 
+    НИР: 
     = @research_effort.name
     = link_to(edit_research_effort_path(@research_effort), {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-pencil-square-o
@@ -35,9 +35,15 @@
   %p
     %b Полная сумма финансирования:
     = @research_effort.full_value
+    %i.fa.fa-rub
   %p
-    %b Year value:
-    = @research_effort.year_value
+    - @research_effort.year_value.each do |key, value|
+      - if value.present?
+        %p
+          %b= "Год #{key}"
+          = "- #{value}"
+          %i.fa.fa-rub
+      
   %p
     %b Государственный регистрационный номер:
     = @research_effort.state_reg_number
@@ -57,8 +63,11 @@
     %b Научная школа:
     = @research_effort.scientific_school.name
   %p
-    %b Является ли НИР?:
-    = @research_effort.is_nir
+    %b Является ли НИР:
+    -if @research_effort.is_nir
+      Да
+    - else
+      Нет
 -#
   %p
     %b Creator login:

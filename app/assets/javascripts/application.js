@@ -20,6 +20,8 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap-switch
 //= require chosen-jquery
+//= require raphael
+//= require morris
 //= require_tree .
 
 /* page:change */

@@ -24,7 +24,7 @@ class ResearchEffort < ActiveRecord::Base
   serialize :year_value
 	serialize :creator_data
   validates_with YearValueValidator
-	before_validation :convert_nir_value
+	#before_validation :convert_nir_value
   belongs_to :state_program
   belongs_to :grnti
   belongs_to :field
@@ -61,8 +61,10 @@ class ResearchEffort < ActiveRecord::Base
     hash
   end
 	private
-#переделать
+#переделат
+=begin
 	def convert_nir_value
+      Rails.logger.info(self.is_nir.class.to_s)
 			if self.is_nir.present?
 				if self.is_nir!="0" && !self.is_nir.nil?
 					self.is_nir = true 
@@ -73,4 +75,5 @@ class ResearchEffort < ActiveRecord::Base
 				self.errors[:is_nir] << 'Отсутствует поле is_nir'	
 			end
 	end
+=end
 end

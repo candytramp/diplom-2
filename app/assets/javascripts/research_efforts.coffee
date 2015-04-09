@@ -22,9 +22,8 @@ periods_update = ->
       period_partial.find("input[type=text]").val(periods_values[period_year])
 
 period_remove = ->
-  item = $(this).closest('.period_item')
-  item.find('.period_destroy').attr('value', 1)
-  item.hide()
+  item = $(this).parent().find('input[type=text]')
+  item.val("")  
 
 $ ->
   $(document).on 'click', '.period_remove', period_remove

@@ -43,6 +43,9 @@ gem "haml-rails"
 gem 'paperclip'
 gem 'chosen-rails'
 gem 'nokogiri'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
+gem 'docsplit'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -85,9 +85,10 @@
   .row
     .col-md-12
       #research_effort_year_value{ data: {period_template: render('periods', f: f, year: 'year_number', value: nil) } }
-        - @research_effort.year_value.each do |year, value|
-          = render('periods', f: f, year: year, value: value)
-        -# %a.btn.btn-primary.periods_add{ data: {new_link: render('periods', :f => period_form, :period => {year: nil, value: nil})} }
+        - if @research_effort.year_value
+          - @research_effort.year_value.each do |year, value|
+            = render('periods', f: f, year: year, value: value)
+        -# %a.btn.btn -primary.periods_add{ data: {new_link: render('periods', :f => period_form, :period => {year: nil, value: nil})} }
           %i.fa.fa-plus
           Добавить период
       = f.error_messages_for(:year_value)

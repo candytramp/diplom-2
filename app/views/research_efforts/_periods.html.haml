@@ -4,8 +4,10 @@
     .col-md-5
       .form-group
         = label_tag("research_effort[year_value][][value]", "Сумма #{year}")
-        = text_field_tag("research_effort[year_value][][value]", value, class: 'form-control', data: {year: year})
-    .col-md-2
+        .input-group
+          = text_field_tag("research_effort[year_value][][value]", value, class: 'form-control', data: {year: year})
+          %span.input-group-addon.glyphicon.glyphicon-erase.period_remove
+    -#.col-md-2
       %br
         %a.btn.btn-danger.btn-circle.period_remove{style: 'margin-top: 3px;'}
           %i.fa.fa-times
