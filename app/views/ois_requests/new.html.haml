@@ -1,5 +1,14 @@
-%h1 New ois_request
+.page-header
+  %h1 
+    Добавление заявки
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(OisRequest.models_human_name, ois_requests_path)
+    %li.active
+      Добавление заявки
 
-= link_to 'Back', ois_requests_path
+.box
+  = render 'form'
+

@@ -8,4 +8,12 @@ class OisRequest < ActiveRecord::Base
 	validates :number, :priority, :author,  :name,
 						:object, :reg_agency, 
 						:status, presence: true
+
+
+	def human()
+    "Заявка: #{self.number}"
+  end
+  def OisRequest.models_human_name()
+    "Заявки"
+  end
 end

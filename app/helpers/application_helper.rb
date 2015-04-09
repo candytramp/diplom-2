@@ -57,6 +57,9 @@ module ApplicationHelper
        {:name => 'НИР',
         :controller => :research_efforts, :action => :index,
         :icon => 'fa-file'},
+       {:name => 'Заявки',
+        :controller => :ois_requests, :action => :index,
+        :icon => 'fa-file'}
        ]}
     result.each do |item|
       if item.has_key?(:children)

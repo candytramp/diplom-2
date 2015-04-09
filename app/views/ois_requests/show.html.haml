@@ -1,36 +1,50 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Заявка: 
+    = @ois_request.number
+    = link_to(edit_ois_request_path(@ois_request), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@ois_request, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Number:
-  = @ois_request.number
-%p
-  %b Priority:
-  = @ois_request.priority
-%p
-  %b Author:
-  = @ois_request.author
-%p
-  %b Name:
-  = @ois_request.name
-%p
-  %b Object:
-  = @ois_request.object
-%p
-  %b Reg agency:
-  = @ois_request.reg_agency
-%p
-  %b Research effort:
-  = @ois_request.research_effort
-%p
-  %b Status:
-  = @ois_request.status
-%p
-  %b Creator login:
-  = @ois_request.creator_login
-%p
-  %b Creator data:
-  = @ois_request.creator_data
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(OisRequest.models_human_name, ois_requests_path)
+    %li.active
+      = @ois_request.human
+.box
+  %p
+    %b Номер заявки:
+    = @ois_request.number
+  %p
+    %b Приоритет:
+    = @ois_request.priority
+  %p
+    %b Автор:
+    = @ois_request.author
+  %p
+    %b Название:
+    = @ois_request.name
+  %p
+    %b Объект:
+    = @ois_request.object
+  %p
+    %b Регистрирующий орган:
+    = @ois_request.reg_agency
 
-= link_to 'Edit', edit_ois_request_path(@ois_request)
-\|
-= link_to 'Back', ois_requests_path
+  -if @ois_request.research_effort
+    %p
+      %b НИР:
+      = @ois_request.research_effort.name
+  %p
+    %b Статус:
+    = @ois_request.status
+-#
+  %p
+    %b Creator login:
+    = @ois_request.creator_login
+  %p
+    %b Creator data:
+    = @ois_request.creator_data
+

@@ -8,7 +8,7 @@
   - @research_efforts.each do |research_effort|
     .list-group-item
       =link_to(research_effort) do
-        -#%span.text-danger= research_effort.state_reg_number
+        %span.text-danger= research_effort.state_reg_number
         = research_effort.name
       .pull-right
         = link_to(edit_research_effort_path(research_effort), :class => 'btn btn-success btn-outline btn-circle btn-xs') do

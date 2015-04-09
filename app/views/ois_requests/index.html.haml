@@ -1,37 +1,19 @@
-%h1 Listing ois_requests
+.page-header
+  %h1 
+    Заявки
+    =link_to(new_ois_request_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Number
-    %th Priority
-    %th Author
-    %th Name
-    %th Object
-    %th Reg agency
-    %th Research effort
-    %th Status
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @ois_requests.each do |ois_request|
-    %tr
-      %td= ois_request.number
-      %td= ois_request.priority
-      %td= ois_request.author
-      %td= ois_request.name
-      %td= ois_request.object
-      %td= ois_request.reg_agency
-      %td= ois_request.research_effort
-      %td= ois_request.status
-      %td= ois_request.creator_login
-      %td= ois_request.creator_data
-      %td= link_to 'Show', ois_request
-      %td= link_to 'Edit', edit_ois_request_path(ois_request)
-      %td= link_to 'Destroy', ois_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    .list-group-item
+      =link_to(ois_request) do
+        %span.text-danger= ois_request.number
+        = ois_request.name
+      .pull-right
+        = link_to(edit_ois_request_path(ois_request), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(ois_request, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
 
-%br
 
-= link_to 'New Ois request', new_ois_request_path

@@ -1,7 +1,16 @@
-%h1 Editing ois_request
+.page-header
+  %h1 
+    Редактирование заявки
+    =link_to(@ois_request, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(OisRequest.models_human_name, ois_requests_path)
+    %li= link_to(@ois_request.human, @ois_request)
+    %li.active
+      Редактирование заявки
 
-= link_to 'Show', @ois_request
-\|
-= link_to 'Back', ois_requests_path
+.box
+  = render 'form'
