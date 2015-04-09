@@ -42,4 +42,11 @@ $(document).on("ready page:load", function() {
   $('.datetimepicker').datetimepicker({locale: 'ru', viewMode: 'years'});
   $('.datepicker').datetimepicker({locale: 'ru', format: 'DD.MM.YYYY', viewMode: 'years'});
   $('.yearpicker').datetimepicker({locale: 'ru', format: 'YYYY', viewMode: 'years'});
+  $('.chart').each(function () {
+    var chartElement = $(this);
+    $.get(chartElement.data('src'), function (data) {
+      data.element = chartElement.attr('id');
+      Morris.Line(data);
+    });
+  });
 });
