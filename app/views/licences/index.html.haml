@@ -1,47 +1,20 @@
-%h1 Listing licences
+.page-header
+  %h1 
+    Лицензии
+    =link_to(new_licence_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-plus
 
-%table
-  %tr
-    %th Number
-    %th Reg date
-    %th Type
-    %th Name
-    %th Expiration date
-    %th Req number
-    %th Req author
-    %th Req object
-    %th Req status
-    %th Req agency
-    %th Req priority
-    %th Support
-    %th Research effort
-    %th Creator login
-    %th Creator data
-    %th
-    %th
-    %th
-
+.list-group
   - @licences.each do |licence|
-    %tr
-      %td= licence.number
-      %td= licence.reg_date
-      %td= licence.type
-      %td= licence.name
-      %td= licence.expiration_date
-      %td= licence.req_number
-      %td= licence.req_author
-      %td= licence.req_object
-      %td= licence.req_status
-      %td= licence.req_agency
-      %td= licence.req_priority
-      %td= licence.support
-      %td= licence.research_effort
-      %td= licence.creator_login
-      %td= licence.creator_data
-      %td= link_to 'Show', licence
-      %td= link_to 'Edit', edit_licence_path(licence)
-      %td= link_to 'Destroy', licence, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    .list-group-item
+      =link_to(licence) do
+        %span.text-danger= licence.number
+        = licence.name
+      .pull-right
+        = link_to(edit_licence_path(licence), :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-pencil-square-o
+        = link_to(licence, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-success btn-outline btn-circle btn-xs') do
+          %i.fa.fa-times
 
-%br
 
-= link_to 'New Licence', new_licence_path
+

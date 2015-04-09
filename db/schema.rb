@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302124527) do
+ActiveRecord::Schema.define(version: 20150409122049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -260,7 +260,7 @@ ActiveRecord::Schema.define(version: 20150302124527) do
   create_table "licences", force: :cascade do |t|
     t.string   "number",             limit: 16, null: false
     t.date     "reg_date",                      null: false
-    t.string   "type",               limit: 32, null: false
+    t.string   "ltype",              limit: 32, null: false
     t.text     "name",                          null: false
     t.date     "expiration_date"
     t.string   "req_number"

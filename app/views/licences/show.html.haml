@@ -1,51 +1,61 @@
-%p#notice= notice
+.page-header
+  %h1 
+    Лицензия: 
+    = @licence.number
+    = link_to(edit_licence_path(@licence), {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-pencil-square-o
+    = link_to(@licence, :method => :delete, :data => {:confirm => 'Действительно удалить?' }, :class => 'btn btn-primary btn-outline btn-circle') do
+      %i.fa.fa-times
 
-%p
-  %b Number:
-  = @licence.number
-%p
-  %b Reg date:
-  = @licence.reg_date
-%p
-  %b Type:
-  = @licence.type
-%p
-  %b Name:
-  = @licence.name
-%p
-  %b Expiration date:
-  = @licence.expiration_date
-%p
-  %b Req number:
-  = @licence.req_number
-%p
-  %b Req author:
-  = @licence.req_author
-%p
-  %b Req object:
-  = @licence.req_object
-%p
-  %b Req status:
-  = @licence.req_status
-%p
-  %b Req agency:
-  = @licence.req_agency
-%p
-  %b Req priority:
-  = @licence.req_priority
-%p
-  %b Support:
-  = @licence.support
-%p
-  %b Research effort:
-  = @licence.research_effort
-%p
-  %b Creator login:
-  = @licence.creator_login
-%p
-  %b Creator data:
-  = @licence.creator_data
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Licence.models_human_name, licences_path)
+    %li.active
+      = @licence.human
+.box
 
-= link_to 'Edit', edit_licence_path(@licence)
-\|
-= link_to 'Back', licences_path
+  %p
+    %b Номер:
+    = @licence.number
+  %p
+    %b Дата регистрации:
+    = l(@licence.reg_date)
+  %p
+    %b Тип:
+    = @licence.ltype
+  %p
+    %b Название:
+    = @licence.name
+  %p
+    %b Окончание срока действия:
+    = l(@licence.expiration_date)
+
+  - if @licence.ois_request
+    %p
+      %b Номер заявки:
+      = @licence.req_number
+    %p
+      %b Автор заявки:
+      = @licence.req_author
+    %p
+      %b Объект заявки:
+      = @licence.req_object
+    %p
+      %b Статус заявки:
+      = @licence.req_status
+    %p
+      %b Регистрирующий орган:
+      = @licence.req_agency
+    %p
+      %b Приоритет заявки:
+      =l( @licence.req_priority)
+  %p
+    %b Тип патента:
+    = @licence.support
+
+  - if @licence.research_effort
+    %p
+      %b НИР:
+      = @licence.research_effort.name
+

@@ -1,7 +1,16 @@
-%h1 Editing licence
+.page-header
+  %h1 
+    Редактирование лицензии
+    = link_to(@licence, {:class => 'btn btn-primary btn-outline btn-circle'}) do
+      %i.fa.fa-eye
 
-= render 'form'
+  %ol.breadcrumb
+    %li
+      Редактирование
+    %li= link_to(Licence.models_human_name, licences_path)
+    %li= link_to(@licence.human, @licence)
+    %li.active
+      Редактирование лицензии
 
-= link_to 'Show', @licence
-\|
-= link_to 'Back', licences_path
+.box
+  = render 'form'

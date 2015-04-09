@@ -59,6 +59,10 @@ module ApplicationHelper
         :icon => 'fa-file'},
        {:name => 'Заявки',
         :controller => :ois_requests, :action => :index,
+        :icon => 'fa-file'},
+
+       {:name => 'Лицензии',
+        :controller => :licences, :action => :index,
         :icon => 'fa-file'}
        ]}
     result.each do |item|

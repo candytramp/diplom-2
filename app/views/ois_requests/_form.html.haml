@@ -16,9 +16,11 @@
       .form-group
         = f.label :reg_agency
         = f.text_field :reg_agency, class: 'form-control'
+        = f.error_messages_for(:reg_agency)
   .form-group
     = f.label :author
     = f.text_area :author, class: 'form-control'
+    = f.error_messages_for(:author)
   .row
     .col-md-6
       .form-group

@@ -25,7 +25,6 @@ class LicencesController < ApplicationController
   # POST /licences.json
   def create
     @licence = Licence.new(licence_params)
-
     respond_to do |format|
       if @licence.save
         format.html { redirect_to @licence, notice: 'Licence was successfully created.' }
@@ -69,6 +68,6 @@ class LicencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def licence_params
-      params.require(:licence).permit(:number, :reg_date, :type, :name, :expiration_date, :req_number, :req_author, :req_object, :req_status, :req_agency, :req_priority, :support, :research_effort_id, :creator_login, :creator_data)
+      params.require(:licence).permit(:number, :reg_date, :ltype, :name, :expiration_date, :req_number, :req_author, :req_object, :req_status, :reg_agency, :req_priority, :support, :research_effort_id, :creator_login, :creator_data)
     end
 end

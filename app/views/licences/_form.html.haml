@@ -1,55 +1,68 @@
 = form_for @licence do |f|
-  - if @licence.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@licence.errors.count, "error")} prohibited this licence from being saved:"
-      %ul
-        - @licence.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :number
-    = f.text_field :number
-  .field
-    = f.label :reg_date
-    = f.date_select :reg_date
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
+  .form-group
     = f.label :name
-    = f.text_area :name
-  .field
-    = f.label :expiration_date
-    = f.date_select :expiration_date
-  .field
+    = f.text_area :name, class: 'form-control'
+    = f.error_messages_for(:name)
+  .row
+    .col-md-5
+      .form-group
+        = f.label :number
+        = f.text_field :number, class: 'form-control'
+        = f.error_messages_for(:number)
+    .col-md-7
+      .form-group
+        = f.label :ltype
+        = f.select(:ltype, ['изобретение', 'промышленный образец','полезная модель','программа для ЭВМ','база данных','товарный знак'], {}, class: 'form-control')
+        = f.error_messages_for(:ltype)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :reg_date
+        .input-group.date.datepicker
+          = f.text_field :reg_date, class: 'form-control',:value=>(l(@licence.reg_date,:format=>"%d.%m.%Y") if @licence.reg_date)
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+      = f.error_messages_for(:reg_date)
+    .col-md-6
+      .form-group
+        = f.label :expiration_date
+        .input-group.date.datepicker
+          = f.text_field :expiration_date, class: 'form-control',:value=>(l(@licence.expiration_date,:format=>"%d.%m.%Y") if @licence.expiration_date)
+          %span.input-group-addon.glyphicon.glyphicon-calendar
+      = f.error_messages_for(:expiration_date)
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :research_effort_id
+        = f.select("research_effort_id", chosen_options(ResearchEffort), {include_blank: ''}, class: 'chosen-select form-control')
+        = f.error_messages_for(:research_effort)
+    .col-md-6
+      .form-group
+        = f.label :support
+        = f.select( :support, ['патент', 'поддержка патента'], {include_blank: ''}, class: 'form-control')
+
+
+  .form-group
     = f.label :req_number
-    = f.text_field :req_number
-  .field
+    = f.text_field :req_number, class: 'form-control'
+  .form-group
     = f.label :req_author
-    = f.text_area :req_author
-  .field
+    = f.text_area :req_author, class: 'form-control'
+  .form-group
     = f.label :req_object
-    = f.text_area :req_object
-  .field
+    = f.text_area :req_object, class: 'form-control'
+  .form-group
     = f.label :req_status
-    = f.text_field :req_status
-  .field
+    = f.text_field :req_status, class: 'form-control'
+  .form-group
     = f.label :reg_agency
-    = f.text_field :reg_agency
-  .field
+    = f.text_field :reg_agency, class: 'form-control'
+  .form-group
     = f.label :req_priority
-    = f.date_select :req_priority
-  .field
-    = f.label :support
-    = f.text_field :support
-  .field
-    = f.label :research_effort
-    = f.text_field :research_effort
-  .field
-    = f.label :creator_login
-    = f.text_field :creator_login
-  .field
-    = f.label :creator_data
-    = f.text_area :creator_data
-  .actions
-    = f.submit 'Save'
+    = f.date_select :req_priority, class: 'form-control'
+
+  %br
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+  - content_for :error_messages do
+    = error_messages_for  @licence

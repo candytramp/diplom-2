@@ -1,16 +1,16 @@
 class TypeValidator < ActiveModel::Validator
 	def validate(record)
-		if record.type.present?	 
-			if ['изобретение', 'промышленнный образец','полезная модель'].include?(record.type)
+		if record.ltype.present?	 
+			if ['изобретение', 'промышленный образец','полезная модель'].include?(record.ltype)
 				record.errors[:support] << 'Отсутствует подтип документа' if !record.support.present? 
-			elsif ['программа для ЭВМ','база данных','товарный знак'].include?(record.type)
+			elsif ['программа для ЭВМ','база данных','товарный знак'].include?(record.ltype)
 				#
 			else
-				record.errors[:type] << 'Не корректный тип документа'
+				record.errors[:ltype] << 'Не корректный тип документа'
 			end
 
 		else
-			record.errors[:type] << 'Тип документа не определен'
+			record.errors[:ltype] << 'Тип документа не определен'
 		end
 	end
 end
@@ -25,10 +25,18 @@ class Licence < ActiveRecord::Base
 	has_many :licence_people
 	has_paper_trail
 	#:expiration_date,:req_number,:req_author, :req_object, :req_status, :reg_agency,:req_priority, :support
-	validates :support, inclusion: {in: %w(патент, поддержка патента), allow_blank: true}
-	validates :number, :type, :name, :reg_date, presence: true
+	validates :support, inclusion: {in: ['патент', 'поддержка патента'], allow_blank: true}
+	validates :number, :ltype, :name, :reg_date, presence: true
 	validates :number, length: {maximum: 16}
-	validates :type, length: {maximum: 32}
+	validates :ltype, length: {maximum: 32}
+
+
+	def human()
+    "Лицензия: #{self.number}"
+  end
+  def Licence.models_human_name()
+    "Лицензии"
+  end
 
 end
 
