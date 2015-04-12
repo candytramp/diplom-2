@@ -20,7 +20,7 @@
   %p
     %b Год:
     = @article.year
-  - if @article.source[:type] == 'журнал'
+  - if @article.source[:stype] == 'журнал'
     %p
       %b Журнал:
       = @article.source[:name]

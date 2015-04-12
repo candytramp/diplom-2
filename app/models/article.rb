@@ -20,28 +20,29 @@ end
 class SourceValidator < ActiveModel::Validator
   def initialize(value)
     @checks = {
-      name: [PresenceCheck.new],
-      year: [PresenceCheck.new, YearCheck.new],
-      output: [PresenceCheck.new],
-      is_russian: [BooleanCheck.new], 
-      in_rinc: [BooleanCheck.new],
-	   type: []
+      "name" => [PresenceCheck.new],
+      "year" => [PresenceCheck.new, YearCheck.new],
+      "output" => [PresenceCheck.new],
+      "is_russian" => [BooleanCheck.new], 
+      "in_rinc" => [BooleanCheck.new],
+      "stype" => []
     }
   end
 
   def validate(record)
     result = ""
 	if record.source.present?
-	   	if !record.source.has_key?(:type) 
-			record.errors[:source] << "Тип докумнта не определен"
-      puts 'underfiend'
-		else
-			case record.source[:type]
-			when 'журнал'
-				  result = validates_magazine(record.source) 
-				if !result.blank?
-					record.errors[:source] << "Неверное значение аттрибута #{result}"	
-				end	 
+    puts record.source.inspect
+    if !record.source.has_key?(:stype) 
+			  record.errors[:source] << "Тип докумнта не определен"
+        puts 'underfiend'
+    else
+    case record.source[:stype]
+      when 'журнал'
+        result = validates_magazine(record.source) 
+        if !result.blank?
+          record.errors[:source] << "Неверное значение аттрибута #{result}"	
+        end	 
         puts 'mag' 		  
 			when 'сборник трудов'
 				result = validates_papers(record.source) 
@@ -64,7 +65,7 @@ class SourceValidator < ActiveModel::Validator
   private
   
   def validates_magazine(hash)
-    required_keys=[:name, :year, :type, :output, :is_russian, :in_rinc]
+    required_keys=[:name, :year, :stype, :output, :is_russian, :in_rinc]
     
     required_keys.each do |key|
     	if !hash.has_key?(key)
@@ -72,12 +73,12 @@ class SourceValidator < ActiveModel::Validator
       end			
     end
   	hash.each do |key, value|
-  	  if key.kind_of?(String)
+  	  if value.kind_of?(String)
   		  value = value.strip 
   		  hash[key] = value.gsub(/\s+/,' ')
   		end
-		  @checks[key].each do |check| 
-  		  return key unless check.check(value)
+		  @checks[key.to_s].each do |check| 
+  		  return key.to_s unless check.check(value)
 
   		end
   	end
@@ -85,7 +86,7 @@ class SourceValidator < ActiveModel::Validator
   end
   
   def validates_papers(hash)
-    required_keys=[:name, :year, :type]
+    required_keys=[:name, :year, :stype]
     required_keys.each do |key|
     	if !hash.has_key?(key)
     		return "#{key} (пропущенный атрибут)"
@@ -93,12 +94,13 @@ class SourceValidator < ActiveModel::Validator
       end			
     end
   	hash.each do |key, value|
-  	  if key.kind_of?(String)
+  	  if value.kind_of?(String)
   		  value = value.strip 
   		  hash[key] = value.gsub(/\s+/,' ')
   	  end  
-	    @checks[key].each do |check| 
-  		  return key unless check.check(value)
+      Rails.logger.info("#{key} key сборник трудов")
+	    @checks[key.to_s].each do |check| 
+  		  return key.to_s unless check.check(value)
         puts 'azxwscedv'
   	  end
   	end
@@ -157,24 +159,27 @@ class Article < ActiveRecord::Base
         puts '5frf4'
 			else
 				self.source[:is_russian] = false
-        puts '7vf4'
+        puts '7vf4' 
 			end
 		else
 			self.errors[:source] << 'Missed source value!'		
       puts '9ferf3'
 		end
     end
+
   def Article.set_source(params, article_params)
     source = Hash.new
     if params['source_type_col'] == 'on'
       source.merge!({:name => article_params['source']['col_name']})
       source.merge!({:year => article_params['source']['col_year']})
-      source[:type] = 'сборник трудов'
+      source[:stype] = 'сборник трудов'
+      
     elsif params['source_type_mag'] == 'on'
       h = {:name => article_params['source']['mag_name'], :year => article_params['source']['mag_year'], :output => article_params['source']['output'], :is_russian => article_params['source']['is_russian'], :in_rinc => article_params['source']['in_rinc'] }
       source = source.merge!(h)
-      source[:type] = 'журнал'
+      source[:stype] = 'журнал'
     end
+    Rails.logger.info("#{source.inspect} set_source")
     return source
   end
 end

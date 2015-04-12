@@ -21,14 +21,14 @@
       .form-group
         = f.label :start
         .input-group.date#datetimepicker1
-          = f.text_field :start, class: 'form-control'
+          = f.text_field :start, class: 'form-control',:value=>(l(@conference.start,:format=>"%d.%m.%Y") if @conference.start)
           %span.input-group-addon.glyphicon.glyphicon-calendar
         = f.error_messages_for(:start)
     .col-md-6
       .form-group
         = f.label :finish
         .input-group.date#datetimepicker2
-          = f.text_field :finish, class: 'form-control'
+          = f.text_field :finish, class: 'form-control',:value=>(l(@conference.finish,:format=>"%d.%m.%Y") if @conference.finish)
           %span.input-group-addon.glyphicon.glyphicon-calendar
         = f.error_messages_for(:finish)
 

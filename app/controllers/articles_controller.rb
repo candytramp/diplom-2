@@ -42,9 +42,11 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    @article.source = Article.set_source(params, article_params)
-    respond_to do |format|
-      if @article.update(article_params)
+    art_parametres = article_params
+    art_parametres['source'] = Article.set_source(params, article_params)
+    #raise art_parametres.inspect
+    respond_to do |format| 
+      if @article.update(art_parametres)
         format.html { redirect_to @article, notice: 'Статья была успешно обновлена.' }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -72,6 +74,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:name, :source, :start_page, :finish_page, :link, :creator_login, :creator_data, :source => [:col_name, :col_year, :mag_name, :mag_year,  :type, :output, :is_russian, :in_rinc])
+      params.require(:article).permit(:name, :source, :start_page, :finish_page, :link, :creator_login, :creator_data, :source => [:col_name, :col_year, :mag_name, :mag_year,  :stype, :output, :is_russian, :in_rinc])
     end
 end

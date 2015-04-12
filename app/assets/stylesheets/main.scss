@@ -147,4 +147,8 @@ a {
   padding-top: 20px;
 }
 
-
+::-moz-focus-inner :focus, :active {
+  border: 0;
+  outline: none;
+  -moz-outline-style: none;
+}
