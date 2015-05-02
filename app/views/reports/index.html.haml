@@ -13,7 +13,10 @@
   - @reports.each do |report|
     %tr
       %td= report.title
-      %td= report.conference
+      - if report.conference
+        %td= report.conference.name
+      - else
+        %td= 'No info'
       %td= report.creator_login
       %td= report.creator_data
       %td= link_to 'Show', report

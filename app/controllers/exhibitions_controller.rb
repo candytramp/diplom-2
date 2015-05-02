@@ -4,7 +4,7 @@ class ExhibitionsController < ApplicationController
   # GET /exhibitions
   # GET /exhibitions.json
   def index
-    @exhibitions = Exhibition.all
+    @exhibitions = Exhibition.includes(:exhibits).all
   end
 
   # GET /exhibitions/1

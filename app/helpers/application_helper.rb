@@ -60,9 +60,23 @@ module ApplicationHelper
        {:name => 'Заявки',
         :controller => :ois_requests, :action => :index,
         :icon => 'fa-file'},
-
        {:name => 'Лицензии',
         :controller => :licences, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Выставки',
+        :controller => :exhibitions, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Экспонаты',
+        :controller => :exhibits, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Учебники',
+        :controller => :textbooks, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Монографии',
+        :controller => :monographs, :action => :index,
+        :icon => 'fa-file'},
+       {:name => 'Доклады',
+        :controller => :reports, :action => :index,
         :icon => 'fa-file'}
        ]}
     result.each do |item|

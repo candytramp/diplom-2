@@ -1,2 +1,2 @@
-json.extract! @chart, :data, :xkey, :ykeys, :labels
+json.extract! @chart, :data
 

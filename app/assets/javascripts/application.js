@@ -46,7 +46,7 @@ $(document).on("ready page:load", function() {
     var chartElement = $(this);
     $.get(chartElement.data('src'), function (data) {
       data.element = chartElement.attr('id');
-      Morris.Line(data);
+      Morris.Donut(data);
     });
   });
 });
