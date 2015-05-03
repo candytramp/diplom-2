@@ -16,8 +16,8 @@
 
   - @article_authors.each do |article_author|
     %tr
-      %td= article_author.article
-      %td= article_author.person
+      %td= article_author.article.name
+      %td= article_author.person.full_name
       %td= article_author.old_lastname
       %td= article_author.is_teacher
       %td= article_author.is_staffteacher

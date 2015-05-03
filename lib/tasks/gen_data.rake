@@ -3,7 +3,7 @@ namespace :db do
   task :gen_data => :environment do
     require 'populator'
     require 'faker'
-    models = [Textbook, Monograph, Exhibition, Conference, Person, Licence, OisRequest, ResearchEffort]
+    models = [Textbook, Monograph, Exhibition, Conference, Person, Licence, OisRequest, Article]
     inner_models = [Exhibit, Report]
 
     models.each(&:destroy_all)
@@ -59,27 +59,63 @@ namespace :db do
           el.last_name = Faker::Name.last_name
           el.first_name = Faker::Name.first_name
           el.birthday = Faker::Date.between(Date.new(1940,1,1), Date.new(1990,12,31))
+        elsif model == OisRequest
+          el.number = Faker::Lorem.word 
+          el.priority = Faker::Date.between(Date.new(1970,1,1), Date.new(2014,12,31))
+          el.author = Faker::Lorem.sentence
+          el.name = Faker::App.name + "_#{rand(450)}"
+          el.object = ['изобретение','полезная модель','промышленный образец','программа для ЭВМ','база данных','товарный знак']
+          el.status = ['российская', 'международная']
+          el.reg_agency = Faker::App.name
+        elsif model == Licence
+          el.number = Faker::Lorem.characters(10) + "_#{rand(5)}"
+          el.reg_date = Faker::Date.between(Date.new(1970,1,1), Date.new(2014,12,31))
+          el.name = Faker::App.name + "_#{rand(450)}"
+          el.expiration_date = el.reg_date + 75.years
+          el.ltype = Faker::Lorem.characters(30)
         elsif model == Article
-          el.name = Faker::Lorem.word
+          el.name = Faker::Lorem.word + "_#{rand(450)}"
           el.start_page = rand(500) + 1
           el.finish_page = el.start_page + rand(20) + 1
           el.link = Faker::Internet.url
-          el.year = Faker::Date.between(Date.new(1970,1,1), Date.new(2014,12,31)).year
+          tt = Faker::Date.between(Date.new(1970,1,1), Date.new(2014,12,31))
+          el.year = tt.year
+          el.source = {}
           if (rand(2)+1) == 1
             el.source[:stype] = 'журнал'
-            el.source[:name] = Faker::Lorem.word
+            el.source[:name] = Faker::Lorem.word + "_#{rand(450)}"
             el.source[:year] = el.year - 1
             el.source[:output] = rand(50) + 1
             el.source[:is_russian] = [false,true].sample
             el.source[:in_rinc] = [false,true].sample
           else
             el.source[:stype] = 'сборник трудов'
-            el.source[:name] = Faker::Lorem.word
+            el.source[:name] = Faker::Lorem.word + "_#{rand(450)}"
             el.source[:year] = el.year - 1
           end
+          el.source.to_json
         end
       end
     end
+  end
+
+
+  desc "Generating connections"
+  task :gen_connections => :environment do
+    require 'populator'
+    
+    articles = Article.select(:id).all.load
+    people = Person.select(:id, :last_name).all.load
+    srand(Time.now.to_i)
+    ArticleAuthor.populate 100 do |conn|
+        seed1 = rand(people.size)
+        seed2 = rand(articles.size)
+        conn.person_id = people[seed1].id
+        conn.old_lastname = people[seed1].last_name
+        conn.article_id = articles[seed2].id 
+        #conn.details = 
+    end
+
   end
 
 end
