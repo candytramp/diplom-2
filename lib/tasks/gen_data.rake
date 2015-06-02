@@ -103,17 +103,70 @@ namespace :db do
   desc "Generating connections"
   task :gen_connections => :environment do
     require 'populator'
-    
-    articles = Article.select(:id).all.load
+    models = [Textbook, Monograph, Exhibition, Conference, Article, Exhibit, Report]
+    conn_models = [[PeopleTextbook, "textbook_id="], [AuthorMonograph, "monograph_id="], [ExhibitionPerson, "exhibition_id="], [ConferencePerson, "conference_id="], [ArticleAuthor, "article_id="], [ExhibitPerson, "exhibit_id="], [PeopleReport, "report_id="]]
+    works = []
+    models.each do |model|
+      works << model.select(:id).all.to_a
+    end
+    works = conn_models.zip(works)
+    p works.first
+    #articles = Article.select(:id).all.load
     people = Person.select(:id, :last_name).all.load
+    insts = {
+              'ИИТУ' => [ {'11' => 'информационных систем и технологий'},
+                          {'12' => 'прикладной информатики' },
+                          {'13' => 'информационной безопасности автоматизированных систем' },
+                          {'14' => 'автоматики и управления в технических системах'},
+                          {'15' => 'прикладной математики' },{'16' => 'физики' }],
+              'ТИ' => [ {'21' => 'конструкторско-технологического обеспечения машиностроения'},
+                        {'22' => 'машиностроения'},
+                        {'23' => 'материаловедения и нанотехнологий'},
+                        {'24' => 'графики и промышленного дизайна'},
+                        {'25' => 'технической механики'},
+                        {'26' => 'деталей машин и метрологии'},
+                        {'27' => 'химии'}],
+              'ИЭТС' => [ {'31' => 'автомобилей и двигателей'},
+                          {'32' => 'промышленной теплоэнергетики'},
+                          {'33' => 'энергомашиностроения'},
+                          {'34' => 'безопасности жизнедеятельности и промышленной экологии'},
+                          {'35' => 'эксплуатации транспортных средств'}],
+              'ЮИ' => [ {'41' => 'трудового права и права социального обеспечения '},
+                        {'42' => 'уголовного права и уголовного процесса'},
+                        {'43' => 'теории государства и права и публичного права '},
+                        {'44' => 'гражданского права и гражданского процесса '},
+                        {'45' => 'административного и финансового права'}], 
+              'ИЭУ' => [ {'51' => 'экономики предприятий и организаций '},
+                         {'52' => 'менеджмента '},
+                         {'53' => 'бухгалтерского учета, анализа и аудита '},
+                         {'54' => 'финансов и кредита' },
+                         {'55' => 'управления персоналом '},
+                         {'56' => 'государственного и муниципального управления'},{'57' => 'экономической теории '}],
+              'СГТИ' => [{'61' => 'философии и истории'},{'62' => 'иностранных языков'},{'63' => 'физического воспитания '},{'64' => 'русского языка и культуры речи '}], 
+              'ИДО' => [{'71' => 'менеджмент  организации'},{'72' => 'экономика'},{'73' => 'правовые дисциплины'},{'74' => 'конструкторско-технологическое обеспечение предприятий'},{'75' => 'гуманитарные и социальные дисциплины'}]
+            }
+    
     srand(Time.now.to_i)
-    ArticleAuthor.populate 100 do |conn|
-        seed1 = rand(people.size)
-        seed2 = rand(articles.size)
-        conn.person_id = people[seed1].id
-        conn.old_lastname = people[seed1].last_name
-        conn.article_id = articles[seed2].id 
-        #conn.details = 
+    zip_buffer = []
+    people.each do |person|
+      inst_num = rand(insts.size)
+      inst_name = insts.to_a[inst_num][0]
+      kaf = insts.to_a[inst_num][1][rand(insts.to_a[inst_num][1].size)]
+      zip_buffer << [inst_name, kaf]
+    end
+    people = people.zip(zip_buffer)
+    works.each do |work|
+      work[0][0].populate 100 do |conn|
+              seed1 = rand(people.size)
+              seed2 = rand(work[1].size)
+              puts "--------------------------"
+              puts work[1][seed2].inspect
+
+              conn.person_id = people[seed1][0].id
+              conn.old_lastname = people[seed1][0].last_name
+              conn.send(work[0][1], work[1][seed2].id) 
+              conn.details = {inst: people[seed1][1][0], kaf: people[seed1][1][1]}
+      end
     end
 
   end

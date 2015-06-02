@@ -47,4 +47,7 @@ class Diploma < ActiveRecord::Base
   def Diploma.models_human_name()
     "Дипломы"
   end
+  
+  
+  
 end

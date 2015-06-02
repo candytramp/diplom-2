@@ -8,4 +8,11 @@ class Textbook < ActiveRecord::Base
 	validates :grif, inclusion: {in: ['гриф УМО или НМС', 'гриф Рособразования (Минобразования России)', 
 																		'гриф других федеральных органов исполнительной власти', 'другой гриф', 'без грифа']}
 	validates :textbook_type, inclusion: {in: ['учебник', 'учебное пособие', 'учебно-методическое пособие','методическое пособие']}
+  def human()
+    "Учебник: #{self.name}"
+  end
+
+  def Textbook.models_human_name()
+    "Учебники"
+  end
 end

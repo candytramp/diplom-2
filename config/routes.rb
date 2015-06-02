@@ -63,7 +63,13 @@ Rails.application.routes.draw do
 
   resources :ois_requests
 
-  resources :documents
+  resources :documents do
+    member do
+      get :show_page
+      get :next_page
+      get :prev_page
+    end
+  end
 
   resources :research_efforts
 

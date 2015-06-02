@@ -41,11 +41,20 @@
   %b Документ
   - @diploma.documents.each do |document|
     .media
-      .media-left
+      -#.media-left
         %a{href: document.paper.url(:original)} 
           = image_tag document.paper.url(:thumb), class: 'media-object'
       .media-body
         %p= document.description
-        =link_to document.paper.url(:original), class: 'btn btn-primary' do
+        =link_to document.paper.url(:default_url), class: 'btn btn-primary' do
           %i.fa.fa-download
           Скачать
+
+    .row
+      .col-xs-6.col-md-6
+        %div#doc_prev_page
+          = render "show_prev", {document: document}
+      .col-xs-6.col-md-6
+        %div#doc_page
+          = render "show_page", {document: document, page_number: 1}
+

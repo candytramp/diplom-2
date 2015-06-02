@@ -6,4 +6,11 @@ class Monograph < ActiveRecord::Base
 	validates :isbn, length: {maximum: 32}
 	validates :publisher, inclusion: {in: ['Зарубежное издательство','Российское издательство: "Высшая школа"',
 																				 'Российское издательство: вуза (организации)','Российское издательство']}
+  def human()
+    "Монография: #{self.name}"
+  end
+
+  def Monograph.models_human_name()
+    "Монографии"
+  end
 end

@@ -6,4 +6,11 @@ class Report < ActiveRecord::Base
 	has_many :people_reports
 	has_many :documents, :as=> :owner
 	validates :conference_id, presence: true
+  def human()
+    "Отчет: #{self.name}"
+  end
+
+  def Report.models_human_name()
+    "Отчеты"
+  end
 end

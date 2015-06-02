@@ -108,7 +108,7 @@ module ApplicationHelper
   
   def generate_top_bar_items()
     result = []
-    return result if @current_role_user.nil?
+=begin    return result if @current_role_user.nil?
     result << {
       :name => 'Словари',
       :children => [
@@ -139,7 +139,7 @@ module ApplicationHelper
          :controller => :people, :action => :index}
       ]} 
     end
-
+=end
     result   
   end
 

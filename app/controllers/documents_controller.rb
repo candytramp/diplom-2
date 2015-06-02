@@ -1,6 +1,38 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :show_page, :next_page, :prev_page]
+  
+  @@current_page = 1
+  
+  def show_page
+    page=@document.page_path(params[:page_number])
+    p = File.read(page)
+    send_data(p, :type => "image/png", :filename => 'page.png')
+  end
+  
+  def next_page  
+    @page_number = params[:page_number].to_i+1
+    @@current_page = @page_number
+    page=@document.page_path(@page_number)
+    @p = File.read(page)
+    respond_to do |format|
+      format.js do
+        render :next_page
+      end
+    end
+    
+  end
+  def prev_page  
+    @page_number = @@current_page - 1
+    @@current_page = @page_number
+    page=@document.page_path(@page_number)
+    @p = File.read(page)
+    respond_to do |format|
+      format.js do
+        render :next_page
+      end
+    end
+    
+  end
   # GET /documents
   # GET /documents.json
   def index
@@ -69,6 +101,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:description, :owner_id, :owner_type, :creator_login, :creator_data)
+      params.require(:document).permit(:description, :owner_id, :owner_type,:page_number, :creator_login, :creator_data)
     end
 end

@@ -1,0 +1,3 @@
+=link_to url_for( action: :next_page, id: document.id, page_number: page_number), remote: true, class: 'btn btn-default' do
+  %i.fa.fa-angle-right
+%img.img-rounded{:alt => "", :src => url_for(action: :show_page, id: document.id, page_number: page_number)}

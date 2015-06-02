@@ -8,4 +8,11 @@ class Exhibition < ActiveRecord::Base
 	validates :name, uniqueness: {scope: :year, case_sensitive: false}
 	validates :year, numericality: {less_than_or_equal_to: Date.today.year} 
 	validates :etype, inclusion: {in: ['международная','на базе вуза','региональная','всероссийская', 'другая']}
+  def human()
+    "Выставка: #{self.name}"
+  end
+
+  def Exhibition.models_human_name()
+    "Вставки"
+  end
 end
