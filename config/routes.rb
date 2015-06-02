@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   resources :documents do
     member do
       get :show_page
+      get :show_prev
       get :next_page
       get :prev_page
     end

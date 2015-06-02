@@ -13,8 +13,8 @@ class Document < ActiveRecord::Base
   #validates_attachment_content_type :paper, :content_type => /(pdf)/ 
 
 
-  def extract_images(size="100x")
-    Docsplit.extract_images(paper.path, :format => :png, :output => File.dirname(paper.path))
+  def extract_images(size="800x")
+    Docsplit.extract_images(paper.path, :format => :png, :output => File.dirname(paper.path), :size => size)
     update_column(:page_number, Docsplit.extract_length(paper.path))
     true
   end

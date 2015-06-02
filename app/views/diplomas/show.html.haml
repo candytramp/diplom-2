@@ -51,10 +51,9 @@
           Скачать
 
     .row
-      .col-xs-6.col-md-6
-        %div#doc_prev_page
-          = render "show_prev", {document: document}
-      .col-xs-6.col-md-6
-        %div#doc_page
-          = render "show_page", {document: document, page_number: 1}
+      %div#doc_prev_page
+        = render "show_prev", {document: document}
+    .row
+      %div#doc_page
+        = render "show_page", {document: document, page_number: 1}
 
