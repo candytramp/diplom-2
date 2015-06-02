@@ -8,6 +8,7 @@
 /.bundle
 /public/system
 /storage
+/public/storage
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep

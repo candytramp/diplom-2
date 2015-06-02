@@ -6,8 +6,8 @@ class Document < ActiveRecord::Base
 	#validates_attachment :paper, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
   #validates :paper, attachment_presence: true
   
-  has_attached_file :paper, path: ":rails_root/storage/:class/:attachment/:id_partition/:style/:filename", 
-  default_url: ":rails_root/storage/:class/:attachment/:id_partition/:style/:filename", styles: {thumb: { geometry: "200x", format: :png, animated: false }}
+  has_attached_file :paper, path: ":rails_root/public/storage/:class/:attachment/:id_partition/:style/:filename", 
+  default_url: ":rails_root/storage/:class/:attachment/:id_partition/:style/:filename", url: "/storage/:class/:attachment/:id_partition/:style/:filename"
   validates_attachment :paper, content_type: { content_type: ['application/pdf', 'image/jpeg', 'image/tiff', 'image/bmp', 'image/png' ]}
   validates :paper, attachment_presence: true
   #validates_attachment_content_type :paper, :content_type => /(pdf)/ 

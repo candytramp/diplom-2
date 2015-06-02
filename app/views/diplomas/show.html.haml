@@ -46,7 +46,7 @@
           = image_tag document.paper.url(:thumb), class: 'media-object'
       .media-body
         %p= document.description
-        =link_to document.paper.url(:default_url), class: 'btn btn-primary' do
+        =link_to document.paper.url(:original), class: 'btn btn-primary' do
           %i.fa.fa-download
           Скачать
 
