@@ -86,7 +86,7 @@ Rails.application.routes.draw do
 
   resources :grntis
 
-  resources :articles
+  resources :articles 
 
   resources :people
 

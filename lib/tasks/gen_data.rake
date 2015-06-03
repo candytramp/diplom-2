@@ -103,14 +103,13 @@ namespace :db do
   desc "Generating connections"
   task :gen_connections => :environment do
     require 'populator'
-    models = [Textbook, Monograph, Exhibition, Conference, Article, Exhibit, Report]
-    conn_models = [[PeopleTextbook, "textbook_id="], [AuthorMonograph, "monograph_id="], [ExhibitionPerson, "exhibition_id="], [ConferencePerson, "conference_id="], [ArticleAuthor, "article_id="], [ExhibitPerson, "exhibit_id="], [PeopleReport, "report_id="]]
+    models = [Textbook, Exhibition, Conference, Article, Exhibit, Report, Licence, OisRequest]
+    conn_models = [[PeopleTextbook, "textbook_id="], [ExhibitionPerson, "exhibition_id="], [ConferencePerson, "conference_id="], [ArticleAuthor, "article_id="], [ExhibitPerson, "exhibit_id="], [PeopleReport, "report_id="],[LicencePerson, "licence_id="], [AuthorRequest, "ois_request_id="] ]
     works = []
     models.each do |model|
       works << model.select(:id).all.to_a
     end
     works = conn_models.zip(works)
-    p works.first
     #articles = Article.select(:id).all.load
     people = Person.select(:id, :last_name).all.load
     insts = {
@@ -155,20 +154,28 @@ namespace :db do
       zip_buffer << [inst_name, kaf]
     end
     people = people.zip(zip_buffer)
-    works.each do |work|
-      work[0][0].populate 100 do |conn|
-              seed1 = rand(people.size)
-              seed2 = rand(work[1].size)
-              puts "--------------------------"
-              puts work[1][seed2].inspect
-
-              conn.person_id = people[seed1][0].id
-              conn.old_lastname = people[seed1][0].last_name
-              conn.send(work[0][1], work[1][seed2].id) 
-              conn.details = {inst: people[seed1][1][0], kaf: people[seed1][1][1]}
+    people.each do |person|
+      works.each do |work|
+        seed1 = rand(2)
+        if seed1 ==0
+          work[0][0].populate 1 do |conn|
+            seed2 = rand(work[1].size)
+            conn.person_id = person[0].id
+            conn.old_lastname = person[0].last_name
+            conn.send(work[0][1], work[1][seed2].id) 
+            conn.details = {inst: person[1][0], kaf: person[1][1]}
+          end
+        else
+          work[0][0].populate 0 do |conn|
+            seed2 = rand(work[1].size)
+            conn.person_id = person[0].id
+            conn.old_lastname = person[0].last_name
+            conn.send(work[0][1], work[1][seed2].id) 
+            conn.details = {inst: person[1][0], kaf: person[1][1]}
+          end
+        end
       end
     end
-
   end
 
 end

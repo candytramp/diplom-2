@@ -4,7 +4,7 @@ class AuthorMonographsController < ApplicationController
   # GET /author_monographs
   # GET /author_monographs.json
   def index
-    @author_monographs = AuthorMonograph.all
+    @author_monographs = AuthorMonograph.includes(:monograph, :person).all
   end
 
   # GET /author_monographs/1

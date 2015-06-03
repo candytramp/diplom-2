@@ -4,7 +4,7 @@ class LicencePeopleController < ApplicationController
   # GET /licence_people
   # GET /licence_people.json
   def index
-    @licence_people = LicencePerson.all
+    @licence_people = LicencePerson.includes(:licence, :person).all
   end
 
   # GET /licence_people/1

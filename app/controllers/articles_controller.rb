@@ -5,6 +5,15 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    respond_to do |format|
+      format.html do
+        render :index
+      end
+      format.json do
+        ids = @articles.pluck(:id)
+        render json: [{data: Article.top_amount(ids)}, {data: Article.top_count(ids)}]
+      end
+    end
   end
 
   # GET /articles/1

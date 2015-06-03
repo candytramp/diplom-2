@@ -10,10 +10,11 @@ class ChartsController < ApplicationController
       labels: ['Количество статей']
     }
 =end
+
     @chart = {
        data: (2012 .. 2015).map { |year|
         { label: "Количество статей в"+ "\n"+ year.to_s , value: 57^((year%10)**2) }
-      },
+      }
        #data: [
           #{label: "Download Sales", value: 12},
           #{label: "In-Store Sales", value: 30},

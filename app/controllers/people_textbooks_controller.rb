@@ -4,7 +4,7 @@ class PeopleTextbooksController < ApplicationController
   # GET /people_textbooks
   # GET /people_textbooks.json
   def index
-    @people_textbooks = PeopleTextbook.all
+    @people_textbooks = PeopleTextbook.includes(:textbook, :person).all
   end
 
   # GET /people_textbooks/1

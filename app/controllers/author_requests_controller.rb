@@ -4,7 +4,7 @@ class AuthorRequestsController < ApplicationController
   # GET /author_requests
   # GET /author_requests.json
   def index
-    @author_requests = AuthorRequest.all
+    @author_requests = AuthorRequest.includes(:request, :person).all
   end
 
   # GET /author_requests/1

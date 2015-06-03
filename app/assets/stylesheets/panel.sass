@@ -1,0 +1,61 @@
+$panel-styles: (default: $btn-default-bg, primary: $brand-primary, success: $brand-success, info: $brand-info, warning: $brand-warning, danger: $brand-danger, purple: $brand-purple, light-warning: $brand-light-warning,)
+
+.panel hr
+  border-color: rgba(0, 0, 0, 0.1)
+
+.panel-control
+  height: 100%
+  position: relative
+  float: right
+  padding: 0 15px
+
+.panel-title
+  font-weight: 300
+  padding: 0 20px 0 20px
+  font-size: 1.416em
+  line-height: 50px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+
+@mixin panel_variable($style, $color)
+  .panel-#{$style}.panel-colorful, .panel-#{$style} .panel-colorful, .panel-bordered-#{$style} .panel-colorful
+    background-color: $color
+    color: #fff
+  .panel-#{$style}.panel-outline, .panel-#{$style} .panel-outline, .panel-bordered-#{$style} .panel-outline
+    background-color: #fff
+    color: $color
+  .panel-#{$style}.panel-bordered, .panel-bordered-#{$style}
+    border: 1px solid $color
+
+@mixin bg_variable($style, $color)
+  .bg-#{$style}
+    background-color: $color
+    color: #fff
+  .text-#{$style}
+    color: $color
+
+  .nav.nav-tabs.tab-colored-#{$style}
+    li
+      a:hover,a:focus, a:active
+        color: #fff
+        background: $color
+    li.active
+      a
+        color: #fff
+        background: $color
+        border-color: $color
+
+
+  @each $type in ('dashed', 'solid', 'dotted')
+    .brd-#{$style}-#{$type}
+      border: 1px $type $color
+  .text-#{$style}
+    color: $color
+
+
+@each $style, $color in $panel-styles
+  @include panel_variable($style, $color)
+  @include bg_variable($style, $color)
+

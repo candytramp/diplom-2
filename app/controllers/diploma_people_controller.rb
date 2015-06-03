@@ -4,7 +4,7 @@ class DiplomaPeopleController < ApplicationController
   # GET /diploma_people
   # GET /diploma_people.json
   def index
-    @diploma_people = DiplomaPerson.all
+    @diploma_people = DiplomaPerson.includes(:diploma, :person).all
   end
 
   # GET /diploma_people/1

@@ -4,7 +4,7 @@ class ArticleAuthorsController < ApplicationController
   # GET /article_authors
   # GET /article_authors.json
   def index
-    @article_authors = ArticleAuthor.all
+    @article_authors = ArticleAuthor.includes(:article, :person).all
   end
 
   # GET /article_authors/1

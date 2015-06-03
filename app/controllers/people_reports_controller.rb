@@ -4,7 +4,7 @@ class PeopleReportsController < ApplicationController
   # GET /people_reports
   # GET /people_reports.json
   def index
-    @people_reports = PeopleReport.all
+    @people_reports = PeopleReport.includes(:report, :person).all
   end
 
   # GET /people_reports/1

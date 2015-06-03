@@ -19,6 +19,30 @@ show_collection_fields = ->
 ready=->
   $("#check_rinc").bootstrapSwitch()
   $("#check_russian").bootstrapSwitch()
+
+
+  load_donut_chart = (selector)->
+    url = $('#' + selector + '-donut').data('url')
+    $.ajax
+      type: 'GET'
+      dataType: 'JSON'
+      url: url
+      data:
+        q: $('input[name=q]').val()
+      success: (data, textStatus, jqXHR)->
+        default_data =
+          element: selector + '-1'
+          resize: true
+        $.extend(true, data[0], default_data)
+        Morris.Donut data[0]
+        default_data =
+          element: selector + '-2'
+          resize: true
+        $.extend(true, data[1], default_data)
+        Morris.Donut data[1]
+
+  if $('#articles-donut').size() > 0
+    load_donut_chart('articles')
   
 $(document).ready ready
 $(document).on('page:load', ready)

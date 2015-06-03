@@ -4,7 +4,7 @@ class ExhibitPeopleController < ApplicationController
   # GET /exhibit_people
   # GET /exhibit_people.json
   def index
-    @exhibit_people = ExhibitPerson.all
+    @exhibit_people = ExhibitPerson.includes(:exhibit, :person).all
   end
 
   # GET /exhibit_people/1

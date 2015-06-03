@@ -4,6 +4,16 @@
     =link_to(new_article_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
       %i.fa.fa-plus
 
+.row
+  .col-md-6
+    .panel
+      #articles-donut{ data: { url: articles_path(q: params[:q]) }}
+        .row
+          .col-md-6
+            #articles-1.index-donut
+          .col-md-6
+            #articles-2.index-donut
+
 .list-group
   - @articles.each do |article|
     .list-group-item

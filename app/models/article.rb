@@ -135,6 +135,25 @@ class Article < ActiveRecord::Base
   def Article.models_human_name()
     "Статьи"
   end
+
+
+  class << self
+    def top_amount(ids, count = 5)
+      data = (2012 .. 2015).map { |year|
+        { label: "Количество статей в"+ "\n"+ year.to_s , value: 57^((year%10)**2) }
+      }
+      return data
+    end
+
+    def top_count(ids, count=5)
+      data = (2012 .. 2015).map { |year|
+        { label: "Количество статей в"+ "\n"+ year.to_s , value: 89^((year%14)**2) }
+      }
+      return data
+    end
+  end
+
+
 	private 
 	
 	def copy_year

@@ -4,7 +4,7 @@ class PeopleResearchEffortsController < ApplicationController
   # GET /people_research_efforts
   # GET /people_research_efforts.json
   def index
-    @people_research_efforts = PeopleResearchEffort.all
+    @people_research_efforts = PeopleResearchEffort.includes(:research_effort, :person).all
   end
 
   # GET /people_research_efforts/1
