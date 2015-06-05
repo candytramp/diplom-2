@@ -1,23 +1,37 @@
 
 .row
-  .col-md-6
+  .col-md-4
     .page-header
       %h1 
         Статьи
         =link_to(new_article_path, {:class => 'btn btn-primary btn-outline btn-circle'}) do
           %i.fa.fa-plus
 
-  .col-md-6  
+  .col-md-4
     .panel
+      %h4.text-center Количество статей, написанных в институтах МГИУ за 2014 год
       #articles-donut{ data: { url: articles_path(q: params[:q]) }}
-        .row
-          .col-md-6
-            #articles-1.index-donut
-          .col-md-6
+        .row.text-center
+          #articles-1.index-donut
+          -#.col-md-6.text-center
             #articles-2.index-donut
+  .col-md-4  
+    .panel
+      %h4.text-center Топ авторов статей вуза за 2014 год 
+      %br
+      #articles-donut{ data: { url: articles_path(q: params[:q]) }}
+        .row.text-center
+          #articles-2.index-donut
+.row
+  .col-md-12
+    .panel
+      %h4.text-center Количество статей институтов по годам
+      #articles-donut{ data: { url: articles_path(q: params[:q]) }}
+        .row.text-center
+          #articles-3
 
 .list-group
-  - @articles.each do |article|
+  - @articles.sort.reverse.each do |article|
     .list-group-item
       =link_to(article) do
         -#%span.text-danger= user.login

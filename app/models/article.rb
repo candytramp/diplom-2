@@ -138,18 +138,43 @@ class Article < ActiveRecord::Base
 
 
   class << self
-    def top_amount(ids, count = 5)
-      data = (2012 .. 2015).map { |year|
-        { label: "Количество статей в"+ "\n"+ year.to_s , value: 57^((year%10)**2) }
-      }
+    def top_amount(ids, count = 7)
+      #data = (2012 .. 2015).map { |year|
+       # { label: "Количество статей в"+ "\n"+ year.to_s , value: 57^((year%10)**2) }
+      #}
+      data = [
+        { label: "ИИТУ", value: 12},
+        { label: "ИЭТС", value: 11},
+        { label: "ТИ", value: 10},
+        { label: "ЮИ", value: 8},
+        { label: "ИЭУ", value: 9},
+        { label: "СГТИ", value: 7},
+        { label: "ИДО", value: 8}
+      ]
       return data
     end
 
     def top_count(ids, count=5)
-      data = (2012 .. 2015).map { |year|
-        { label: "Количество статей в"+ "\n"+ year.to_s , value: 89^((year%14)**2) }
-      }
+      data = [
+        { label: "Сундукова О.А.", value: 3},
+        { label: "Богданова А.Е.", value: 3},
+        { label: "Карапаева Н.А.", value: 2},
+        { label: "Грачев Д.Г.", value: 2},
+        { label: "Сергиенко И.С.", value: 3}
+      ]
+     
       return data
+    end
+    def inst_by_year(ids, count=5)
+      chart = {
+        data: (2007 .. 2014).map { |year|
+          { year: year.to_s, iitu: 2^((year%11)*3), iets: (5^((year%13)*3)-2).abs, ti: (2^((year%10)*3)+4).abs, ui: (2^((year%7)*3)+6).abs, ieu: (3^((year%23)*2-5)).abs, sgti:(2^((year%19)*2-2)).abs, ido:(7^((year%10)*3)-5).abs}
+        },
+        xkey: 'year',
+        ykeys: ['iitu', 'iets', 'ti', 'ui','ieu', 'sgti', 'ido'],
+        labels: ['Количество статей ИИТУ', 'Количество статей ИЭТС', 'Количество статей ТИ', 'Количество статей ЮИ', 'Количество статей ИЭУ', 'Количество статей СГТИ', 'Количество статей ИДО']
+      }
+      return chart
     end
   end
 

@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
       end
       format.json do
         ids = @articles.pluck(:id)
-        render json: [{data: Article.top_amount(ids)}, {data: Article.top_count(ids)}]
+        render json: [{data: Article.top_amount(ids)}, {data: Article.top_count(ids)}, Article.inst_by_year(ids)]
       end
     end
   end
