@@ -91,7 +91,7 @@ Rails.application.routes.draw do
   resources :people
 
   resources :charts, only: [:show]
-
+  resources :statistics, only: [:show]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
