@@ -168,7 +168,7 @@ class Article < ActiveRecord::Base
     def inst_by_year(ids, count=5)
       chart = {
         data: (2007 .. 2014).map { |year|
-          { year: year.to_s, iitu: 2^((year%11)*3), iets: (5^((year%13)*3)-2).abs, ti: (2^((year%10)*3)+4).abs, ui: (2^((year%7)*3)+6).abs, ieu: (3^((year%23)*2-5)).abs, sgti:(2^((year%19)*2-2)).abs, ido:(7^((year%10)*3)-5).abs}
+          { year: year.to_s, iitu: 2^((year%11)*3+12), iets: (5^((year%13)*3)-2).abs, ti: (2^((year%10)*3)+4).abs, ui: (2^((year%7)*3)+6).abs, ieu: (3^((year%23)*2-5)).abs, sgti:(2^((year%19)*2-2)).abs, ido:(7^((year%10)*3)+5).abs}
         },
         xkey: 'year',
         ykeys: ['iitu', 'iets', 'ti', 'ui','ieu', 'sgti', 'ido'],

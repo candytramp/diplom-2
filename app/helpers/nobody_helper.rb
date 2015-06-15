@@ -9,6 +9,15 @@ module NobodyHelper
          :controller => :roles, :action => :index,
          :icon => 'fa-cubes'}
     end
+       result <<{:name => 'Документы',
+        :controller => :documents, :action => :index,
+        :icon => 'fa-file'}
+       result <<{:name => 'Участники',
+        :controller => :connections, :action => :index,
+        :icon => 'fa-user-secret'}
+       result <<{:name => 'Отчетность',
+        :controller => :statistics, :action => :index,
+        :icon => 'fa-file-pdf-o'}
        result <<{:name => 'Статьи',
         :controller => :articles, :action => :index,
         :icon => 'fa-file'}
