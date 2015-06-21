@@ -12,7 +12,9 @@ class RoleUser < ActiveRecord::Base
   def is_admin?()
     self.role.name == 'admin' 
   end
-
+  def is_secretary?()
+    self.role.name == 'secretary' 
+  end
   def RoleUser.construct_value(user_params)
     value = {}
     user_params['role_users_attributes'].each do |i, prm|

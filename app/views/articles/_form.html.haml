@@ -1,23 +1,23 @@
 = form_for @article do |f|
   .row
-    .col-md-10
+    .col-md-12
       .form-group
         = f.label :name
         = f.text_area :name, class: 'form-control'
         = f.error_messages_for(:name)
   .row
-    .col-md-5
+    .col-md-6
       .form-group
         = f.label :start_page
         = f.number_field :start_page, class: 'form-control'
         = f.error_messages_for(:start_page)
-    .col-md-5
+    .col-md-6
       .form-group
         = f.label :finish_page
         = f.number_field :finish_page, class: 'form-control'
         = f.error_messages_for(:finish_page)
   .row
-    .col-md-10
+    .col-md-12
       .form-group
         = f.label :link
         = f.text_area :link, class: 'form-control'
@@ -26,9 +26,10 @@
 
 
   .row
-    .col-lg-3
+    .col-lg-6
       %label Источник 
-    .btn-group.col-lg-10{"data-toggle" => "buttons"}
+  .row
+    .btn-group.col-md-12{"data-toggle" => "buttons"}
       %label.btn.btn-primary.col-lg-6#show_mag_fields
         %input{:autocomplete => "off", :name => "source_type_mag", :type => "radio"}/
         %b Журнал
@@ -36,7 +37,7 @@
         %input{:autocomplete => "off", :name => "source_type_col", :type => "radio"}/
         %b Сборник трудов
   .row.hidden_magazine{style: "display: none"}
-    .col-lg-10
+    .col-lg-6
       %fieldset
         = f.label 'О журнале'
         .fields
@@ -54,7 +55,7 @@
             = s_field.check_box :in_rinc, id: 'check_rinc'
           = f.error_messages_for(:source)
   .row.hidden_collection{style: "display: none"}  
-    .col-lg-10
+    .col-lg-6
       %fieldset
         = f.label 'О сбонике трудов'
         .fields
@@ -66,7 +67,7 @@
           = f.error_messages_for(:source)
   %br
   .form-actions
-    = f.submit nil, class: 'btn btn-primary'
+    = f.submit "Создать", class: 'btn btn-primary'
   - content_for :error_messages do
     = error_messages_for @article
    

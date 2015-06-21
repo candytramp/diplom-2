@@ -18,30 +18,8 @@ module ApplicationHelper
          :icon => 'fa-male'}
       ]} 
     end
-    result << {
-      :name => 'Словари',
-      :icon => 'fa-book',
-      :children => [
-      {:name => 'Области науки',
-       :controller => :fields, :action => :index,
-       :icon => 'fa-tag'},
-      {:name => 'ГРНТИ',
-       :controller => :grntis, :action => :index,
-       :icon => 'fa-tag'},
-      {:name => 'Типы НИР',
-       :controller => :nir_types, :action => :index,
-       :icon => 'fa-tag'},
-      {:name => 'Научные школы',
-       :controller => :scientific_schools, :action => :index,
-       :icon => 'fa-tag'},
-      {:name => 'Источники финансирования',
-       :controller => :sources, :action => :index,
-       :icon => 'fa-tag'},
-      {:name => 'Федеральные программы',
-       :controller => :state_programs, :action => :index,
-       :icon => 'fa-tag'}
-      ]}
-     result << {
+    if @current_role_user.is_secretary?
+       result << {
        :name => 'Редактирование',
        :icon => 'fa-pencil',
        :children => [
@@ -54,16 +32,7 @@ module ApplicationHelper
        {:name => 'Дипломы',
         :controller => :diplomas, :action => :index,
         :icon => 'fa-file'},
-       {:name => 'НИР',
-        :controller => :research_efforts, :action => :index,
-        :icon => 'fa-file'},
-       {:name => 'Заявки',
-        :controller => :ois_requests, :action => :index,
-        :icon => 'fa-file'},
-       {:name => 'Лицензии',
-        :controller => :licences, :action => :index,
-        :icon => 'fa-file'},
-       {:name => 'Выставки',
+      {:name => 'Выставки',
         :controller => :exhibitions, :action => :index,
         :icon => 'fa-file'},
        {:name => 'Экспонаты',
@@ -79,6 +48,70 @@ module ApplicationHelper
         :controller => :reports, :action => :index,
         :icon => 'fa-file'}
        ]}
+      
+    else
+      result << {
+        :name => 'Словари',
+        :icon => 'fa-book',
+        :children => [
+        {:name => 'Области науки',
+         :controller => :fields, :action => :index,
+         :icon => 'fa-tag'},
+        {:name => 'ГРНТИ',
+         :controller => :grntis, :action => :index,
+         :icon => 'fa-tag'},
+        {:name => 'Типы НИР',
+         :controller => :nir_types, :action => :index,
+         :icon => 'fa-tag'},
+        {:name => 'Научные школы',
+         :controller => :scientific_schools, :action => :index,
+         :icon => 'fa-tag'},
+        {:name => 'Источники финансирования',
+         :controller => :sources, :action => :index,
+         :icon => 'fa-tag'},
+        {:name => 'Федеральные программы',
+         :controller => :state_programs, :action => :index,
+         :icon => 'fa-tag'}
+        ]}
+       result << {
+         :name => 'Редактирование',
+         :icon => 'fa-pencil',
+         :children => [
+         {:name => 'Статьи',
+          :controller => :articles, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Конференции',
+          :controller => :conferences, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Дипломы',
+          :controller => :diplomas, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'НИР',
+          :controller => :research_efforts, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Заявки',
+          :controller => :ois_requests, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Лицензии',
+          :controller => :licences, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Выставки',
+          :controller => :exhibitions, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Экспонаты',
+          :controller => :exhibits, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Учебники',
+          :controller => :textbooks, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Монографии',
+          :controller => :monographs, :action => :index,
+          :icon => 'fa-file'},
+         {:name => 'Доклады',
+          :controller => :reports, :action => :index,
+          :icon => 'fa-file'}
+         ]}
+      end
     result.each do |item|
       if item.has_key?(:children)
         item[:children].each do |x| 

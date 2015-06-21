@@ -1,42 +1,44 @@
 = form_for @ois_request do |f|
 
   .row
-    .col-md-12
+    .col-md-6
       .form-group
         = f.label :name
         = f.text_area :name, class: 'form-control'
         = f.error_messages_for(:name)
   .row
-    .col-md-4
+    .col-md-2
       .form-group
         = f.label :number
         = f.text_field :number, class: 'form-control'
         = f.error_messages_for(:number)
-    .col-md-8
+    .col-md-4
       .form-group
         = f.label :reg_agency
         = f.text_field :reg_agency, class: 'form-control'
         = f.error_messages_for(:reg_agency)
-  .form-group
-    = f.label :author
-    = f.text_area :author, class: 'form-control'
-    = f.error_messages_for(:author)
   .row
     .col-md-6
       .form-group
+        = f.label :author
+        = f.text_area :author, class: 'form-control'
+        = f.error_messages_for(:author)
+  .row
+    .col-md-3
+      .form-group
         = f.label :object
         = f.select( :object, options_for_object, {}, class: 'form-control')
-    .col-md-6
+    .col-md-3
       .form-group
         = f.label :status
         = f.select( :status, options_for_status, {}, class: 'form-control')
   .row
-    .col-md-6
+    .col-md-3
       .form-group
         = f.label :research_effort
         = f.select("research_effort", chosen_options(ResearchEffort), {include_blank: ''}, class: 'chosen-select form-control')
         = f.error_messages_for(:research_effort)
-    .col-md-6
+    .col-md-3
       = f.label :priority
       .input-group.date.datepicker
         = f.text_field :priority, class: 'form-control',:value=>(l(@ois_request.priority,:format=>"%d.%m.%Y") if @ois_request.priority)
@@ -45,6 +47,6 @@
  
   %br
   .form-actions
-    = f.submit nil, class: 'btn btn-primary'
+    = f.submit 'Создать', class: 'btn btn-primary'
   - content_for :error_messages do
     = error_messages_for  @ois_request

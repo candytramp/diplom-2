@@ -9,6 +9,42 @@ module NobodyHelper
          :controller => :roles, :action => :index,
          :icon => 'fa-cubes'}
     end
+   if @current_role_user.is_secretary?
+       result <<{:name => 'Документы',
+        :controller => :documents, :action => :index,
+        :icon => 'fa-file'}
+       result <<{:name => 'Участники',
+        :controller => :connections, :action => :index,
+        :icon => 'fa-user-secret'}
+       result <<{:name => 'Отчетность',
+        :controller => :statistics, :action => :index,
+        :icon => 'fa-file-pdf-o'}
+       result <<{:name => 'Статьи',
+        :controller => :articles, :action => :index,
+        :icon => 'fa-file'}
+       result <<{:name => 'Конференции',
+        :controller => :conferences, :action => :index,
+        :icon => 'fa-users'}
+       result <<{:name => 'Дипломы',
+        :controller => :diplomas, :action => :index,
+        :icon => 'fa-trophy'}
+       result <<{:name => 'Выставки',
+        :controller => :exhibitions, :action => :index,
+        :icon => 'fa-building-o'}
+       result <<{:name => 'Экспонаты',
+        :controller => :exhibits, :action => :index,
+        :icon => 'fa-diamond'}
+       result <<{:name => 'Учебники',
+        :controller => :textbooks, :action => :index,
+        :icon => 'fa-book'}
+       result <<{:name => 'Монографии',
+        :controller => :monographs, :action => :index,
+        :icon => 'fa-file-text'}
+       result <<{:name => 'Доклады',
+        :controller => :reports, :action => :index,
+        :icon => 'fa-file-o'}
+      return result
+    end
        result <<{:name => 'Документы',
         :controller => :documents, :action => :index,
         :icon => 'fa-file'}

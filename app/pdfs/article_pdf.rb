@@ -1,24 +1,114 @@
 class ArticlePdf < Prawn::Document
   def initialize(article, view)
-    super(:page_layout => :landscape)
+    super(:page_layout => :portrait)
     @article = article
     @view = view
+    gen_title
     gen_form3_monographs
   end
-  def kaf_stat
-    invoiceinfo = [["Item Name", "#{ @article.name }"], ["Year", "#{ @article.year }"],["Link", "#{ @article.link }"]]
-    move_down 30
-    table invoiceinfo,
-      :header => true,
-      :width => 500 do
-        columns(0).align = :left
-        columns(1).align = :right
-        self.header = true
-        self.column_widths = {0 => 200, 1 => 300}
-        columns(2).font_style = :bold
+  def gen_title
+    
+    pril = "Приложение 1"
+    header1 = "МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ"
+    header2 = "Федеральное государственное бюджетное образовательное учреждение
+высшего профессионального образования"
+    header3 = "«Московский государственный индустриальный университет» "
+    ytverjdau = "УТВЕРЖДАЮ"
+    prorecter = "Проректор по научной работе"
+    shlapin = "______________ Шляпин А.Д."
+    data = "«____»__________2015 г."
+    onchet = "ОТЧЕТ"
+    onauchd = "о научной деятельности"
+
+    kaf_name = "(наименование кафедры)"
+    god = "за 2014 г."
+    zavkaf = "Заведующий кафедры"
+    cherta = "____________________ "
+    director = "Директор"
+    footer = "МОСКВА 2015"
+    font('./fonts/TimesNewRomanRegular.ttf') do
+      
+      text  pril,
+            :align => :right,
+            :width => 200,
+            :height => 50
+    end
+    font('./fonts/TimesNewRomanBold.ttf') do
+      move_down 10
+      text header1,
+          :align => :center,
+          :width => 2000,
+          :height => 40
+      move_down 30
+      text header2,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 12
+      move_down 30
+      text header3,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 14
+      move_down 40
+      table  [['','',ytverjdau],['','',prorecter], ['','',shlapin],['','',data] ],
+             :cell_style => {:align => :center, :borders => []},
+             :position => :right
+      move_down 60
+      text "ОТЧЕТ",
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 18
+      move_down 5
+      text onauchd,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 16
+      move_down 30    
+      stroke_horizontal_rule
       end
+    font('./fonts/TimesNewRomanRegular.ttf') do
+      move_down 5
+      text kaf_name,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 14
+    end
+    font('./fonts/TimesNewRomanBold.ttf') do
+      move_down 10
+      text god,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 14
+    end
+    font('./fonts/TimesNewRomanRegular.ttf') do
+      data = [[zavkaf, cherta], [director, cherta]]
+      move_down 60
+      table data,
+          :cell_style => {:borders => []},
+          :position => :center,
+
+          :width => 500 do
+            self.column_widths = { 0 => 250, 1 => 250 }
+            self.columns(0).style(:align => :left)
+            self.columns(1).style(:align => :right)
+          end
+      move_down 160
+      text footer,
+          :align => :center,
+          :width => 2000,
+          :height => 40,
+          :size => 14
+    end
   end
+
   def gen_form3_monographs
+    start_new_page(:layout=>:landscape)
     page_header = "РЕЗУЛЬТАТИВНОСТЬ НИР В 2014 Г."
     table_1_header = ["№ п/п","Название статьи", "Автор(ы)", "Вид публикации", "Выходные данные статьи", "Страна", "Объем (п.л.)", "Принадлежность к НИР", "РИНЦ"]
     table_1_data = []
@@ -53,6 +143,7 @@ class ArticlePdf < Prawn::Document
 
 
     font('./fonts/TimesNewRomanRegular.ttf') do
+      
       text  page_header,
             :align => :center,
             :width => 2000,
@@ -70,5 +161,6 @@ class ArticlePdf < Prawn::Document
                 self.column_widths = { 1 => 120, 2 => 80, 3 => 90,4 => 100 }
              end
     end
+  start_new_page
   end
 end
